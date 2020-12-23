@@ -1,0 +1,13 @@
+digraph tree {
+arm -> action;
+arm -> corm;
+action -> apple;
+corm -> fossil;
+fossil -> fedder;
+fossil -> prolil;
+prolil -> inter;
+prolil -> vital;
+vital -> sport;
+sport -> train;
+train -> veron;
+}

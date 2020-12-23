@@ -1,0 +1,99 @@
+Moscow, Bauman street, 43/1c2, 33; 123; 4; 292100; secondary; 1966; 1; 1; yes
+Moscow, Arbatskaya street, 8, 19; 129; 4; 518439; primary; yes
+Moscow, Borovaya street, 54/1, 12; 58; 2; 2324132; secondary; 1992; 1; 2; yes
+Moscow, Mnevniki street, 12, 1; 46; 1; 31012; secondary; 1972; 3; 5; no
+Moscow, Lavrushinsky lane, 43, 3; 33; 1; 283990; primary; no
+Moscow, Kargapolskaya street, 65, 6; 66; 2; 210320; secondary; 1956; 1; 3; yes
+Moscow, Lenina lane, 13, 65; 88; 3; 390030; secondary; 2010; 2; 2; no
+Moscow, Tverskaya street, 2, 99; 32; 1; 618350; primary; yes
+Moscow, Lavrushinsky lane, 43, 3; 99; 3; 239990; primary; yes
+Moscow, Bolotnaya street, 1, 2; 32; 1; 310400; primary; no
+Moscow, Arbatskaya street, 4, 12; 67; 2; 4184999; primary; yes
+Moscow, Kadasheuskiy lane, 4, 93; 44; 1; 349100; primary; no
+Moscow, Tverskaya street, 2, 12; 60; 2; 678352; primary; yes
+Moscow, Lavrushinsky lane, 43, 3; 33; 1; 289290; primary; no
+Moscow, Marksistskaya street, 24/1c1, 12; 60; 2; 300000; secondary; 1996; 2; 3; no
+Moscow, Kalitnikova street, 1/2c1, 21; 88; 3; 328999; primary; no
+Moscow, Borovaya street, 32/1, 199; 58; 2; 102432; secondary; 1972; 1; 1; yes
+Moscow, Begovaya street, 88, 102; 39; 1; 312000; secondary; 2005; 1; 1; no
+Moscow, Broshevskiy lane, 1, 3; 33; 1; 389390; primary; no
+Moscow, Kargapolskaya street, 65, 8; 58; 2; 515320; secondary; 1956; 1; 1; yes
+Moscow, Lenina lane, 13, 65; 90; 3; 490060; secondary; 2010; 1; 1; no
+Moscow, Voroncevskaya street, 1, 1; 90; 3; 475322; primary; yes
+Moscow, Vedernikov lane, 123, 4; 140; 4; 459950; primary; yes
+Moscow, Bolotnaya street, 1, 9; 33; 1; 300020; primary; yes
+Moscow, Lapina street, 12, 12/c1;  88; 3; 212999; primary; yes
+Moscow, Energeticheskiy lane, 1, 321; 57; 1; 142900; primary; no
+Moscow, Rubcovskaya embankment, 99, 1/c2; 29; 1; 271322; primary; yes
+Moscow, Sadovaya street, 32/c2, 390; 101; 3; 489390; primary; no
+Moscow, Bauman street, 63/c2, 23; 3; 1; 299200; secondary; 1899; 7; 10; no
+Moscow, Sedova street, 1, 20; 129; 4; 318299; primary; yes
+Moscow, Kurova street, 14/c1, 83; 58; 2; 222412; secondary; 1986; 1; 1; no
+Moscow, Mnevniki street, 13, 1; 43; 1; 301000; secondary; 1992; 1; 3; no
+Moscow, Ivanov lane, 11, 1; 11; 4; 789290; primary; no
+Moscow, Bogova street, 62, 1; 60; 2; 312320; secondary; 1999; 1; 1; yes
+Moscow, Chichikova lane, 94, 46/c1; 18; 2; 119900; secondary; 2000; 1; 1; no
+Moscow, Tverskaya street, 2, 92; 82; 3; 690322; primary; yes
+Moscow, Kitov lane, 13, 9; 21; 1; 459290; primary; yes
+Moscow, Tirova street, 1, 1; 34; 2; 912000; primary; no
+Moscow, Arbatskaya street, 8, 10; 88; 3; 118999; primary; yes
+Moscow, Petrov lane, 4, 13; 144; 3; 342900; primary; no
+Moscow, Umnikova street, 2, 99; 98; 3; 418322; primary; yes
+Moscow, Pirogov lane, 13, 3/c1; 13; 1; 329890; primary; no
+Moscow, Bauman street, 43/1c2, 33; 123; 4; 290000; secondary; 1966; 1; 1; yes
+Moscow, Arbatskaya street, 8, 19; 129; 4; 518999; primary; yes
+Moscow, Borovaya street, 54/1, 12; 58; 2; 232432; secondary; 1992; 1; 2; yes
+Moscow, Mnevniki street, 12, 1; 46; 1; 310000; secondary; 1972; 3; 5; no
+Moscow, Lavrushinsky lane, 43, 3; 33; 1; 289990; primary; no
+Moscow, Kargapolskaya street, 65, 6; 66; 2; 210320; secondary; 1956; 1; 3; yes
+Moscow, Lenina lane, 13, 65; 88; 3; 390000; secondary; 2010; 2; 2; no
+Moscow, Tverskaya street, 2, 99; 32; 1; 678350; primary; yes
+Moscow, Lavrushinsky lane, 43, 3; 99; 3; 259990; primary; yes
+Moscow, Bolotnaya street, 1, 2; 32; 1; 310000; primary; no
+Moscow, Arbatskaya street, 4, 12; 67; 2; 418999; primary; yes
+Moscow, Kadasheuskiy lane, 4, 93; 44; 1; 349900; primary; no
+Moscow, Tverskaya street, 2, 12; 60; 2; 678322; primary; yes
+Moscow, Lavrushinsky lane, 43, 3; 33; 1; 289990; primary; no
+Moscow, Marksistskaya street, 24/1c1, 12; 60; 2; 300000; secondary; 1996; 2; 3; no
+Moscow, Kalitnikova street, 1/2c1, 21; 88; 3; 328999; primary; no
+Moscow, Borovaya street, 32/1, 199; 58; 2; 202432; secondary; 1972; 1; 1; yes
+Moscow, Begovaya street, 88, 102; 39; 1; 310000; secondary; 2005; 1; 1; no
+Moscow, Broshevskiy lane, 1, 3; 33; 1; 389990; primary; no
+Moscow, Kargapolskaya street, 65, 8; 58; 2; 215320; secondary; 1956; 1; 1; yes
+Moscow, Lenina lane, 13, 65; 90; 3; 490000; secondary; 2010; 1; 1; no
+Moscow, Voroncevskaya street, 1, 1; 90; 3; 478322; primary; yes
+Moscow, Vedernikov lane, 123, 4; 140; 4; 459990; primary; yes
+Moscow, Bolotnaya street, 1, 9; 33; 1; 300000; primary; yes
+Moscow, Lapina street, 12, 12/c1;  88; 3; 218999; primary; yes
+Moscow, Energeticheskiy lane, 1, 321; 57; 1; 149900; primary; no
+Moscow, Rubcovskaya embankment, 99, 1/c2; 29; 1; 278322; primary; yes
+Moscow, Sadovaya street, 32/c2, 390; 101; 3; 489990; primary; no
+Moscow, Bauman street, 63/c2, 23; 3; 1; 299000; secondary; 1899; 7; 10; no
+Moscow, Sedova street, 1, 20; 129; 4; 318999; primary; yes
+Moscow, Kurova street, 14/c1, 83; 58; 2; 292412; secondary; 1986; 1; 1; no
+Moscow, Mnevniki street, 13, 1; 43; 1; 300000; secondary; 1992; 1; 3; no
+Moscow, Ivanov lane, 11, 1; 11; 4; 789990; primary; no
+Moscow, Bogova street, 62, 1; 60; 2; 310320; secondary; 1999; 1; 1; yes
+Moscow, Chichikova lane, 94, 46/c1; 18; 2; 199900; secondary; 2000; 1; 1; no
+Moscow, Tverskaya street, 2, 92; 82; 3; 690322; primary; yes
+Moscow, Kitov lane, 13, 9; 21; 1; 459990; primary; yes
+Moscow, Tirova street, 1, 1; 34; 2; 910000; primary; no
+Moscow, Arbatskaya street, 8, 10; 88; 3; 618999; primary; yes
+Moscow, Petrov lane, 4, 13; 144; 3; 349900; primary; no
+Moscow, Umnikova street, 2, 99; 98; 3; 448322; primary; yes
+Moscow, Pirogov lane, 13, 3/c1; 13; 1; 389890; primary; no
+Moscow, Bauman street, 43/1c2, 33; 123; 4; 290020; secondary; 1966; 1; 1; yes
+Moscow, Arbatskaya street, 8, 19; 129; 4; 518919; primary; yes
+Moscow, Borovaya street, 54/1, 12; 58; 2; 232431; secondary; 1992; 1; 2; yes
+Moscow, Mnevniki street, 12, 1; 46; 1; 310040; secondary; 1972; 3; 5; no
+Moscow, Lavrushinsky lane, 43, 3; 33; 1; 2899590; primary; no
+Moscow, Kargapolskaya street, 65, 6; 66; 2; 2150320; secondary; 1956; 1; 3; yes
+Moscow, Lenina lane, 13, 65; 88; 3; 3900020; secondary; 2010; 2; 2; no
+Moscow, Tverskaya street, 2, 99; 32; 1; 6728350; primary; yes
+Moscow, Lavrushinsky lane, 43, 3; 99; 3; 2519990; primary; yes
+Moscow, Bolotnaya street, 1, 2; 32; 1; 3100220; primary; no
+Moscow, Arbatskaya street, 4, 12; 67; 2; 418299; primary; yes
+Moscow, Kadasheuskiy lane, 4, 93; 44; 1; 349300; primary; no
+Moscow, Tverskaya street, 2, 12; 60; 2; 678342; primary; yes
+Moscow, Lavrushinsky lane, 43, 3; 33; 1; 289590; primary; no
+Moscow, Marksistskaya street, 24/1c1, 12; 60; 2; 100000; secondary; 1996; 2; 3; no

@@ -1,0 +1,12 @@
+digraph tree {
+n -> iam;
+n -> to;
+iam -> i;
+iam -> m;
+i -> back;
+m -> like;
+to -> that;
+to -> you;
+that -> said;
+you -> yeah;
+}
