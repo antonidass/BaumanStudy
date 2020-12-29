@@ -1,0 +1,17 @@
+Enter the size of the matrix >>> 3 3 2 4 6 32 43 2 35 54 101
+Correct output >>> 2 4 6
+                   -1 -1 -1
+                   32 43 2 
+                   35 54 101
+
+Enter the size of the matrix>>> 0 10
+Correct output >>> Wrong matrix length
+
+Enter the size of the matrix >>> 3 3 2 2 3 4 4 4 8 8 8
+Correct output >>> 2 2 2
+                   4 4 4
+                   8 8 8
+
+Enter the size of the matrix >>> 2 2 8 -3 a 2
+Correct output >>> "Wrong input data"
+

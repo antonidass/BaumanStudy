@@ -1,0 +1,29 @@
+Input x1, y1, x2, y2, xA, yA >>> 1 1 4 4 3 3
+Output >>> 1
+
+Input x1, y1, x2, y2, xA, yA >>> 0 1 0 2 0 1.333
+Output >>> 1
+
+Input x1, y1, x2, y2, xA, yA >>> 1 2 3 4 5 6
+Output >>> 0
+
+Input x1, y1, x2, y2, xA, yA >>> 0 0 0 0 0 0
+Output >>> Input wrong data
+
+Input x1, y1, x2, y2, xA, yA >>> sa 12 4 5 6 1
+Output >>> Input wrong data
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

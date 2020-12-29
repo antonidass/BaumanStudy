@@ -1,0 +1,11 @@
+Enter the size of the array >>> 3
+12 231 dfsdfdsfadsad
+Correct output >>> Wrong input data
+
+Enter the size of the array >>> 5
+12 9 2 80 25
+Correct output >>> 89
+
+Enter the size of the array >>> 11
+12 93 2 12 93 2 12 93 2 12 93
+Correct output >>> Wrong array length

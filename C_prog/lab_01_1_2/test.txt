@@ -1,0 +1,24 @@
+Input a, b, alpha >>> 10 20 45
+Correct output >>> Square = 75.00000
+
+Input a, b, alpha >>> 30 10 60
+Correct output >>> Square = 346.41019
+
+Input a, b, alpha >>> 1 4 45
+Correct output >>> Square = 3.75000
+
+Input a, b, alpha >>> 100 200 30
+Correct output >>> Square = 4330.12695
+
+
+
+
+
+
+
+
+
+
+
+
+

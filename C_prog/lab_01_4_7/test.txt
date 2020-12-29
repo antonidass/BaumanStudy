@@ -1,0 +1,24 @@
+Input x, eps >>> 0.5 1e-3
+Output >>> s = 0.29655 f = 0.29630 absolute = 0.00026 relative = 0.00087
+
+Input x, eps >>> 0.1 1e-6
+Output >>> s = 0.75131 f = 0.75131 absolute = 0.00000 relative = 0.00000
+
+Input x, eps >>> 10 1e-3
+Output >>> Input wrong data
+
+Input x, eps >>> -0.3 1e-10
+Output >>> s = 2.91545 f = 2.91545 absolute = 0.00000 relative = 0.00000
+
+Input x, eps >>>  -2 1e-3
+Output >>> Input wrong data
+
+
+
+
+
+
+
+
+
+

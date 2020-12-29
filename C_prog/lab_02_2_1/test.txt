@@ -1,0 +1,11 @@
+Enter the size of the array >>> 3
+12 93 2
+Correct output >>> Wrong input data
+
+Enter the size of the array >>> 5
+12 93 2 -3 -2
+Correct output >>> -2.50000
+
+Enter the size of the array >>> 11
+12 93 2 12 93 2 12 93 2 12 93
+Correct output >>> Wrong array length

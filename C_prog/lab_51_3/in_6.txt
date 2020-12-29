@@ -1,0 +1,1 @@
+./a.out sss sdsd sd sd 

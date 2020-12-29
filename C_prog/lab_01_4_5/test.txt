@@ -1,0 +1,43 @@
+Input n >>> 100
+Output >>> Deviders: 2 2 5 5
+
+Input n >>> 100
+Output >>> Deviders: 2 2 5 5
+
+Input n >>> 139
+Output >>> Deviders: 139
+
+Input n >>> 77
+Output >>> Deviders: 7 11
+
+Input n >>> 0
+Output >>> Wrong input data
+
+Input n >>> -112
+Output >>> Wrong input data
+
+Input n >>> fdfsdaf sdf aij oiwjo ew ndasfoasjdf
+Output >>> Wrong input data
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

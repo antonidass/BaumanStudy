@@ -1,0 +1,24 @@
+Input >>> adssdkfjdkasjf, kdlskj; fadsfafalkdjfakdsjfsjdafkdsfjaldkfj
+Correct output >>> Word must be less then 16 symbols
+
+Input >>> 
+Correct output >>> Line is empty
+
+Input >>> dfhajdsf sdasfsdfdjf (pressed Ctrl+D)
+Correct output >>> Find EOF
+
+Input >>> ;   ;;;::              : ;; :: ;; ::,....
+Correct output >>> Only separators in line
+
+Input >>> adjflaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaddddddddddddddddddddddddddddcccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc
+        adjflaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaddddddddddddddddddddddddddddcccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc
+Correct output >>> Line must have less then 256 symbols
+
+Input >>> abcdaca barakib cartacor tutupap mamuk mambek
+Correct output >>> Result: mauk tuupap cartaor baraki abcdc
+
+Input >>> lalala
+Correct output >>>
+
+
+

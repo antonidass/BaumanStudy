@@ -1,0 +1,1 @@
+./a.out c 10 data.bin

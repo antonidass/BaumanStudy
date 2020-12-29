@@ -1,0 +1,1 @@
+No data between min and max elements after filter

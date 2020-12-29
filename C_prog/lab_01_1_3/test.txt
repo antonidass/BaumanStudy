@@ -1,0 +1,37 @@
+Input v1, t1, v2, t2 >>> 10 100 20 200
+Correct output >>> v = 30.00000 t = 166.66667
+
+Input v1, t1, v2, t2 >>> 5 10 5 10
+Correct output >>> v = 10.00000 t = 10.00000
+
+Input v1, t1, v2, t2 >>> 4 50 3 100
+Correct output >>> v = 7.00000 t = 71.42857
+
+Input v1, t1, v2, t2 >>> 1.10 2.50 10.50 1
+Correct output >>> v = 11.60000 t = 1.14224
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

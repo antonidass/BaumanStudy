@@ -1,0 +1,22 @@
+Input flat number >>> 36
+Correct output >>> Entrance = 1 Floor = 9
+
+Input flat number >>> 10
+Correct output >>> Entrance = 1 Floor = 3
+
+Input flat number >>> 59
+Correct output >>> Entrance = 2 Floor = 6
+
+Input flat number >>> 40
+Correct output >>> Entrance = 2 Floor = 1
+
+
+
+
+
+
+
+
+
+
+

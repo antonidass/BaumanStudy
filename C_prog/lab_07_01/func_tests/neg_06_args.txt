@@ -1,0 +1,1 @@
+./a.out func_tests/neg_06_in.txt func_tests/neg_06_out.txt
