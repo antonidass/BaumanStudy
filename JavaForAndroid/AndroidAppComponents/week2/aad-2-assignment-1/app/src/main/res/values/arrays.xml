@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- A set of valid default URLs that can be used to test assignments. -->
+    <string-array name="default_image_urls">
+        <item>https://upload.wikimedia.org/wikipedia/en/0/09/DataTNG.jpg</item>
+        <item>https://www.dre.vanderbilt.edu/~schmidt/gifs/dougs-xsmall.jpg</item>
+        <item>https://2.bp.blogspot.com/-c2U3HUQZVy8/UV7KI2bodLI/AAAAAAAAA4g/DJEEmv-FmNY/s1600/galaxy_universe-normal.jpg</item>
+    </string-array>
+
+    <string-array name="default_sound_urls">
+        <item>https://www.dre.vanderbilt.edu/~schmidt/Eruption.mp3</item>
+        <item>https://www.dre.vanderbilt.edu/~schmidt/OnFire.mp3</item>
+        <item>https://www.dre.vanderbilt.edu/~schmidt/SmokeOnTheWater.mp3</item>
+        <item>https://www.dre.vanderbilt.edu/~schmidt/symphony9_beethoven.mp3</item>
+        <item>https://www.dre.vanderbilt.edu/~schmidt/ForAllWeKnow.mp3</item>
+    </string-array>
+</resources>

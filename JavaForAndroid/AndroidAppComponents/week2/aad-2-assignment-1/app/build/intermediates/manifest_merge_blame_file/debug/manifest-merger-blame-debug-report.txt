@@ -1,0 +1,106 @@
+1<?xml version="1.0" encoding="utf-8"?>
+2<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+3    package="vandy.mooc.aad_2_assignment_1"
+4    android:versionCode="1"
+5    android:versionName="1.0" >
+6
+7    <uses-sdk
+8        android:minSdkVersion="23"
+8-->/home/akrik/android_coursera/android/AndroidAppComponents/week2/aad-2-assignment-1/app/src/main/AndroidManifest.xml
+9        android:targetSdkVersion="30" />
+9-->/home/akrik/android_coursera/android/AndroidAppComponents/week2/aad-2-assignment-1/app/src/main/AndroidManifest.xml
+10
+11    <uses-permission android:name="android.permission.INTERNET" />
+11-->/home/akrik/android_coursera/android/AndroidAppComponents/week2/aad-2-assignment-1/app/src/main/AndroidManifest.xml:6:5-66
+11-->/home/akrik/android_coursera/android/AndroidAppComponents/week2/aad-2-assignment-1/app/src/main/AndroidManifest.xml:6:22-64
+12    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+12-->/home/akrik/android_coursera/android/AndroidAppComponents/week2/aad-2-assignment-1/app/src/main/AndroidManifest.xml:7:5-79
+12-->/home/akrik/android_coursera/android/AndroidAppComponents/week2/aad-2-assignment-1/app/src/main/AndroidManifest.xml:7:22-77
+13    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+13-->/home/akrik/android_coursera/android/AndroidAppComponents/week2/aad-2-assignment-1/app/src/main/AndroidManifest.xml:8:5-80
+13-->/home/akrik/android_coursera/android/AndroidAppComponents/week2/aad-2-assignment-1/app/src/main/AndroidManifest.xml:8:22-78
+14    <!-- For unit testing we disable animations for more reliable results. -->
+15    <uses-permission android:name="android.permission.SET_ANIMATION_SCALE" />
+15-->/home/akrik/android_coursera/android/AndroidAppComponents/week2/aad-2-assignment-1/app/src/main/AndroidManifest.xml:10:5-11:47
+15-->/home/akrik/android_coursera/android/AndroidAppComponents/week2/aad-2-assignment-1/app/src/main/AndroidManifest.xml:10:22-75
+16
+17    <application
+17-->/home/akrik/android_coursera/android/AndroidAppComponents/week2/aad-2-assignment-1/app/src/main/AndroidManifest.xml:13:5-53:19
+18        android:name="vandy.mooc.aad2.framework.application.DownloadApplication"
+18-->/home/akrik/android_coursera/android/AndroidAppComponents/week2/aad-2-assignment-1/app/src/main/AndroidManifest.xml:14:9-81
+19        android:allowBackup="true"
+19-->/home/akrik/android_coursera/android/AndroidAppComponents/week2/aad-2-assignment-1/app/src/main/AndroidManifest.xml:15:9-35
+20        android:appComponentFactory="androidx.core.app.CoreComponentFactory"
+20-->[androidx.core:core:1.1.0] /home/akrik/.gradle/caches/transforms-2/files-2.1/76f2b6439d16df60df3177021482ee5a/core-1.1.0/AndroidManifest.xml:24:18-86
+21        android:debuggable="true"
+22        android:extractNativeLibs="false"
+23        android:icon="@mipmap/ic_launcher"
+23-->/home/akrik/android_coursera/android/AndroidAppComponents/week2/aad-2-assignment-1/app/src/main/AndroidManifest.xml:16:9-43
+24        android:label="@string/app_name"
+24-->/home/akrik/android_coursera/android/AndroidAppComponents/week2/aad-2-assignment-1/app/src/main/AndroidManifest.xml:17:9-41
+25        android:supportsRtl="true"
+25-->/home/akrik/android_coursera/android/AndroidAppComponents/week2/aad-2-assignment-1/app/src/main/AndroidManifest.xml:18:9-35
+26        android:testOnly="true"
+27        android:theme="@style/AppTheme" >
+27-->/home/akrik/android_coursera/android/AndroidAppComponents/week2/aad-2-assignment-1/app/src/main/AndroidManifest.xml:19:9-40
+28        <activity
+28-->/home/akrik/android_coursera/android/AndroidAppComponents/week2/aad-2-assignment-1/app/src/main/AndroidManifest.xml:21:9-31:20
+29            android:name="vandy.mooc.aad2.assignment.activities.MainActivity"
+29-->/home/akrik/android_coursera/android/AndroidAppComponents/week2/aad-2-assignment-1/app/src/main/AndroidManifest.xml:22:13-78
+30            android:label="@string/app_name"
+30-->/home/akrik/android_coursera/android/AndroidAppComponents/week2/aad-2-assignment-1/app/src/main/AndroidManifest.xml:23:13-45
+31            android:theme="@style/AppTheme.NoActionBar"
+31-->/home/akrik/android_coursera/android/AndroidAppComponents/week2/aad-2-assignment-1/app/src/main/AndroidManifest.xml:24:13-56
+32            android:windowSoftInputMode="adjustResize" >
+32-->/home/akrik/android_coursera/android/AndroidAppComponents/week2/aad-2-assignment-1/app/src/main/AndroidManifest.xml:25:13-55
+33            <intent-filter>
+33-->/home/akrik/android_coursera/android/AndroidAppComponents/week2/aad-2-assignment-1/app/src/main/AndroidManifest.xml:26:13-30:29
+34                <action android:name="android.intent.action.MAIN" />
+34-->/home/akrik/android_coursera/android/AndroidAppComponents/week2/aad-2-assignment-1/app/src/main/AndroidManifest.xml:27:17-68
+34-->/home/akrik/android_coursera/android/AndroidAppComponents/week2/aad-2-assignment-1/app/src/main/AndroidManifest.xml:27:25-66
+35
+36                <category android:name="android.intent.category.LAUNCHER" />
+36-->/home/akrik/android_coursera/android/AndroidAppComponents/week2/aad-2-assignment-1/app/src/main/AndroidManifest.xml:29:17-76
+36-->/home/akrik/android_coursera/android/AndroidAppComponents/week2/aad-2-assignment-1/app/src/main/AndroidManifest.xml:29:27-74
+37            </intent-filter>
+38        </activity>
+39        <activity
+39-->/home/akrik/android_coursera/android/AndroidAppComponents/week2/aad-2-assignment-1/app/src/main/AndroidManifest.xml:32:9-36:20
+40            android:name="vandy.mooc.aad2.assignment.activities.GalleryActivity"
+40-->/home/akrik/android_coursera/android/AndroidAppComponents/week2/aad-2-assignment-1/app/src/main/AndroidManifest.xml:33:13-81
+41            android:label="@string/title_activity_gallery"
+41-->/home/akrik/android_coursera/android/AndroidAppComponents/week2/aad-2-assignment-1/app/src/main/AndroidManifest.xml:34:13-59
+42            android:theme="@style/AppTheme.NoActionBar" >
+42-->/home/akrik/android_coursera/android/AndroidAppComponents/week2/aad-2-assignment-1/app/src/main/AndroidManifest.xml:35:13-56
+43        </activity>
+44        <activity
+44-->/home/akrik/android_coursera/android/AndroidAppComponents/week2/aad-2-assignment-1/app/src/main/AndroidManifest.xml:37:9-41:20
+45            android:name="vandy.mooc.aad2.framework.application.activities.PagedActivity"
+45-->/home/akrik/android_coursera/android/AndroidAppComponents/week2/aad-2-assignment-1/app/src/main/AndroidManifest.xml:38:13-90
+46            android:label="@string/title_activity_details"
+46-->/home/akrik/android_coursera/android/AndroidAppComponents/week2/aad-2-assignment-1/app/src/main/AndroidManifest.xml:39:13-59
+47            android:theme="@style/AppTheme.NoActionBar" >
+47-->/home/akrik/android_coursera/android/AndroidAppComponents/week2/aad-2-assignment-1/app/src/main/AndroidManifest.xml:40:13-56
+48        </activity>
+49
+50        <!-- android:authority must be unique for each assignment -->
+51        <provider
+51-->/home/akrik/android_coursera/android/AndroidAppComponents/week2/aad-2-assignment-1/app/src/main/AndroidManifest.xml:44:9-52:20
+52            android:name="androidx.core.content.FileProvider"
+52-->/home/akrik/android_coursera/android/AndroidAppComponents/week2/aad-2-assignment-1/app/src/main/AndroidManifest.xml:45:13-62
+53            android:authorities="vandy.mooc.aad2.assignment1.fileprovider"
+53-->/home/akrik/android_coursera/android/AndroidAppComponents/week2/aad-2-assignment-1/app/src/main/AndroidManifest.xml:46:13-75
+54            android:exported="false"
+54-->/home/akrik/android_coursera/android/AndroidAppComponents/week2/aad-2-assignment-1/app/src/main/AndroidManifest.xml:47:13-37
+55            android:grantUriPermissions="true" >
+55-->/home/akrik/android_coursera/android/AndroidAppComponents/week2/aad-2-assignment-1/app/src/main/AndroidManifest.xml:48:13-47
+56            <meta-data
+56-->/home/akrik/android_coursera/android/AndroidAppComponents/week2/aad-2-assignment-1/app/src/main/AndroidManifest.xml:49:13-51:53
+57                android:name="android.support.FILE_PROVIDER_PATHS"
+57-->/home/akrik/android_coursera/android/AndroidAppComponents/week2/aad-2-assignment-1/app/src/main/AndroidManifest.xml:50:17-67
+58                android:resource="@xml/file_paths" />
+58-->/home/akrik/android_coursera/android/AndroidAppComponents/week2/aad-2-assignment-1/app/src/main/AndroidManifest.xml:51:17-51
+59        </provider>
+60    </application>
+61
+62</manifest>

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="text_size">26dp</dimen>
+    <dimen name="item_size">12dp</dimen>
+    <dimen name="margin_top">80dp</dimen>
+    <dimen name="margin_left">30dp</dimen>
+    <dimen name="margin_top2">120dp</dimen>
+
+</resources>

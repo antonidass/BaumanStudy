@@ -1,0 +1,72 @@
+import org.gradle.api.tasks.testing.logging.TestExceptionFormat
+
+apply plugin: 'com.android.application'
+
+android {
+    compileSdkVersion versions.compileSdk
+
+    defaultConfig {
+        applicationId versions.applicationId
+        minSdkVersion versions.minSdk
+        targetSdkVersion versions.targetSdk
+        versionCode versions.versionCode
+        versionName versions.versionName
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    compileOptions {
+        sourceCompatibility versions.java
+        targetCompatibility versions.java
+    }
+
+    lintOptions {
+        abortOnError false
+    }
+
+    testOptions {
+        animationsDisabled = true
+        unitTests.returnDefaultValues = true
+        unitTests.all {
+            it.ignoreFailures true
+            it.maxHeapSize "1024m"
+
+            testLogging {
+                outputs.upToDateWhen { false }
+                showStandardStreams true
+                showExceptions true
+                showStackTraces true
+                showCauses true
+                exceptionFormat TestExceptionFormat.FULL
+            }
+        }
+    }
+
+    packagingOptions {
+        exclude 'META-INF/LICENSE.txt'
+        exclude 'META-INF/NOTICE.txt'
+    }
+}
+
+dependencies {
+    implementation fileTree(include: ['*.jar'], dir: 'libs')
+    implementation 'androidx.appcompat:appcompat:' + versions.appcompat
+    implementation 'com.google.android.material:material:' + versions.material
+    implementation 'androidx.cardview:cardview:' + versions.cardview
+    implementation 'androidx.swiperefreshlayout:swiperefreshlayout:' + versions.refreshLayout
+
+    testImplementation 'junit:junit:' + versions.junit
+    androidTestImplementation 'androidx.test.espresso:espresso-core:' + versions.espressoCore
+    androidTestImplementation 'androidx.test.espresso:espresso-intents:' + versions.espressoIntents
+    androidTestImplementation 'androidx.test.ext:junit:' + versions.testExtJUnit
+    androidTestImplementation 'androidx.test:core:' + versions.testCore
+    androidTestImplementation 'androidx.test.uiautomator:uiautomator:' + versions.uiautomator
+    androidTestImplementation 'androidx.test:monitor:' + versions.testMonitor
+}

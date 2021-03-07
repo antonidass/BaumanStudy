@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">LayoutExample</string>
+    <string name="main_text">Thanks for choosing out awesome blend tea. How do you want it serving</string>
+    <string name="temperature">Temperature</string>
+    <string name="hot">HOT</string>
+    <string name="cold">COLD</string>
+    <string name="milk">Milk</string>
+    <string name="sugar">Sugar</string>
+    <string name="lemon">Lemon</string>
+</resources>

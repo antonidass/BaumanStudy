@@ -1,0 +1,166 @@
+/**
+ * This file as been significantly changed from it's origin file in java-for-android
+ * so be careful when porting script changes between the 2 projects.
+ */
+def submissionBaseName = 'submission'
+def autoGraded = project.properties.getOrDefault('coursera.autoGraded', 'false') == 'true'
+def peerReview = project.hasProperty('coursera.peerReviewUrls')
+def courseraSlug = 'androidapps'
+def archiveName = "aad-2-${project.name}"
+
+def openLink(htmlLink) {
+    def os = org.gradle.internal.os.OperatingSystem.current()
+    if (os.isWindows()) {
+        exec { commandLine 'cmd', '/c', "start $htmlLink" }
+    } else if (os.isMacOsX()) {
+        exec { commandLine 'open', "$htmlLink" }
+    } else if (os.isLinux()) {
+        exec { commandLine 'xdg-open', "$htmlLink" }
+    }
+}
+
+def getPropertyList(name) {
+    def prop = project.properties.getOrDefault(name, null)
+    if (prop == null) {
+        return []
+    } else {
+        prop.contains(",") ? prop.split(",") : [prop]
+    }
+}
+
+task zipProject(type: Zip) {
+    description = "Compresses your entire project into the zip archive zip/${project.name}.zip."
+
+    from projectDir
+    into archiveName
+
+    archiveBaseName.set(archiveName)
+
+    include 'build.gradle'
+    include 'gradle.properties'
+    include 'gradlew'
+    include 'gradlew.bat'
+    include 'settings.gradle'
+    include 'gradle/**'
+
+    exclude 'build'
+    exclude '.gradle'
+    exclude '.idea'
+    exclude '*.iml'
+    exclude 'local.properties'
+
+    include 'app/**'
+    exclude 'app/*.iml'
+    exclude 'app/build'
+
+    destinationDir file('zip')
+}
+
+if (autoGraded || peerReview) {
+    task zipSubmission(type: Zip) {
+        if (autoGraded) {
+            description = "Creates the zip archive zip/${submissionBaseName}.zip " +
+                    "to submit for autograding on the Coursera assignment page."
+        } else {
+            description = "Creates the zip archive zip/${submissionBaseName}.zip " +
+                    "to submit for peer grading on the Coursera assignment page."
+        }
+
+        def submissionFiles = getPropertyList('coursera.submissionFiles')
+        if (submissionFiles != []) {
+            from(projectDir) {
+                submissionFiles.each {
+                    include it.toString()
+                }
+            }
+        } else {
+            dependsOn zipProject
+            from zipProject.outputs.files[0]
+        }
+
+        destinationDir file('zip')
+        archiveBaseName.set(submissionBaseName)
+    }
+
+    if (autoGraded) {
+        task graderPreview(type: GradleBuild, group: "[coursera tools]") {
+            description "Displays a preview of your assignment grading rubric results and your expected grade."
+            doFirst {
+                setTasks(['testDebugUnitTest', '--tests', '*.AutoGraderPreview.graderPreview'])
+            }
+        }
+
+        task submitForGrading(group: "[coursera tools]") {
+            dependsOn zipSubmission
+            description = "Creates your zip/${submissionBaseName}.zip archive and opens " +
+                    "Coursera assignment page so that you can upload this file for grading."
+            doFirst {
+                def itemId = project.property('coursera.itemId') as String
+                def submissionUrl = project.property('coursera.submissionUrl') as String
+                openLink("https://www.coursera.org/learn/$courseraSlug/programming/" +
+                        "$itemId/$submissionUrl/submission")
+            }
+        }
+    }
+
+    if (peerReview) {
+        def prop = project.properties.getOrDefault('coursera.peerReviewUrls', "")
+        def peerUrls = prop.contains(",") ? prop.split(",") : [prop]
+        def itemId = project.property('coursera.itemId') as String
+
+        task submitForPeerReview(group: "[coursera tools]") {
+            dependsOn 'zipSubmission'
+            description = "Creates your zip/${submissionBaseName}.zip archive and opens " +
+                    "the Coursera assignment submission page so that you can upload this \n" +
+                    "file for peer review."
+
+            doLast {
+                def url = "https://www.coursera.org/learn/$courseraSlug/peer/$itemId/" +
+                        "${peerUrls[0]}/submit"
+
+                openLink(url)
+
+                println "\n\n"
+                println "+*****************************************************************+"
+                println "|                     SUBMISSION INSTRUCTIONS                     |"
+                println "|*****************************************************************|"
+                println "|                                                                 |"
+                println "| Click on the following link to navigate to your project zip     |"
+                println "| directory (in the project view) so that you can upload the      |"
+                println "| ${archiveName}.zip file to the Coursera assignment          |"
+                println "| submission page:                                                |"
+                println "|                                                                 |"
+                println "|   $projectDir/zip"
+                println "|                                                                 |"
+                println "| The 'submitForPeerReview' task you just ran should have already |"
+                println "| opened the following assignment submission web page:            |"
+                println "|                                                                 |"
+                println "|   $url"
+                println "|                                                                 |"
+                println "| To submit your solution follow these steps (on the web page):   |"
+                println "|                                                                 |"
+                println "|   1. Click on the 'Upload File' button (on the web page).       |"
+                println "|   2. Drag/drop the submission.zip file from your IDE project    |"
+                println "|      view onto the 'Drop files here, paste or browse' window.   |"
+                println "|                                                                 |"
+                println "+*****************************************************************+"
+            }
+
+            task reviewPeerSubmissions(group: "[coursera tools]") {
+                description = "Opens Coursera peer review page to review peer submissions."
+                doFirst {
+                    openLink("https://www.coursera.org/learn/$courseraSlug/peer/$itemId/" +
+                            "${peerUrls[0]}/give-feedback")
+                }
+            }
+        }
+    }
+}
+
+if (file("$projectDir/admin/skeleton.gradle").isFile()) {
+    apply from: "$projectDir/admin/skeleton.gradle"
+}
+
+if (file("$projectDir/admin/docker.gradle").isFile()) {
+    apply from: "$projectDir/admin/docker.gradle"
+}

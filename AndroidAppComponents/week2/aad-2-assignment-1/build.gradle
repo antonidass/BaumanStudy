@@ -1,0 +1,54 @@
+buildscript {
+    ext {
+        versions = [
+                "applicationId"  : "vandy.mooc.${(project.name).replace('-', '_')}",
+                "compileSdk"     : 30,
+                "minSdk"         : 23,
+                "targetSdk"      : 30,
+                "versionCode"    : 1,
+                "versionName"    : "1.0",
+                "java"           : JavaVersion.VERSION_1_8,
+                "junit"          : "4.13",
+                "material"       : "1.0.0",
+                "appcompat"      : "1.1.0",
+                "refreshLayout"  : "1.1.0",
+                "commonsLang3"   : "3.10",
+                "guava"          : "29.0-android",
+                "cardview"       : "1.0.0",
+                "legacySupportv4": "1.0.0",
+                "leakcanaryNoOp" : "1.5.4",
+                "espressoCore"   : "3.2.0",
+                "espressoIntents": "3.2.0",
+                "testRrunner"    : "1.2.0",
+                "testRules"      : "1.2.0",
+                "testExtJUnit"   : "1.1.1",
+                "testCore"       : "1.2.0",
+                "testMonitor"    : "1.2.0",
+                "uiautomator"    : "2.2.0"
+        ]
+    }
+
+    repositories {
+        jcenter()
+        google()
+    }
+
+    dependencies {
+        classpath 'com.android.tools.build:gradle:4.0.1'
+    }
+}
+
+allprojects {
+    repositories {
+        jcenter()
+        google()
+    }
+}
+
+task clean(type: Delete) {
+    delete rootProject.buildDir
+}
+
+if (file("$projectDir/gradle/tools.gradle").isFile()) {
+    apply from: "$projectDir/gradle/tools.gradle"
+}

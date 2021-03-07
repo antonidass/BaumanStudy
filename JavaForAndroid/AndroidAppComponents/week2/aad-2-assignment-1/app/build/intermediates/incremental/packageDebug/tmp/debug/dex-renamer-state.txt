@@ -1,0 +1,7 @@
+#Wed Jan 20 22:30:36 MSK 2021
+base.0=/home/akrik/android_coursera/android/AndroidAppComponents/week2/aad-2-assignment-1/app/build/intermediates/dex/debug/mergeExtDexDebug/classes.dex
+path.1=classes.dex
+renamed.1=classes2.dex
+path.0=classes.dex
+renamed.0=classes.dex
+base.1=/home/akrik/android_coursera/android/AndroidAppComponents/week2/aad-2-assignment-1/app/build/intermediates/dex/debug/mergeProjectDexDebug/classes.dex
