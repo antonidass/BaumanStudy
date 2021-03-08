@@ -1,9 +1,0 @@
-<resources>
-    <string name="app_name">WhatHappenedNext</string>
-    <string name="main_text">Кто ты из "Что было дальше"?</string>
-    <string name="start">Начать</string>
-
-    <string name="first_q">В общем или целом?</string>
-    <string name="second_q">Нужно ли тебе скинуть пару килограмм?</string>
-
-</resources>
