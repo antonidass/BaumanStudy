@@ -24,15 +24,15 @@ void scalePoint(pointT &point, const scaleT &scale, const pointT &center) {
 void rotatePoint(pointT &point, const rotateT &rotate, const pointT &center) {
     pointT tempPoint = initPoint(0.0, 0.0, 0.0);
 
-    if (fabs(rotate.angle_x) > __DBL_EPSILON__) {
+    if (fabs(rotate.angle_x) > EPS) {
         rotateCoordX(tempPoint, point, rotate.angle_x, center);
     }
 
-    else if (fabs(rotate.angle_y) > __DBL_EPSILON__) {
+    else if (fabs(rotate.angle_y) > EPS) {
         rotateCoordY(tempPoint, point, rotate.angle_y, center);
     }
 
-    else if (fabs(rotate.angle_z) > __DBL_EPSILON__) {
+    else if (fabs(rotate.angle_z) > EPS) {
         rotateCoordZ(tempPoint, point, rotate.angle_z, center);
     }
     else {

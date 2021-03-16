@@ -1,5 +1,4 @@
 #include "draw.h"
-#include "mainwindow.h"
 
 void drawModel(const modelT& model, QGraphicsScene *scene) {
     scene->clear();

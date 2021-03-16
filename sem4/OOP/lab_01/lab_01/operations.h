@@ -3,7 +3,6 @@
 
 #include "model.h"
 #include "point.h"
-
 #include "structures.h"
 
 int scaleModel(modelT &model, const scaleT &scale);

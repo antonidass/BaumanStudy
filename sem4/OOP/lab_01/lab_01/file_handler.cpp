@@ -2,7 +2,6 @@
 
 #include "file_handler.h"
 #include "constants.h"
-#include "model.h"
 
 
 int readModelDescription(modelT &model, FILE *file) {
