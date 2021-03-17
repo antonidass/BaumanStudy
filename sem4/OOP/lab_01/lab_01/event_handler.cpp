@@ -13,10 +13,10 @@ int eventHandler(const eventT &event) {
     static modelT model = initModel();
 
     if (event.type == LOAD_MODEL) {
-        check = readModelFromFile(model, event.file);
+        check = loadModel(model, event.fileName);
     }
     else if (event.type == DRAW_MODEL) {
-        drawModel(model, event.scene);
+        check = drawModel(model, event.scene);
     }
     else if (event.type == MOVE_MODEL) {
         check = moveModel(model, event.move);
@@ -29,6 +29,9 @@ int eventHandler(const eventT &event) {
     }
     else if (event.type == FREE_MODEL) {
         freeModel(model);
+    }
+    else {
+        check = ERR_UNKNOWN_COMMAND;
     }
 
     return check;

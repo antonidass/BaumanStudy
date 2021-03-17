@@ -21,5 +21,4 @@ typedef struct {
     double angle_z;
 } rotateT;
 
-
 #endif // STRUCTURES_H

@@ -1,13 +1,14 @@
 #ifndef EVENT_HANDLER_H
 #define EVENT_HANDLER_H
 
-#include "mainwindow.h"
+#include <QGraphicsScene>
 #include "structures.h"
+#include "constants.h"
 
 typedef struct {
     int type;
     union {
-        FILE *file;
+        char fileName[FILE_NAME_LEN];
         QGraphicsScene *scene;
         scaleT scale;
         rotateT rotate;

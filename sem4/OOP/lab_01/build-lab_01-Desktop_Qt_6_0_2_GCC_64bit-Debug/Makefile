@@ -59,7 +59,8 @@ SOURCES       = ../lab_01/draw.cpp \
 		../lab_01/mainwindow.cpp \
 		../lab_01/model.cpp \
 		../lab_01/operations.cpp \
-		../lab_01/point.cpp moc_mainwindow.cpp
+		../lab_01/point.cpp \
+		../lab_01/utils.cpp moc_mainwindow.cpp
 OBJECTS       = draw.o \
 		event_handler.o \
 		file_handler.o \
@@ -68,6 +69,7 @@ OBJECTS       = draw.o \
 		model.o \
 		operations.o \
 		point.o \
+		utils.o \
 		moc_mainwindow.o
 DIST          = /home/akrik/Qt/6.0.2/gcc_64/mkspecs/features/spec_pre.prf \
 		/home/akrik/Qt/6.0.2/gcc_64/mkspecs/common/unix.conf \
@@ -185,14 +187,16 @@ DIST          = /home/akrik/Qt/6.0.2/gcc_64/mkspecs/features/spec_pre.prf \
 		../lab_01/model.h \
 		../lab_01/operations.h \
 		../lab_01/point.h \
-		../lab_01/structures.h ../lab_01/draw.cpp \
+		../lab_01/structures.h \
+		../lab_01/utils.h ../lab_01/draw.cpp \
 		../lab_01/event_handler.cpp \
 		../lab_01/file_handler.cpp \
 		../lab_01/main.cpp \
 		../lab_01/mainwindow.cpp \
 		../lab_01/model.cpp \
 		../lab_01/operations.cpp \
-		../lab_01/point.cpp
+		../lab_01/point.cpp \
+		../lab_01/utils.cpp
 QMAKE_TARGET  = lab_01
 DESTDIR       = 
 TARGET        = lab_01
@@ -444,8 +448,8 @@ distdir: FORCE
 	@test -d $(DISTDIR) || mkdir -p $(DISTDIR)
 	$(COPY_FILE) --parents $(DIST) $(DISTDIR)/
 	$(COPY_FILE) --parents /home/akrik/Qt/6.0.2/gcc_64/mkspecs/features/data/dummy.cpp $(DISTDIR)/
-	$(COPY_FILE) --parents ../lab_01/constants.h ../lab_01/draw.h ../lab_01/event_handler.h ../lab_01/file_handler.h ../lab_01/mainwindow.h ../lab_01/model.h ../lab_01/operations.h ../lab_01/point.h ../lab_01/structures.h $(DISTDIR)/
-	$(COPY_FILE) --parents ../lab_01/draw.cpp ../lab_01/event_handler.cpp ../lab_01/file_handler.cpp ../lab_01/main.cpp ../lab_01/mainwindow.cpp ../lab_01/model.cpp ../lab_01/operations.cpp ../lab_01/point.cpp $(DISTDIR)/
+	$(COPY_FILE) --parents ../lab_01/constants.h ../lab_01/draw.h ../lab_01/event_handler.h ../lab_01/file_handler.h ../lab_01/mainwindow.h ../lab_01/model.h ../lab_01/operations.h ../lab_01/point.h ../lab_01/structures.h ../lab_01/utils.h $(DISTDIR)/
+	$(COPY_FILE) --parents ../lab_01/draw.cpp ../lab_01/event_handler.cpp ../lab_01/file_handler.cpp ../lab_01/main.cpp ../lab_01/mainwindow.cpp ../lab_01/model.cpp ../lab_01/operations.cpp ../lab_01/point.cpp ../lab_01/utils.cpp $(DISTDIR)/
 	$(COPY_FILE) --parents ../lab_01/mainwindow.ui $(DISTDIR)/
 
 
@@ -1308,20 +1312,28 @@ mainwindow.o: ../lab_01/mainwindow.cpp ui_mainwindow.h \
 model.o: ../lab_01/model.cpp ../lab_01/model.h \
 		../lab_01/structures.h \
 		../lab_01/point.h \
-		../lab_01/constants.h
+		../lab_01/constants.h \
+		../lab_01/file_handler.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o model.o ../lab_01/model.cpp
 
 operations.o: ../lab_01/operations.cpp ../lab_01/operations.h \
 		../lab_01/model.h \
 		../lab_01/structures.h \
 		../lab_01/point.h \
-		../lab_01/constants.h
+		../lab_01/constants.h \
+		../lab_01/utils.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o operations.o ../lab_01/operations.cpp
 
 point.o: ../lab_01/point.cpp ../lab_01/point.h \
 		../lab_01/structures.h \
-		../lab_01/constants.h
+		../lab_01/constants.h \
+		../lab_01/utils.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o point.o ../lab_01/point.cpp
+
+utils.o: ../lab_01/utils.cpp ../lab_01/utils.h \
+		../lab_01/structures.h \
+		../lab_01/constants.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o utils.o ../lab_01/utils.cpp
 
 moc_mainwindow.o: moc_mainwindow.cpp 
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_mainwindow.o moc_mainwindow.cpp

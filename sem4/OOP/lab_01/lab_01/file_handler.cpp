@@ -4,8 +4,8 @@
 #include "constants.h"
 
 
-int readModelDescription(modelT &model, FILE *file) {
-    int rc = fscanf(file, "%d%d", &model.vertices_count, &model.edges_count);
+int readModelDescription(int &verticesCount, int &edgesCount, FILE *file) {
+    int rc = fscanf(file, "%d%d", &verticesCount, &edgesCount);
 
     if (rc != 2) {
         return ERR_FILE_READ_INT;
@@ -15,8 +15,8 @@ int readModelDescription(modelT &model, FILE *file) {
 }
 
 
-int readModelCenter(modelT &model, FILE *file) {
-   int rc = fscanf(file, "%lf%lf%lf", &model.center.x, &model.center.y, &model.center.z);
+int readModelCenter(pointT &centerPoint, FILE *file) {
+   int rc = fscanf(file, "%lf%lf%lf", &centerPoint.x, &centerPoint.y, &centerPoint.z);
 
    if (rc != 3) {
        return ERR_FILE_READ_POINT;
@@ -26,11 +26,11 @@ int readModelCenter(modelT &model, FILE *file) {
 }
 
 
-int readPoints(modelT &model, FILE *file) {
+int readModelCoords(pointT *const coords, const int &n, FILE *file) {
     int rc;
 
-    for (int i = 0; i < model.vertices_count; i++) {
-        rc = fscanf(file, "%lf%lf%lf", &((model.coords + i)->x), &((model.coords + i)->y), &((model.coords + i)->z) );
+    for (int i = 0; i < n; i++) {
+        rc = fscanf(file, "%lf%lf%lf", &((coords + i)->x), &((coords + i)->y), &((coords + i)->z));
 
         if (rc != 3) {
             return ERR_FILE_READ_POINT;
@@ -41,11 +41,11 @@ int readPoints(modelT &model, FILE *file) {
 }
 
 
-int readEdgeConnections(modelT &model, FILE *file) {
+int readModelEdgeConnections(edgeT *const edges, const int &n, FILE *file) {
     int rc;
 
-    for (int i = 0; i < model.edges_count; i++) {
-        rc = fscanf(file, "%d%d", &(model.edges + i)->left_vertex, &(model.edges + i)->right_vertex);
+    for (int i = 0; i < n; i++) {
+        rc = fscanf(file, "%d%d", &(edges + i)->left_vertex, &(edges + i)->right_vertex);
 
         if (rc != 2) {
             return ERR_FILE_READ_EDGE_CONNECTION;
@@ -57,32 +57,31 @@ int readEdgeConnections(modelT &model, FILE *file) {
 
 
 int readModelFromFile(modelT &model, FILE *file) {
-    int check = readModelDescription(model, file);
+    int check = readModelDescription(model.vertices_count, model.edges_count, file);
 
     if (check != OK) {
         return check;
     }
 
-    check = readModelCenter(model, file);
+    check = readModelCenter(model.center, file);
 
     if (check != OK) {
         return check;
     }
 
-    freeModel(model);
     check = allocateModel(model);
 
     if (check != OK) {
         return check;
     }
 
-    check = readPoints(model, file);
+    check = readModelCoords(model.coords, model.vertices_count, file);
 
     if (check != OK) {
         return check;
     }
 
-    check = readEdgeConnections(model, file);
+    check = readModelEdgeConnections(model.edges, model.edges_count, file);
 
     if (check != OK) {
         return check;

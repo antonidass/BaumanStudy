@@ -4,6 +4,9 @@
 #include "model.h"
 #include "mainwindow.h"
 
-void drawModel(const modelT& model, QGraphicsScene *scene);
+
+int drawModel(const modelT& model, QGraphicsScene *scene);
+
+void drawEdge(const edgeT &edge, const pointT *const coords , QGraphicsScene *const scene);
 
 #endif // DRAW_H

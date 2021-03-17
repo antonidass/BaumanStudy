@@ -29,4 +29,6 @@ int allocateModel(modelT &model);
 
 void freeModel(modelT &model);
 
+int loadModel(modelT &model, const char fileName[]);
+
 #endif // MODEL_H

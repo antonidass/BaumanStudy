@@ -1,7 +1,6 @@
-#include "math.h"
-
 #include "operations.h"
 #include "constants.h"
+#include "utils.h"
 
 
 int scaleModel(modelT &model, const scaleT &scale) {
@@ -9,15 +8,17 @@ int scaleModel(modelT &model, const scaleT &scale) {
         return ERR_EMPTY_MODEL;
     }
 
-    if (fabs(scale.kx) < EPS || fabs(scale.ky) < EPS || fabs(scale.kz) < EPS) {
-        return ERR_SCALE_COEFF;
+    int check = checkScaleCoeffs(scale);
+
+    if (check != OK) {
+        return check;
     }
 
     for (int i = 0; i < model.vertices_count; i++) {
         scalePoint(*(model.coords + i), scale, model.center);
     }
 
-    return OK;
+    return check;
 }
 
 

@@ -11,5 +11,4 @@ int moveModel(modelT &model, const moveT &move);
 
 int rotateModel(modelT &model, const rotateT &rotate);
 
-
 #endif // OPERATIONS_H

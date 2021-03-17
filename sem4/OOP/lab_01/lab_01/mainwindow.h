@@ -7,6 +7,8 @@
 #include <QGraphicsView>
 #include <QMessageBox>
 
+#include "event_handler.h"
+
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
@@ -21,7 +23,6 @@ public:
 
     ~MainWindow();
 
-
 private slots:
     void on_LoadBut_clicked();
 
@@ -35,15 +36,15 @@ private slots:
 
     void on_scaleBtn_clicked();
 
+
 private:
     Ui::MainWindow *ui;
     QGraphicsScene *scene;
 
-    void makeDrawEvent();
-    void makeClearDataEvent();
-
     void makeErrorMessage(const char msg[]);
 
-    int checkError(const int &check);
+    void handleError(const int &check);
+
+    eventT makeDrawEvent();
 };
 #endif // MAINWINDOW_H

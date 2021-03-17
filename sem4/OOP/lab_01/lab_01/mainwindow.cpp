@@ -23,23 +23,20 @@ MainWindow::MainWindow(QWidget *parent)
 
 MainWindow::~MainWindow()
 {
+    eventT event;
+    event.type = FREE_MODEL;
+    eventHandler(event);
+
     delete ui;
 }
 
 
-void MainWindow::makeDrawEvent() {
+eventT MainWindow::makeDrawEvent() {
     eventT event;
     event.type = DRAW_MODEL;
     event.scene = scene;
 
-    eventHandler(event);
-}
-
-void MainWindow::makeClearDataEvent() {
-    eventT event;
-    event.type = FREE_MODEL;
-
-    eventHandler(event);
+    return event;
 }
 
 
@@ -48,9 +45,12 @@ void MainWindow::makeErrorMessage(const char msg[]) {
 }
 
 
-int MainWindow::checkError(const int &check) {
-    if (check == ERR_ALLOC_MODEL) {
-        makeErrorMessage(ERR_ALLOC_MSG);
+void MainWindow::handleError(const int &check) {
+    if (check == ERR_ALLOC_EDGES) {
+        makeErrorMessage(ERR_ALLOC_EDGES_MSG);
+    }
+    else if (check == ERR_ALLOC_COORDS) {
+        makeErrorMessage(ERR_ALLOC_VERT_MSG);
     }
     else if (check == ERR_EMPTY_MODEL) {
         makeErrorMessage(ERR_EMPTY_MODEL_MSG);
@@ -67,40 +67,27 @@ int MainWindow::checkError(const int &check) {
     else if (check == ERR_SCALE_COEFF) {
         makeErrorMessage(ERR_SCALE_COEFF_MSG);
     }
-
-    if (check != OK) {
-        makeClearDataEvent();
-    }
-
-    return check;
 }
-
 
 
 void MainWindow::on_LoadBut_clicked()
 {
-    FILE *file = fopen("../lab_01/res/cube.txt", "r");
-
-    if (!file) {
-        makeErrorMessage(ERR_OPEN_MSG);
-        return;
-    }
-
     eventT event;
     event.type = LOAD_MODEL;
-    event.file = file;
+    strcpy(event.fileName, FILE_NAME);
 
     int check = eventHandler(event);
 
-    if (checkError(check) != OK) {
+    if (check != OK) {
+        handleError(check);
         return;
     }
 
-    makeDrawEvent();
+    eventT drawEvent = makeDrawEvent();
+    check = eventHandler(drawEvent);
 
-    if (fclose(file)) {
-        makeErrorMessage(ERR_CLOSE_FILE_MSG);
-        return;
+    if (check != OK) {
+        handleError(check);
     }
 }
 
@@ -119,11 +106,17 @@ void MainWindow::on_moveBtn_clicked()
 
     int check = eventHandler(event);
 
-    if (checkError(check) != OK) {
+    if (check != OK) {
+        handleError(check);
         return;
     }
 
-    makeDrawEvent();
+    eventT drawEvent = makeDrawEvent();
+    check = eventHandler(drawEvent);
+
+    if (check != OK) {
+        handleError(check);
+    }
 }
 
 
@@ -139,11 +132,17 @@ void MainWindow::on_rotateX_clicked()
 
     int check = eventHandler(event);
 
-    if (checkError(check) != OK) {
+    if (check != OK) {
+        handleError(check);
         return;
     }
 
-    makeDrawEvent();
+    eventT drawEvent = makeDrawEvent();
+    check = eventHandler(drawEvent);
+
+    if (check != OK) {
+        handleError(check);
+    }
 }
 
 
@@ -159,12 +158,19 @@ void MainWindow::on_rotateY_clicked()
 
     int check = eventHandler(event);
 
-    if (checkError(check) != OK) {
+    if (check != OK) {
+        handleError(check);
         return;
     }
 
-    makeDrawEvent();
+    eventT drawEvent = makeDrawEvent();
+    check = eventHandler(drawEvent);
+
+    if (check != OK) {
+        handleError(check);
+    }
 }
+
 
 void MainWindow::on_rotateZ_clicked()
 {
@@ -178,12 +184,19 @@ void MainWindow::on_rotateZ_clicked()
 
     int check = eventHandler(event);
 
-    if (checkError(check) != OK) {
+    if (check != OK) {
+        handleError(check);
         return;
     }
 
-    makeDrawEvent();
+    eventT drawEvent = makeDrawEvent();
+    check = eventHandler(drawEvent);
+
+    if (check != OK) {
+        handleError(check);
+    }
 }
+
 
 void MainWindow::on_scaleBtn_clicked()
 {
@@ -199,9 +212,15 @@ void MainWindow::on_scaleBtn_clicked()
 
     int check = eventHandler(event);
 
-    if (checkError(check) != OK) {
+    if (check != OK) {
+        handleError(check);
         return;
     }
 
-    makeDrawEvent();
+    eventT drawEvent = makeDrawEvent();
+    check = eventHandler(drawEvent);
+
+    if (check != OK) {
+        handleError(check);
+    }
 }

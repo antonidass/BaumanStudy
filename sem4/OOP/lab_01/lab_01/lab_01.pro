@@ -16,7 +16,8 @@ SOURCES += \
     mainwindow.cpp \
     model.cpp \
     operations.cpp \
-    point.cpp
+    point.cpp \
+    utils.cpp
 
 HEADERS += \
     constants.h \
@@ -27,7 +28,8 @@ HEADERS += \
     model.h \
     operations.h \
     point.h \
-    structures.h
+    structures.h \
+    utils.h
 
 FORMS += \
     mainwindow.ui

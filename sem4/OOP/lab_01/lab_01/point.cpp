@@ -2,16 +2,7 @@
 
 #include "point.h"
 #include "constants.h"
-
-
-pointT initPoint(const double &x, const double &y, const double &z) {
-    pointT point;
-    point.x = x;
-    point.y = y;
-    point.z = z;
-
-    return point;
-}
+#include "utils.h"
 
 
 void scalePoint(pointT &point, const scaleT &scale, const pointT &center) {
@@ -21,70 +12,51 @@ void scalePoint(pointT &point, const scaleT &scale, const pointT &center) {
 }
 
 
-void rotatePoint(pointT &point, const rotateT &rotate, const pointT &center) {
-    pointT tempPoint = initPoint(0.0, 0.0, 0.0);
-
-    if (fabs(rotate.angle_x) > EPS) {
-        rotateCoordX(tempPoint, point, rotate.angle_x, center);
-    }
-
-    else if (fabs(rotate.angle_y) > EPS) {
-        rotateCoordY(tempPoint, point, rotate.angle_y, center);
-    }
-
-    else if (fabs(rotate.angle_z) > EPS) {
-        rotateCoordZ(tempPoint, point, rotate.angle_z, center);
-    }
-    else {
-        return;
-    }
-
-    point = tempPoint;
-}
-
-
-double getCosRadians(const double &angle) {
-    return cos(angle * PI / 180);
-}
-
-
-double getSinRadians(const double &angle) {
-    return sin(angle * PI / 180);
-}
-
-
-void rotateCoordX(pointT &tempPoint, const pointT &point, const double &angle, const pointT &center) {
-    double cosRad = getCosRadians(angle);
-    double sinRad = getSinRadians(angle);
-
-    tempPoint.x = point.x;
-    tempPoint.y = center.y + (point.y - center.y) * cosRad - (point.z - center.z) * sinRad;
-    tempPoint.z = center.z + (point.y - center.y) * sinRad + (point.z - center.z) * cosRad;
-}
-
-
-void rotateCoordY(pointT &tempPoint, const pointT &point, const double &angle, const pointT &center) {
-    double cosRad = getCosRadians(angle);
-    double sinRad = getSinRadians(angle);
-
-    tempPoint.y = point.y;
-    tempPoint.x = center.x + (point.x - center.x) * cosRad + (point.z - center.z) * sinRad;
-    tempPoint.z = center.z + (-(point.x - center.x)) * sinRad + (point.z - center.z) * cosRad;
-}
-
-
-void rotateCoordZ(pointT &tempPoint, const pointT &point, const double &angle, const pointT &center) {
-    double cosRad = getCosRadians(angle);
-    double sinRad = getSinRadians(angle);
-
-    tempPoint.z = point.z;
-    tempPoint.x = center.x + (point.x - center.x) * cosRad - (point.y - center.y) * sinRad;
-    tempPoint.y = center.y + (point.x - center.x) * sinRad + (point.y - center.y) * cosRad;
-}
-
-
 void movePoint(pointT &point, const moveT &move) {
     point.x += move.dx;
     point.y += move.dy;
     point.z += move.dz;
+}
+
+
+void rotatePoint(pointT &point, const rotateT &rotate, const pointT &center) {
+    if (fabs(rotate.angle_x) > EPS) {
+        rotatePointX(point, rotate.angle_x, center);
+    }
+    else if (fabs(rotate.angle_y) > EPS) {
+        rotatePointY(point, rotate.angle_y, center);
+    }
+    else if (fabs(rotate.angle_z) > EPS) {
+        rotatePointZ(point, rotate.angle_z, center);
+    }
+}
+
+
+void rotatePointX(pointT &point, const double &angle, const pointT &center) {
+    double cosA = getCosAngle(angle);
+    double sinA = getSinAngle(angle);
+    double tempY = point.y;
+
+    point.y = center.y + (point.y - center.y) * cosA - (point.z - center.z) * sinA;
+    point.z = center.z + (tempY - center.y) * sinA + (point.z - center.z) * cosA;
+}
+
+
+void rotatePointY(pointT &point, const double &angle, const pointT &center) {
+    double cosA = getCosAngle(angle);
+    double sinA = getSinAngle(angle);
+    double tempX = point.x;
+
+    point.x = center.x + (point.x - center.x) * cosA + (point.z - center.z) * sinA;
+    point.z = center.z + (-(tempX - center.x)) * sinA + (point.z - center.z) * cosA;
+}
+
+
+void rotatePointZ(pointT &point, const double &angle, const pointT &center) {
+    double cosA = getCosAngle(angle);
+    double sinA = getSinAngle(angle);
+    double tempX = point.x;
+
+    point.x = center.x + (point.x - center.x) * cosA - (point.y - center.y) * sinA;
+    point.y = center.y + (tempX - center.x) * sinA + (point.y - center.y) * cosA;
 }
