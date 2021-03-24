@@ -13,6 +13,10 @@
 #define ERR_UNKNOWN_COMMAND           -9
 #define ERR_ALLOC_COORDS              -10
 #define ERR_EMPTY_DATA                -11
+#define ERR_EMPTY_SCENE               -12
+#define ERR_FILE_READ_EDGE_COUNT -13
+#define ERR_FILE_READ_VERTICES_COUNT -14
+
 
 #define LOAD_MODEL                    10
 #define DRAW_MODEL                    11
@@ -32,11 +36,13 @@
 #define ERR_SCALE_COEFF_MSG     "Ошибка в коэффициенте масштабирования!"
 #define ERR_ALLOC_EDGES_MSG     "Невозможно выделить память под соединения ребер в модели!"
 #define ERR_ALLOC_VERT_MSG      "Невозможно выделить память под координаты вершин в модели!"
+#define ERR_EMPTY_SCENE_MSG     "Невозможно нарисовать модель так как сцена не инициализированна"
 
 #define PI 3.1415
 #define EPS 1e-6
-#define FILE_NAME_LEN 23
-#define FILE_NAME "../lab_01/res/cube.txt"
+#define WORD_LEN 120
+#define FILE_NAME_LEN 24
+#define FILE_NAME "../lab_01/res/cubee.txt"
 
 #define SCENE_WIDHT 600
 #define SCENE_HEIGHT 500

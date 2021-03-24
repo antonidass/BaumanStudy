@@ -1,12 +1,13 @@
 #ifndef DRAW_H
 #define DRAW_H
 
+#include "draw_qt.h"
 #include "model.h"
 #include "mainwindow.h"
 
+void drawLine(const pointT &point1, const pointT &point2, const canvasT &canvas);
 
-int drawModel(const modelT& model, QGraphicsScene *scene);
+void drawEdges(const edgesDataT &edgesData, const pointsDataT &pointsData, const canvasT &canvas);
 
-void drawEdge(const edgeT &edge, const pointT *const coords , QGraphicsScene *const scene);
 
 #endif // DRAW_H

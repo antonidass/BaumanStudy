@@ -4,31 +4,28 @@
 #include <stdio.h>
 #include "structures.h"
 #include "point.h"
+#include "edge.h"
 
 
 typedef struct {
-    int left_vertex;
-    int right_vertex;
-} edgeT;
-
-
-typedef struct {
-    pointT *coords;
-    edgeT *edges;
-    int vertices_count;
-    int edges_count;
+    pointsDataT pointsData;
+    edgesDataT edgesData;
     pointT center;
 } modelT;
 
 
-modelT& initModel();
-
-void destroyModel(modelT &model);
-
-int allocateModel(modelT &model);
+modelT &initModel();
 
 void freeModel(modelT &model);
 
 int loadModel(modelT &model, const char fileName[]);
+
+int scaleModel(modelT &model, const scaleT &scale);
+
+int moveModel(modelT &model, const moveT &move);
+
+int rotateModel(modelT &model, const rotateT &rotate);
+
+int drawModel(const modelT& model, const canvasT &canvas);
 
 #endif // MODEL_H

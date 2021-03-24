@@ -3,6 +3,7 @@
 #include "event_handler.h"
 #include "constants.h"
 #include "model.h"
+#include "check.h"
 
 
 MainWindow::MainWindow(QWidget *parent)
@@ -34,7 +35,11 @@ MainWindow::~MainWindow()
 eventT MainWindow::makeDrawEvent() {
     eventT event;
     event.type = DRAW_MODEL;
-    event.scene = scene;
+
+    canvasT canvas;
+    canvas.scene = scene;
+
+    event.canvas = canvas;
 
     return event;
 }
@@ -45,28 +50,16 @@ void MainWindow::makeErrorMessage(const char msg[]) {
 }
 
 
-void MainWindow::handleError(const int &check) {
-    if (check == ERR_ALLOC_EDGES) {
-        makeErrorMessage(ERR_ALLOC_EDGES_MSG);
+int MainWindow::handleRepsond(const int &check) {
+    if (!check) {
+        return check;
     }
-    else if (check == ERR_ALLOC_COORDS) {
-        makeErrorMessage(ERR_ALLOC_VERT_MSG);
-    }
-    else if (check == ERR_EMPTY_MODEL) {
-        makeErrorMessage(ERR_EMPTY_MODEL_MSG);
-    }
-    else if (check == ERR_FILE_READ_INT) {
-        makeErrorMessage(ERR_FILE_READ_INT_MSG);
-    }
-    else if (check == ERR_FILE_READ_POINT) {
-        makeErrorMessage(ERR_FILE_READ_POINT_MSG);
-    }
-    else if (check == ERR_FILE_READ_EDGE_CONNECTION) {
-        makeErrorMessage(ERR_FILE_READ_EDGE_MSG);
-    }
-    else if (check == ERR_SCALE_COEFF) {
-        makeErrorMessage(ERR_SCALE_COEFF_MSG);
-    }
+
+    char error[WORD_LEN];
+    handleError(check, error);
+    makeErrorMessage(error);
+
+    return check;
 }
 
 
@@ -78,16 +71,15 @@ void MainWindow::on_LoadBut_clicked()
 
     int check = eventHandler(event);
 
-    if (check != OK) {
-        handleError(check);
+    if (handleRepsond(check)) {
         return;
     }
 
     eventT drawEvent = makeDrawEvent();
     check = eventHandler(drawEvent);
 
-    if (check != OK) {
-        handleError(check);
+    if (handleRepsond(check)) {
+        return;
     }
 }
 
@@ -106,16 +98,15 @@ void MainWindow::on_moveBtn_clicked()
 
     int check = eventHandler(event);
 
-    if (check != OK) {
-        handleError(check);
+    if (handleRepsond(check)) {
         return;
     }
 
     eventT drawEvent = makeDrawEvent();
     check = eventHandler(drawEvent);
 
-    if (check != OK) {
-        handleError(check);
+    if (handleRepsond(check)) {
+        return;
     }
 }
 
@@ -132,16 +123,15 @@ void MainWindow::on_rotateX_clicked()
 
     int check = eventHandler(event);
 
-    if (check != OK) {
-        handleError(check);
+    if (handleRepsond(check)) {
         return;
     }
 
     eventT drawEvent = makeDrawEvent();
     check = eventHandler(drawEvent);
 
-    if (check != OK) {
-        handleError(check);
+    if (handleRepsond(check)) {
+        return;
     }
 }
 
@@ -158,16 +148,15 @@ void MainWindow::on_rotateY_clicked()
 
     int check = eventHandler(event);
 
-    if (check != OK) {
-        handleError(check);
+    if (handleRepsond(check)) {
         return;
     }
 
     eventT drawEvent = makeDrawEvent();
     check = eventHandler(drawEvent);
 
-    if (check != OK) {
-        handleError(check);
+    if (handleRepsond(check)) {
+        return;
     }
 }
 
@@ -184,16 +173,15 @@ void MainWindow::on_rotateZ_clicked()
 
     int check = eventHandler(event);
 
-    if (check != OK) {
-        handleError(check);
+    if (handleRepsond(check)) {
         return;
     }
 
     eventT drawEvent = makeDrawEvent();
     check = eventHandler(drawEvent);
 
-    if (check != OK) {
-        handleError(check);
+    if (handleRepsond(check)) {
+        return;
     }
 }
 
@@ -212,15 +200,14 @@ void MainWindow::on_scaleBtn_clicked()
 
     int check = eventHandler(event);
 
-    if (check != OK) {
-        handleError(check);
+    if (handleRepsond(check)) {
         return;
     }
 
     eventT drawEvent = makeDrawEvent();
     check = eventHandler(drawEvent);
 
-    if (check != OK) {
-        handleError(check);
+    if (handleRepsond(check)) {
+        return;
     }
 }

@@ -1,6 +1,8 @@
 #ifndef STRUCTURES_H
 #define STRUCTURES_H
 
+#include <QGraphicsScene>
+
 typedef struct {
     double kx;
     double ky;
@@ -20,5 +22,10 @@ typedef struct {
     double angle_y;
     double angle_z;
 } rotateT;
+
+
+typedef struct {
+    QGraphicsScene *scene;
+} canvasT;
 
 #endif // STRUCTURES_H

@@ -2,45 +2,44 @@
 
 #include "model.h"
 #include "constants.h"
-#include "file_handler.h"
+#include "check.h"
+#include "draw.h"
 
 
 modelT &initModel() {
     static modelT model;
 
-    model.edges = nullptr;
-    model.coords = nullptr;
+    model.pointsData.coords = nullptr;
+    model.edgesData.edges = nullptr;
 
     return model;
 }
 
 
-int allocateModel(modelT &model) {
-    model.edges = (edgeT *) malloc(sizeof(edgeT) * model.edges_count);
-
-    if (!model.edges) {
-        return ERR_ALLOC_EDGES;
-    }
-
-    model.coords = (pointT *) malloc(sizeof(pointT) * model.vertices_count);
-
-    if (!model.coords) {
-        return ERR_ALLOC_COORDS;
-    }
-
-    return OK;
-}
-
-
 void freeModel(modelT &model) {
-    if (model.edges) {
-        free(model.edges);
+    freeEdges(model.edgesData);
+    freePoints(model.pointsData);
+}
+
+
+int loadTempModel(modelT &tempModel, FILE *file) {
+    int check = OK;
+
+    if ((check = readPoint(tempModel.center, file))) {
+        return check;
     }
 
-    if (model.coords) {
-        free(model.coords);
+    if ((check = loadPoints(tempModel.pointsData, file))) {
+        return check;
     }
+
+    if ((check = loadEdges(tempModel.edgesData, file))) {
+        freePoints(tempModel.pointsData);
+    }
+
+    return check;
 }
+
 
 
 int loadModel(modelT &model, const char fileName[]) {
@@ -52,11 +51,10 @@ int loadModel(modelT &model, const char fileName[]) {
 
     modelT tempModel = initModel();
 
-    int check = readModelFromFile(tempModel, file);
+    int check = loadTempModel(tempModel, file);
     fclose(file);
 
     if (check != OK) {
-        freeModel(tempModel);
         return check;
     }
 
@@ -66,3 +64,62 @@ int loadModel(modelT &model, const char fileName[]) {
     return check;
 }
 
+
+int scaleModel(modelT &model, const scaleT &scale) {
+    int check = OK;
+
+    if ((check = checkModelEmpty(model))) {
+        return check;
+    }
+
+    scalePoints(model.pointsData, scale, model.center);
+
+    return check;
+}
+
+
+int moveModel(modelT &model, const moveT &move) {
+    int check = OK;
+
+    if ((check = checkModelEmpty(model))) {
+        return check;
+    }
+
+    movePoints(model.pointsData, move);
+
+    movePoint(model.center, move);
+
+    return OK;
+}
+
+
+int rotateModel(modelT &model, const rotateT &rotate) {
+    int check = OK;
+
+    if ((check = checkModelEmpty(model))) {
+        return check;
+    }
+
+    rotatePoints(model.pointsData, rotate, model.center);
+
+    return OK;
+}
+
+
+int drawModel(const modelT &model, const canvasT &canvas) {
+    int check = OK;
+
+    if ((check = checkModelEmpty(model))) {
+        return check;
+    }
+
+    if ((check = checkCanvasEmpty(canvas))) {
+        return check;
+    }
+
+    prepareCanvas(canvas);
+
+    drawEdges(model.edgesData, model.pointsData, canvas);
+
+    return OK;
+}

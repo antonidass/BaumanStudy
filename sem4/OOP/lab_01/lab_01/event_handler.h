@@ -9,7 +9,7 @@ typedef struct {
     int type;
     union {
         char fileName[FILE_NAME_LEN];
-        QGraphicsScene *scene;
+        canvasT canvas;
         scaleT scale;
         rotateT rotate;
         moveT move;
@@ -17,6 +17,5 @@ typedef struct {
 } eventT;
 
 int eventHandler(const eventT &event);
-
 
 #endif // EVENT_HANDLER_H

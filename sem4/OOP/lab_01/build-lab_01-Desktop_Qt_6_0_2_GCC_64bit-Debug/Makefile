@@ -52,22 +52,24 @@ OBJECTS_DIR   = ./
 
 ####### Files
 
-SOURCES       = ../lab_01/draw.cpp \
+SOURCES       = ../lab_01/check.cpp \
+		../lab_01/draw.cpp \
+		../lab_01/draw_qt.cpp \
+		../lab_01/edge.cpp \
 		../lab_01/event_handler.cpp \
-		../lab_01/file_handler.cpp \
 		../lab_01/main.cpp \
 		../lab_01/mainwindow.cpp \
 		../lab_01/model.cpp \
-		../lab_01/operations.cpp \
 		../lab_01/point.cpp \
 		../lab_01/utils.cpp moc_mainwindow.cpp
-OBJECTS       = draw.o \
+OBJECTS       = check.o \
+		draw.o \
+		draw_qt.o \
+		edge.o \
 		event_handler.o \
-		file_handler.o \
 		main.o \
 		mainwindow.o \
 		model.o \
-		operations.o \
 		point.o \
 		utils.o \
 		moc_mainwindow.o
@@ -179,22 +181,24 @@ DIST          = /home/akrik/Qt/6.0.2/gcc_64/mkspecs/features/spec_pre.prf \
 		/home/akrik/Qt/6.0.2/gcc_64/mkspecs/features/exceptions.prf \
 		/home/akrik/Qt/6.0.2/gcc_64/mkspecs/features/yacc.prf \
 		/home/akrik/Qt/6.0.2/gcc_64/mkspecs/features/lex.prf \
-		../lab_01/lab_01.pro ../lab_01/constants.h \
+		../lab_01/lab_01.pro ../lab_01/check.h \
+		../lab_01/constants.h \
 		../lab_01/draw.h \
+		../lab_01/draw_qt.h \
+		../lab_01/edge.h \
 		../lab_01/event_handler.h \
-		../lab_01/file_handler.h \
 		../lab_01/mainwindow.h \
 		../lab_01/model.h \
-		../lab_01/operations.h \
 		../lab_01/point.h \
 		../lab_01/structures.h \
-		../lab_01/utils.h ../lab_01/draw.cpp \
+		../lab_01/utils.h ../lab_01/check.cpp \
+		../lab_01/draw.cpp \
+		../lab_01/draw_qt.cpp \
+		../lab_01/edge.cpp \
 		../lab_01/event_handler.cpp \
-		../lab_01/file_handler.cpp \
 		../lab_01/main.cpp \
 		../lab_01/mainwindow.cpp \
 		../lab_01/model.cpp \
-		../lab_01/operations.cpp \
 		../lab_01/point.cpp \
 		../lab_01/utils.cpp
 QMAKE_TARGET  = lab_01
@@ -448,8 +452,8 @@ distdir: FORCE
 	@test -d $(DISTDIR) || mkdir -p $(DISTDIR)
 	$(COPY_FILE) --parents $(DIST) $(DISTDIR)/
 	$(COPY_FILE) --parents /home/akrik/Qt/6.0.2/gcc_64/mkspecs/features/data/dummy.cpp $(DISTDIR)/
-	$(COPY_FILE) --parents ../lab_01/constants.h ../lab_01/draw.h ../lab_01/event_handler.h ../lab_01/file_handler.h ../lab_01/mainwindow.h ../lab_01/model.h ../lab_01/operations.h ../lab_01/point.h ../lab_01/structures.h ../lab_01/utils.h $(DISTDIR)/
-	$(COPY_FILE) --parents ../lab_01/draw.cpp ../lab_01/event_handler.cpp ../lab_01/file_handler.cpp ../lab_01/main.cpp ../lab_01/mainwindow.cpp ../lab_01/model.cpp ../lab_01/operations.cpp ../lab_01/point.cpp ../lab_01/utils.cpp $(DISTDIR)/
+	$(COPY_FILE) --parents ../lab_01/check.h ../lab_01/constants.h ../lab_01/draw.h ../lab_01/draw_qt.h ../lab_01/edge.h ../lab_01/event_handler.h ../lab_01/mainwindow.h ../lab_01/model.h ../lab_01/point.h ../lab_01/structures.h ../lab_01/utils.h $(DISTDIR)/
+	$(COPY_FILE) --parents ../lab_01/check.cpp ../lab_01/draw.cpp ../lab_01/draw_qt.cpp ../lab_01/edge.cpp ../lab_01/event_handler.cpp ../lab_01/main.cpp ../lab_01/mainwindow.cpp ../lab_01/model.cpp ../lab_01/point.cpp ../lab_01/utils.cpp $(DISTDIR)/
 	$(COPY_FILE) --parents ../lab_01/mainwindow.ui $(DISTDIR)/
 
 
@@ -630,6 +634,9 @@ moc_mainwindow.cpp: ../lab_01/mainwindow.h \
 		/home/akrik/Qt/6.0.2/gcc_64/include/QtWidgets/QMessageBox \
 		/home/akrik/Qt/6.0.2/gcc_64/include/QtWidgets/qmessagebox.h \
 		/home/akrik/Qt/6.0.2/gcc_64/include/QtWidgets/qdialog.h \
+		../lab_01/event_handler.h \
+		../lab_01/structures.h \
+		../lab_01/constants.h \
 		moc_predefs.h \
 		/home/akrik/Qt/6.0.2/gcc_64/bin/moc
 	/home/akrik/Qt/6.0.2/gcc_64/bin/moc $(DEFINES) --include /home/akrik/BaumanStudy/sem4/OOP/lab_01/build-lab_01-Desktop_Qt_6_0_2_GCC_64bit-Debug/moc_predefs.h -I/home/akrik/Qt/6.0.2/gcc_64/mkspecs/linux-g++ -I/home/akrik/BaumanStudy/sem4/OOP/lab_01/lab_01 -I/home/akrik/Qt/6.0.2/gcc_64/include -I/home/akrik/Qt/6.0.2/gcc_64/include/QtWidgets -I/home/akrik/Qt/6.0.2/gcc_64/include/QtGui -I/home/akrik/Qt/6.0.2/gcc_64/include/QtCore -I. -I/usr/include/c++/10 -I/usr/include/x86_64-linux-gnu/c++/10 -I/usr/include/c++/10/backward -I/usr/lib/gcc/x86_64-linux-gnu/10/include -I/usr/local/include -I/usr/include/x86_64-linux-gnu -I/usr/include ../lab_01/mainwindow.h -o moc_mainwindow.cpp
@@ -655,13 +662,11 @@ compiler_clean: compiler_moc_predefs_clean compiler_moc_header_clean compiler_ui
 
 ####### Compile
 
-draw.o: ../lab_01/draw.cpp ../lab_01/draw.h \
-		../lab_01/model.h \
-		../lab_01/structures.h \
+check.o: ../lab_01/check.cpp ../lab_01/check.h \
 		../lab_01/point.h \
-		../lab_01/mainwindow.h \
-		/home/akrik/Qt/6.0.2/gcc_64/include/QtWidgets/QMainWindow \
-		/home/akrik/Qt/6.0.2/gcc_64/include/QtWidgets/qmainwindow.h \
+		../lab_01/structures.h \
+		/home/akrik/Qt/6.0.2/gcc_64/include/QtWidgets/QGraphicsScene \
+		/home/akrik/Qt/6.0.2/gcc_64/include/QtWidgets/qgraphicsscene.h \
 		/home/akrik/Qt/6.0.2/gcc_64/include/QtWidgets/qtwidgetsglobal.h \
 		/home/akrik/Qt/6.0.2/gcc_64/include/QtGui/qtguiglobal.h \
 		/home/akrik/Qt/6.0.2/gcc_64/include/QtCore/qglobal.h \
@@ -688,14 +693,11 @@ draw.o: ../lab_01/draw.cpp ../lab_01/draw.h \
 		/home/akrik/Qt/6.0.2/gcc_64/include/QtCore/qversiontagging.h \
 		/home/akrik/Qt/6.0.2/gcc_64/include/QtGui/qtgui-config.h \
 		/home/akrik/Qt/6.0.2/gcc_64/include/QtWidgets/qtwidgets-config.h \
-		/home/akrik/Qt/6.0.2/gcc_64/include/QtWidgets/qwidget.h \
-		/home/akrik/Qt/6.0.2/gcc_64/include/QtGui/qwindowdefs.h \
+		/home/akrik/Qt/6.0.2/gcc_64/include/QtCore/qobject.h \
 		/home/akrik/Qt/6.0.2/gcc_64/include/QtCore/qobjectdefs.h \
 		/home/akrik/Qt/6.0.2/gcc_64/include/QtCore/qnamespace.h \
 		/home/akrik/Qt/6.0.2/gcc_64/include/QtCore/qtmetamacros.h \
 		/home/akrik/Qt/6.0.2/gcc_64/include/QtCore/qobjectdefs_impl.h \
-		/home/akrik/Qt/6.0.2/gcc_64/include/QtGui/qwindowdefs_win.h \
-		/home/akrik/Qt/6.0.2/gcc_64/include/QtCore/qobject.h \
 		/home/akrik/Qt/6.0.2/gcc_64/include/QtCore/qstring.h \
 		/home/akrik/Qt/6.0.2/gcc_64/include/QtCore/qchar.h \
 		/home/akrik/Qt/6.0.2/gcc_64/include/QtCore/qstringview.h \
@@ -737,17 +739,18 @@ draw.o: ../lab_01/draw.cpp ../lab_01/draw.h \
 		/home/akrik/Qt/6.0.2/gcc_64/include/QtCore/qproperty.h \
 		/home/akrik/Qt/6.0.2/gcc_64/include/QtCore/qshareddata.h \
 		/home/akrik/Qt/6.0.2/gcc_64/include/QtCore/qpropertyprivate.h \
-		/home/akrik/Qt/6.0.2/gcc_64/include/QtCore/qmargins.h \
-		/home/akrik/Qt/6.0.2/gcc_64/include/QtGui/qpaintdevice.h \
-		/home/akrik/Qt/6.0.2/gcc_64/include/QtCore/qrect.h \
-		/home/akrik/Qt/6.0.2/gcc_64/include/QtCore/qsize.h \
 		/home/akrik/Qt/6.0.2/gcc_64/include/QtCore/qpoint.h \
-		/home/akrik/Qt/6.0.2/gcc_64/include/QtGui/qpalette.h \
+		/home/akrik/Qt/6.0.2/gcc_64/include/QtCore/qrect.h \
+		/home/akrik/Qt/6.0.2/gcc_64/include/QtCore/qmargins.h \
+		/home/akrik/Qt/6.0.2/gcc_64/include/QtCore/qsize.h \
+		/home/akrik/Qt/6.0.2/gcc_64/include/QtGui/qbrush.h \
 		/home/akrik/Qt/6.0.2/gcc_64/include/QtGui/qcolor.h \
 		/home/akrik/Qt/6.0.2/gcc_64/include/QtGui/qrgb.h \
 		/home/akrik/Qt/6.0.2/gcc_64/include/QtGui/qrgba64.h \
-		/home/akrik/Qt/6.0.2/gcc_64/include/QtGui/qbrush.h \
 		/home/akrik/Qt/6.0.2/gcc_64/include/QtGui/qimage.h \
+		/home/akrik/Qt/6.0.2/gcc_64/include/QtGui/qpaintdevice.h \
+		/home/akrik/Qt/6.0.2/gcc_64/include/QtGui/qwindowdefs.h \
+		/home/akrik/Qt/6.0.2/gcc_64/include/QtGui/qwindowdefs_win.h \
 		/home/akrik/Qt/6.0.2/gcc_64/include/QtGui/qpixelformat.h \
 		/home/akrik/Qt/6.0.2/gcc_64/include/QtGui/qtransform.h \
 		/home/akrik/Qt/6.0.2/gcc_64/include/QtGui/qpolygon.h \
@@ -757,59 +760,17 @@ draw.o: ../lab_01/draw.cpp ../lab_01/draw.h \
 		/home/akrik/Qt/6.0.2/gcc_64/include/QtCore/qsharedpointer.h \
 		/home/akrik/Qt/6.0.2/gcc_64/include/QtCore/qsharedpointer_impl.h \
 		/home/akrik/Qt/6.0.2/gcc_64/include/QtGui/qfont.h \
-		/home/akrik/Qt/6.0.2/gcc_64/include/QtGui/qfontmetrics.h \
-		/home/akrik/Qt/6.0.2/gcc_64/include/QtGui/qfontinfo.h \
-		/home/akrik/Qt/6.0.2/gcc_64/include/QtWidgets/qsizepolicy.h \
-		/home/akrik/Qt/6.0.2/gcc_64/include/QtGui/qcursor.h \
-		/home/akrik/Qt/6.0.2/gcc_64/include/QtGui/qbitmap.h \
-		/home/akrik/Qt/6.0.2/gcc_64/include/QtGui/qkeysequence.h \
-		/home/akrik/Qt/6.0.2/gcc_64/include/QtGui/qevent.h \
-		/home/akrik/Qt/6.0.2/gcc_64/include/QtCore/qiodevice.h \
-		/home/akrik/Qt/6.0.2/gcc_64/include/QtCore/qpointer.h \
-		/home/akrik/Qt/6.0.2/gcc_64/include/QtCore/qurl.h \
-		/home/akrik/Qt/6.0.2/gcc_64/include/QtCore/qvariant.h \
-		/home/akrik/Qt/6.0.2/gcc_64/include/QtCore/qmap.h \
-		/home/akrik/Qt/6.0.2/gcc_64/include/QtCore/qshareddata_impl.h \
-		/home/akrik/Qt/6.0.2/gcc_64/include/QtCore/qhash.h \
-		/home/akrik/Qt/6.0.2/gcc_64/include/QtCore/qdebug.h \
-		/home/akrik/Qt/6.0.2/gcc_64/include/QtCore/qtextstream.h \
-		/home/akrik/Qt/6.0.2/gcc_64/include/QtCore/qstringconverter.h \
-		/home/akrik/Qt/6.0.2/gcc_64/include/QtCore/qset.h \
-		/home/akrik/Qt/6.0.2/gcc_64/include/QtCore/qcontiguouscache.h \
-		/home/akrik/Qt/6.0.2/gcc_64/include/QtGui/qeventpoint.h \
-		/home/akrik/Qt/6.0.2/gcc_64/include/QtGui/qvector2d.h \
-		/home/akrik/Qt/6.0.2/gcc_64/include/QtGui/qvectornd.h \
-		/home/akrik/Qt/6.0.2/gcc_64/include/QtGui/qpointingdevice.h \
-		/home/akrik/Qt/6.0.2/gcc_64/include/QtGui/qinputdevice.h \
-		/home/akrik/Qt/6.0.2/gcc_64/include/QtGui/qscreen.h \
-		/home/akrik/Qt/6.0.2/gcc_64/include/QtCore/QList \
-		/home/akrik/Qt/6.0.2/gcc_64/include/QtCore/QObject \
-		/home/akrik/Qt/6.0.2/gcc_64/include/QtCore/QRect \
-		/home/akrik/Qt/6.0.2/gcc_64/include/QtCore/QSize \
-		/home/akrik/Qt/6.0.2/gcc_64/include/QtCore/QSizeF \
-		/home/akrik/Qt/6.0.2/gcc_64/include/QtGui/QTransform \
-		/home/akrik/Qt/6.0.2/gcc_64/include/QtWidgets/qtabwidget.h \
-		/home/akrik/Qt/6.0.2/gcc_64/include/QtGui/qicon.h \
-		/home/akrik/Qt/6.0.2/gcc_64/include/QtGui/QPainter \
-		/home/akrik/Qt/6.0.2/gcc_64/include/QtGui/qpainter.h \
-		/home/akrik/Qt/6.0.2/gcc_64/include/QtGui/qtextoption.h \
 		/home/akrik/Qt/6.0.2/gcc_64/include/QtGui/qpen.h \
-		/home/akrik/Qt/6.0.2/gcc_64/include/QtWidgets/QGraphicsScene \
-		/home/akrik/Qt/6.0.2/gcc_64/include/QtWidgets/qgraphicsscene.h \
-		/home/akrik/Qt/6.0.2/gcc_64/include/QtWidgets/QGraphicsView \
-		/home/akrik/Qt/6.0.2/gcc_64/include/QtWidgets/qgraphicsview.h \
-		/home/akrik/Qt/6.0.2/gcc_64/include/QtWidgets/qscrollarea.h \
-		/home/akrik/Qt/6.0.2/gcc_64/include/QtWidgets/qabstractscrollarea.h \
-		/home/akrik/Qt/6.0.2/gcc_64/include/QtWidgets/qframe.h \
-		/home/akrik/Qt/6.0.2/gcc_64/include/QtWidgets/QMessageBox \
-		/home/akrik/Qt/6.0.2/gcc_64/include/QtWidgets/qmessagebox.h \
-		/home/akrik/Qt/6.0.2/gcc_64/include/QtWidgets/qdialog.h
-	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o draw.o ../lab_01/draw.cpp
+		../lab_01/edge.h \
+		../lab_01/model.h \
+		../lab_01/constants.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o check.o ../lab_01/check.cpp
 
-event_handler.o: ../lab_01/event_handler.cpp ../lab_01/event_handler.h \
-		../lab_01/mainwindow.h \
-		/home/akrik/Qt/6.0.2/gcc_64/include/QtWidgets/QMainWindow \
-		/home/akrik/Qt/6.0.2/gcc_64/include/QtWidgets/qmainwindow.h \
+draw.o: ../lab_01/draw.cpp ../lab_01/draw.h \
+		../lab_01/draw_qt.h \
+		../lab_01/structures.h \
+		/home/akrik/Qt/6.0.2/gcc_64/include/QtWidgets/QGraphicsScene \
+		/home/akrik/Qt/6.0.2/gcc_64/include/QtWidgets/qgraphicsscene.h \
 		/home/akrik/Qt/6.0.2/gcc_64/include/QtWidgets/qtwidgetsglobal.h \
 		/home/akrik/Qt/6.0.2/gcc_64/include/QtGui/qtguiglobal.h \
 		/home/akrik/Qt/6.0.2/gcc_64/include/QtCore/qglobal.h \
@@ -836,14 +797,11 @@ event_handler.o: ../lab_01/event_handler.cpp ../lab_01/event_handler.h \
 		/home/akrik/Qt/6.0.2/gcc_64/include/QtCore/qversiontagging.h \
 		/home/akrik/Qt/6.0.2/gcc_64/include/QtGui/qtgui-config.h \
 		/home/akrik/Qt/6.0.2/gcc_64/include/QtWidgets/qtwidgets-config.h \
-		/home/akrik/Qt/6.0.2/gcc_64/include/QtWidgets/qwidget.h \
-		/home/akrik/Qt/6.0.2/gcc_64/include/QtGui/qwindowdefs.h \
+		/home/akrik/Qt/6.0.2/gcc_64/include/QtCore/qobject.h \
 		/home/akrik/Qt/6.0.2/gcc_64/include/QtCore/qobjectdefs.h \
 		/home/akrik/Qt/6.0.2/gcc_64/include/QtCore/qnamespace.h \
 		/home/akrik/Qt/6.0.2/gcc_64/include/QtCore/qtmetamacros.h \
 		/home/akrik/Qt/6.0.2/gcc_64/include/QtCore/qobjectdefs_impl.h \
-		/home/akrik/Qt/6.0.2/gcc_64/include/QtGui/qwindowdefs_win.h \
-		/home/akrik/Qt/6.0.2/gcc_64/include/QtCore/qobject.h \
 		/home/akrik/Qt/6.0.2/gcc_64/include/QtCore/qstring.h \
 		/home/akrik/Qt/6.0.2/gcc_64/include/QtCore/qchar.h \
 		/home/akrik/Qt/6.0.2/gcc_64/include/QtCore/qstringview.h \
@@ -885,17 +843,18 @@ event_handler.o: ../lab_01/event_handler.cpp ../lab_01/event_handler.h \
 		/home/akrik/Qt/6.0.2/gcc_64/include/QtCore/qproperty.h \
 		/home/akrik/Qt/6.0.2/gcc_64/include/QtCore/qshareddata.h \
 		/home/akrik/Qt/6.0.2/gcc_64/include/QtCore/qpropertyprivate.h \
-		/home/akrik/Qt/6.0.2/gcc_64/include/QtCore/qmargins.h \
-		/home/akrik/Qt/6.0.2/gcc_64/include/QtGui/qpaintdevice.h \
-		/home/akrik/Qt/6.0.2/gcc_64/include/QtCore/qrect.h \
-		/home/akrik/Qt/6.0.2/gcc_64/include/QtCore/qsize.h \
 		/home/akrik/Qt/6.0.2/gcc_64/include/QtCore/qpoint.h \
-		/home/akrik/Qt/6.0.2/gcc_64/include/QtGui/qpalette.h \
+		/home/akrik/Qt/6.0.2/gcc_64/include/QtCore/qrect.h \
+		/home/akrik/Qt/6.0.2/gcc_64/include/QtCore/qmargins.h \
+		/home/akrik/Qt/6.0.2/gcc_64/include/QtCore/qsize.h \
+		/home/akrik/Qt/6.0.2/gcc_64/include/QtGui/qbrush.h \
 		/home/akrik/Qt/6.0.2/gcc_64/include/QtGui/qcolor.h \
 		/home/akrik/Qt/6.0.2/gcc_64/include/QtGui/qrgb.h \
 		/home/akrik/Qt/6.0.2/gcc_64/include/QtGui/qrgba64.h \
-		/home/akrik/Qt/6.0.2/gcc_64/include/QtGui/qbrush.h \
 		/home/akrik/Qt/6.0.2/gcc_64/include/QtGui/qimage.h \
+		/home/akrik/Qt/6.0.2/gcc_64/include/QtGui/qpaintdevice.h \
+		/home/akrik/Qt/6.0.2/gcc_64/include/QtGui/qwindowdefs.h \
+		/home/akrik/Qt/6.0.2/gcc_64/include/QtGui/qwindowdefs_win.h \
 		/home/akrik/Qt/6.0.2/gcc_64/include/QtGui/qpixelformat.h \
 		/home/akrik/Qt/6.0.2/gcc_64/include/QtGui/qtransform.h \
 		/home/akrik/Qt/6.0.2/gcc_64/include/QtGui/qpolygon.h \
@@ -905,6 +864,15 @@ event_handler.o: ../lab_01/event_handler.cpp ../lab_01/event_handler.h \
 		/home/akrik/Qt/6.0.2/gcc_64/include/QtCore/qsharedpointer.h \
 		/home/akrik/Qt/6.0.2/gcc_64/include/QtCore/qsharedpointer_impl.h \
 		/home/akrik/Qt/6.0.2/gcc_64/include/QtGui/qfont.h \
+		/home/akrik/Qt/6.0.2/gcc_64/include/QtGui/qpen.h \
+		../lab_01/point.h \
+		../lab_01/model.h \
+		../lab_01/edge.h \
+		../lab_01/mainwindow.h \
+		/home/akrik/Qt/6.0.2/gcc_64/include/QtWidgets/QMainWindow \
+		/home/akrik/Qt/6.0.2/gcc_64/include/QtWidgets/qmainwindow.h \
+		/home/akrik/Qt/6.0.2/gcc_64/include/QtWidgets/qwidget.h \
+		/home/akrik/Qt/6.0.2/gcc_64/include/QtGui/qpalette.h \
 		/home/akrik/Qt/6.0.2/gcc_64/include/QtGui/qfontmetrics.h \
 		/home/akrik/Qt/6.0.2/gcc_64/include/QtGui/qfontinfo.h \
 		/home/akrik/Qt/6.0.2/gcc_64/include/QtWidgets/qsizepolicy.h \
@@ -941,9 +909,6 @@ event_handler.o: ../lab_01/event_handler.cpp ../lab_01/event_handler.h \
 		/home/akrik/Qt/6.0.2/gcc_64/include/QtGui/QPainter \
 		/home/akrik/Qt/6.0.2/gcc_64/include/QtGui/qpainter.h \
 		/home/akrik/Qt/6.0.2/gcc_64/include/QtGui/qtextoption.h \
-		/home/akrik/Qt/6.0.2/gcc_64/include/QtGui/qpen.h \
-		/home/akrik/Qt/6.0.2/gcc_64/include/QtWidgets/QGraphicsScene \
-		/home/akrik/Qt/6.0.2/gcc_64/include/QtWidgets/qgraphicsscene.h \
 		/home/akrik/Qt/6.0.2/gcc_64/include/QtWidgets/QGraphicsView \
 		/home/akrik/Qt/6.0.2/gcc_64/include/QtWidgets/qgraphicsview.h \
 		/home/akrik/Qt/6.0.2/gcc_64/include/QtWidgets/qscrollarea.h \
@@ -952,21 +917,367 @@ event_handler.o: ../lab_01/event_handler.cpp ../lab_01/event_handler.h \
 		/home/akrik/Qt/6.0.2/gcc_64/include/QtWidgets/QMessageBox \
 		/home/akrik/Qt/6.0.2/gcc_64/include/QtWidgets/qmessagebox.h \
 		/home/akrik/Qt/6.0.2/gcc_64/include/QtWidgets/qdialog.h \
+		../lab_01/event_handler.h \
+		../lab_01/constants.h \
+		../lab_01/check.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o draw.o ../lab_01/draw.cpp
+
+draw_qt.o: ../lab_01/draw_qt.cpp ../lab_01/draw_qt.h \
+		../lab_01/structures.h \
+		/home/akrik/Qt/6.0.2/gcc_64/include/QtWidgets/QGraphicsScene \
+		/home/akrik/Qt/6.0.2/gcc_64/include/QtWidgets/qgraphicsscene.h \
+		/home/akrik/Qt/6.0.2/gcc_64/include/QtWidgets/qtwidgetsglobal.h \
+		/home/akrik/Qt/6.0.2/gcc_64/include/QtGui/qtguiglobal.h \
+		/home/akrik/Qt/6.0.2/gcc_64/include/QtCore/qglobal.h \
+		/home/akrik/Qt/6.0.2/gcc_64/include/QtCore/qconfig-bootstrapped.h \
+		/home/akrik/Qt/6.0.2/gcc_64/include/QtCore/qconfig.h \
+		/home/akrik/Qt/6.0.2/gcc_64/include/QtCore/qtcore-config.h \
+		/home/akrik/Qt/6.0.2/gcc_64/include/QtCore/qsystemdetection.h \
+		/home/akrik/Qt/6.0.2/gcc_64/include/QtCore/qprocessordetection.h \
+		/home/akrik/Qt/6.0.2/gcc_64/include/QtCore/qcompilerdetection.h \
+		/home/akrik/Qt/6.0.2/gcc_64/include/QtCore/qtypeinfo.h \
+		/home/akrik/Qt/6.0.2/gcc_64/include/QtCore/qcontainerfwd.h \
+		/home/akrik/Qt/6.0.2/gcc_64/include/QtCore/qsysinfo.h \
+		/home/akrik/Qt/6.0.2/gcc_64/include/QtCore/qlogging.h \
+		/home/akrik/Qt/6.0.2/gcc_64/include/QtCore/qflags.h \
+		/home/akrik/Qt/6.0.2/gcc_64/include/QtCore/qatomic.h \
+		/home/akrik/Qt/6.0.2/gcc_64/include/QtCore/qbasicatomic.h \
+		/home/akrik/Qt/6.0.2/gcc_64/include/QtCore/qatomic_bootstrap.h \
+		/home/akrik/Qt/6.0.2/gcc_64/include/QtCore/qgenericatomic.h \
+		/home/akrik/Qt/6.0.2/gcc_64/include/QtCore/qatomic_cxx11.h \
+		/home/akrik/Qt/6.0.2/gcc_64/include/QtCore/qatomic_msvc.h \
+		/home/akrik/Qt/6.0.2/gcc_64/include/QtCore/qglobalstatic.h \
+		/home/akrik/Qt/6.0.2/gcc_64/include/QtCore/qmutex.h \
+		/home/akrik/Qt/6.0.2/gcc_64/include/QtCore/qnumeric.h \
+		/home/akrik/Qt/6.0.2/gcc_64/include/QtCore/qversiontagging.h \
+		/home/akrik/Qt/6.0.2/gcc_64/include/QtGui/qtgui-config.h \
+		/home/akrik/Qt/6.0.2/gcc_64/include/QtWidgets/qtwidgets-config.h \
+		/home/akrik/Qt/6.0.2/gcc_64/include/QtCore/qobject.h \
+		/home/akrik/Qt/6.0.2/gcc_64/include/QtCore/qobjectdefs.h \
+		/home/akrik/Qt/6.0.2/gcc_64/include/QtCore/qnamespace.h \
+		/home/akrik/Qt/6.0.2/gcc_64/include/QtCore/qtmetamacros.h \
+		/home/akrik/Qt/6.0.2/gcc_64/include/QtCore/qobjectdefs_impl.h \
+		/home/akrik/Qt/6.0.2/gcc_64/include/QtCore/qstring.h \
+		/home/akrik/Qt/6.0.2/gcc_64/include/QtCore/qchar.h \
+		/home/akrik/Qt/6.0.2/gcc_64/include/QtCore/qstringview.h \
+		/home/akrik/Qt/6.0.2/gcc_64/include/QtCore/qbytearray.h \
+		/home/akrik/Qt/6.0.2/gcc_64/include/QtCore/qrefcount.h \
+		/home/akrik/Qt/6.0.2/gcc_64/include/QtCore/qarraydata.h \
+		/home/akrik/Qt/6.0.2/gcc_64/include/QtCore/qpair.h \
+		/home/akrik/Qt/6.0.2/gcc_64/include/QtCore/qarraydatapointer.h \
+		/home/akrik/Qt/6.0.2/gcc_64/include/QtCore/qarraydataops.h \
+		/home/akrik/Qt/6.0.2/gcc_64/include/QtCore/qcontainertools_impl.h \
+		/home/akrik/Qt/6.0.2/gcc_64/include/QtCore/qbytearrayalgorithms.h \
+		/home/akrik/Qt/6.0.2/gcc_64/include/QtCore/qbytearrayview.h \
+		/home/akrik/Qt/6.0.2/gcc_64/include/QtCore/qstringliteral.h \
+		/home/akrik/Qt/6.0.2/gcc_64/include/QtCore/qstringalgorithms.h \
+		/home/akrik/Qt/6.0.2/gcc_64/include/QtCore/qanystringview.h \
+		/home/akrik/Qt/6.0.2/gcc_64/include/QtCore/qutf8stringview.h \
+		/home/akrik/Qt/6.0.2/gcc_64/include/QtCore/qstringtokenizer.h \
+		/home/akrik/Qt/6.0.2/gcc_64/include/QtCore/qstringbuilder.h \
+		/home/akrik/Qt/6.0.2/gcc_64/include/QtCore/qlist.h \
+		/home/akrik/Qt/6.0.2/gcc_64/include/QtCore/qhashfunctions.h \
+		/home/akrik/Qt/6.0.2/gcc_64/include/QtCore/qiterator.h \
+		/home/akrik/Qt/6.0.2/gcc_64/include/QtCore/qbytearraylist.h \
+		/home/akrik/Qt/6.0.2/gcc_64/include/QtCore/qstringlist.h \
+		/home/akrik/Qt/6.0.2/gcc_64/include/QtCore/qalgorithms.h \
+		/home/akrik/Qt/6.0.2/gcc_64/include/QtCore/qstringmatcher.h \
+		/home/akrik/Qt/6.0.2/gcc_64/include/QtCore/qcoreevent.h \
+		/home/akrik/Qt/6.0.2/gcc_64/include/QtCore/qscopedpointer.h \
+		/home/akrik/Qt/6.0.2/gcc_64/include/QtCore/qmetatype.h \
+		/home/akrik/Qt/6.0.2/gcc_64/include/QtCore/qcompare.h \
+		/home/akrik/Qt/6.0.2/gcc_64/include/QtCore/qvarlengtharray.h \
+		/home/akrik/Qt/6.0.2/gcc_64/include/QtCore/qdatastream.h \
+		/home/akrik/Qt/6.0.2/gcc_64/include/QtCore/qiodevicebase.h \
+		/home/akrik/Qt/6.0.2/gcc_64/include/QtCore/qiterable.h \
+		/home/akrik/Qt/6.0.2/gcc_64/include/QtCore/qmetacontainer.h \
+		/home/akrik/Qt/6.0.2/gcc_64/include/QtCore/qcontainerinfo.h \
+		/home/akrik/Qt/6.0.2/gcc_64/include/QtCore/qtaggedpointer.h \
+		/home/akrik/Qt/6.0.2/gcc_64/include/QtCore/qmath.h \
+		/home/akrik/Qt/6.0.2/gcc_64/include/QtCore/qobject_impl.h \
+		/home/akrik/Qt/6.0.2/gcc_64/include/QtCore/qproperty.h \
+		/home/akrik/Qt/6.0.2/gcc_64/include/QtCore/qshareddata.h \
+		/home/akrik/Qt/6.0.2/gcc_64/include/QtCore/qpropertyprivate.h \
+		/home/akrik/Qt/6.0.2/gcc_64/include/QtCore/qpoint.h \
+		/home/akrik/Qt/6.0.2/gcc_64/include/QtCore/qrect.h \
+		/home/akrik/Qt/6.0.2/gcc_64/include/QtCore/qmargins.h \
+		/home/akrik/Qt/6.0.2/gcc_64/include/QtCore/qsize.h \
+		/home/akrik/Qt/6.0.2/gcc_64/include/QtGui/qbrush.h \
+		/home/akrik/Qt/6.0.2/gcc_64/include/QtGui/qcolor.h \
+		/home/akrik/Qt/6.0.2/gcc_64/include/QtGui/qrgb.h \
+		/home/akrik/Qt/6.0.2/gcc_64/include/QtGui/qrgba64.h \
+		/home/akrik/Qt/6.0.2/gcc_64/include/QtGui/qimage.h \
+		/home/akrik/Qt/6.0.2/gcc_64/include/QtGui/qpaintdevice.h \
+		/home/akrik/Qt/6.0.2/gcc_64/include/QtGui/qwindowdefs.h \
+		/home/akrik/Qt/6.0.2/gcc_64/include/QtGui/qwindowdefs_win.h \
+		/home/akrik/Qt/6.0.2/gcc_64/include/QtGui/qpixelformat.h \
+		/home/akrik/Qt/6.0.2/gcc_64/include/QtGui/qtransform.h \
+		/home/akrik/Qt/6.0.2/gcc_64/include/QtGui/qpolygon.h \
+		/home/akrik/Qt/6.0.2/gcc_64/include/QtGui/qregion.h \
+		/home/akrik/Qt/6.0.2/gcc_64/include/QtCore/qline.h \
+		/home/akrik/Qt/6.0.2/gcc_64/include/QtGui/qpixmap.h \
+		/home/akrik/Qt/6.0.2/gcc_64/include/QtCore/qsharedpointer.h \
+		/home/akrik/Qt/6.0.2/gcc_64/include/QtCore/qsharedpointer_impl.h \
+		/home/akrik/Qt/6.0.2/gcc_64/include/QtGui/qfont.h \
+		/home/akrik/Qt/6.0.2/gcc_64/include/QtGui/qpen.h \
+		../lab_01/point.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o draw_qt.o ../lab_01/draw_qt.cpp
+
+edge.o: ../lab_01/edge.cpp ../lab_01/edge.h \
+		../lab_01/structures.h \
+		/home/akrik/Qt/6.0.2/gcc_64/include/QtWidgets/QGraphicsScene \
+		/home/akrik/Qt/6.0.2/gcc_64/include/QtWidgets/qgraphicsscene.h \
+		/home/akrik/Qt/6.0.2/gcc_64/include/QtWidgets/qtwidgetsglobal.h \
+		/home/akrik/Qt/6.0.2/gcc_64/include/QtGui/qtguiglobal.h \
+		/home/akrik/Qt/6.0.2/gcc_64/include/QtCore/qglobal.h \
+		/home/akrik/Qt/6.0.2/gcc_64/include/QtCore/qconfig-bootstrapped.h \
+		/home/akrik/Qt/6.0.2/gcc_64/include/QtCore/qconfig.h \
+		/home/akrik/Qt/6.0.2/gcc_64/include/QtCore/qtcore-config.h \
+		/home/akrik/Qt/6.0.2/gcc_64/include/QtCore/qsystemdetection.h \
+		/home/akrik/Qt/6.0.2/gcc_64/include/QtCore/qprocessordetection.h \
+		/home/akrik/Qt/6.0.2/gcc_64/include/QtCore/qcompilerdetection.h \
+		/home/akrik/Qt/6.0.2/gcc_64/include/QtCore/qtypeinfo.h \
+		/home/akrik/Qt/6.0.2/gcc_64/include/QtCore/qcontainerfwd.h \
+		/home/akrik/Qt/6.0.2/gcc_64/include/QtCore/qsysinfo.h \
+		/home/akrik/Qt/6.0.2/gcc_64/include/QtCore/qlogging.h \
+		/home/akrik/Qt/6.0.2/gcc_64/include/QtCore/qflags.h \
+		/home/akrik/Qt/6.0.2/gcc_64/include/QtCore/qatomic.h \
+		/home/akrik/Qt/6.0.2/gcc_64/include/QtCore/qbasicatomic.h \
+		/home/akrik/Qt/6.0.2/gcc_64/include/QtCore/qatomic_bootstrap.h \
+		/home/akrik/Qt/6.0.2/gcc_64/include/QtCore/qgenericatomic.h \
+		/home/akrik/Qt/6.0.2/gcc_64/include/QtCore/qatomic_cxx11.h \
+		/home/akrik/Qt/6.0.2/gcc_64/include/QtCore/qatomic_msvc.h \
+		/home/akrik/Qt/6.0.2/gcc_64/include/QtCore/qglobalstatic.h \
+		/home/akrik/Qt/6.0.2/gcc_64/include/QtCore/qmutex.h \
+		/home/akrik/Qt/6.0.2/gcc_64/include/QtCore/qnumeric.h \
+		/home/akrik/Qt/6.0.2/gcc_64/include/QtCore/qversiontagging.h \
+		/home/akrik/Qt/6.0.2/gcc_64/include/QtGui/qtgui-config.h \
+		/home/akrik/Qt/6.0.2/gcc_64/include/QtWidgets/qtwidgets-config.h \
+		/home/akrik/Qt/6.0.2/gcc_64/include/QtCore/qobject.h \
+		/home/akrik/Qt/6.0.2/gcc_64/include/QtCore/qobjectdefs.h \
+		/home/akrik/Qt/6.0.2/gcc_64/include/QtCore/qnamespace.h \
+		/home/akrik/Qt/6.0.2/gcc_64/include/QtCore/qtmetamacros.h \
+		/home/akrik/Qt/6.0.2/gcc_64/include/QtCore/qobjectdefs_impl.h \
+		/home/akrik/Qt/6.0.2/gcc_64/include/QtCore/qstring.h \
+		/home/akrik/Qt/6.0.2/gcc_64/include/QtCore/qchar.h \
+		/home/akrik/Qt/6.0.2/gcc_64/include/QtCore/qstringview.h \
+		/home/akrik/Qt/6.0.2/gcc_64/include/QtCore/qbytearray.h \
+		/home/akrik/Qt/6.0.2/gcc_64/include/QtCore/qrefcount.h \
+		/home/akrik/Qt/6.0.2/gcc_64/include/QtCore/qarraydata.h \
+		/home/akrik/Qt/6.0.2/gcc_64/include/QtCore/qpair.h \
+		/home/akrik/Qt/6.0.2/gcc_64/include/QtCore/qarraydatapointer.h \
+		/home/akrik/Qt/6.0.2/gcc_64/include/QtCore/qarraydataops.h \
+		/home/akrik/Qt/6.0.2/gcc_64/include/QtCore/qcontainertools_impl.h \
+		/home/akrik/Qt/6.0.2/gcc_64/include/QtCore/qbytearrayalgorithms.h \
+		/home/akrik/Qt/6.0.2/gcc_64/include/QtCore/qbytearrayview.h \
+		/home/akrik/Qt/6.0.2/gcc_64/include/QtCore/qstringliteral.h \
+		/home/akrik/Qt/6.0.2/gcc_64/include/QtCore/qstringalgorithms.h \
+		/home/akrik/Qt/6.0.2/gcc_64/include/QtCore/qanystringview.h \
+		/home/akrik/Qt/6.0.2/gcc_64/include/QtCore/qutf8stringview.h \
+		/home/akrik/Qt/6.0.2/gcc_64/include/QtCore/qstringtokenizer.h \
+		/home/akrik/Qt/6.0.2/gcc_64/include/QtCore/qstringbuilder.h \
+		/home/akrik/Qt/6.0.2/gcc_64/include/QtCore/qlist.h \
+		/home/akrik/Qt/6.0.2/gcc_64/include/QtCore/qhashfunctions.h \
+		/home/akrik/Qt/6.0.2/gcc_64/include/QtCore/qiterator.h \
+		/home/akrik/Qt/6.0.2/gcc_64/include/QtCore/qbytearraylist.h \
+		/home/akrik/Qt/6.0.2/gcc_64/include/QtCore/qstringlist.h \
+		/home/akrik/Qt/6.0.2/gcc_64/include/QtCore/qalgorithms.h \
+		/home/akrik/Qt/6.0.2/gcc_64/include/QtCore/qstringmatcher.h \
+		/home/akrik/Qt/6.0.2/gcc_64/include/QtCore/qcoreevent.h \
+		/home/akrik/Qt/6.0.2/gcc_64/include/QtCore/qscopedpointer.h \
+		/home/akrik/Qt/6.0.2/gcc_64/include/QtCore/qmetatype.h \
+		/home/akrik/Qt/6.0.2/gcc_64/include/QtCore/qcompare.h \
+		/home/akrik/Qt/6.0.2/gcc_64/include/QtCore/qvarlengtharray.h \
+		/home/akrik/Qt/6.0.2/gcc_64/include/QtCore/qdatastream.h \
+		/home/akrik/Qt/6.0.2/gcc_64/include/QtCore/qiodevicebase.h \
+		/home/akrik/Qt/6.0.2/gcc_64/include/QtCore/qiterable.h \
+		/home/akrik/Qt/6.0.2/gcc_64/include/QtCore/qmetacontainer.h \
+		/home/akrik/Qt/6.0.2/gcc_64/include/QtCore/qcontainerinfo.h \
+		/home/akrik/Qt/6.0.2/gcc_64/include/QtCore/qtaggedpointer.h \
+		/home/akrik/Qt/6.0.2/gcc_64/include/QtCore/qmath.h \
+		/home/akrik/Qt/6.0.2/gcc_64/include/QtCore/qobject_impl.h \
+		/home/akrik/Qt/6.0.2/gcc_64/include/QtCore/qproperty.h \
+		/home/akrik/Qt/6.0.2/gcc_64/include/QtCore/qshareddata.h \
+		/home/akrik/Qt/6.0.2/gcc_64/include/QtCore/qpropertyprivate.h \
+		/home/akrik/Qt/6.0.2/gcc_64/include/QtCore/qpoint.h \
+		/home/akrik/Qt/6.0.2/gcc_64/include/QtCore/qrect.h \
+		/home/akrik/Qt/6.0.2/gcc_64/include/QtCore/qmargins.h \
+		/home/akrik/Qt/6.0.2/gcc_64/include/QtCore/qsize.h \
+		/home/akrik/Qt/6.0.2/gcc_64/include/QtGui/qbrush.h \
+		/home/akrik/Qt/6.0.2/gcc_64/include/QtGui/qcolor.h \
+		/home/akrik/Qt/6.0.2/gcc_64/include/QtGui/qrgb.h \
+		/home/akrik/Qt/6.0.2/gcc_64/include/QtGui/qrgba64.h \
+		/home/akrik/Qt/6.0.2/gcc_64/include/QtGui/qimage.h \
+		/home/akrik/Qt/6.0.2/gcc_64/include/QtGui/qpaintdevice.h \
+		/home/akrik/Qt/6.0.2/gcc_64/include/QtGui/qwindowdefs.h \
+		/home/akrik/Qt/6.0.2/gcc_64/include/QtGui/qwindowdefs_win.h \
+		/home/akrik/Qt/6.0.2/gcc_64/include/QtGui/qpixelformat.h \
+		/home/akrik/Qt/6.0.2/gcc_64/include/QtGui/qtransform.h \
+		/home/akrik/Qt/6.0.2/gcc_64/include/QtGui/qpolygon.h \
+		/home/akrik/Qt/6.0.2/gcc_64/include/QtGui/qregion.h \
+		/home/akrik/Qt/6.0.2/gcc_64/include/QtCore/qline.h \
+		/home/akrik/Qt/6.0.2/gcc_64/include/QtGui/qpixmap.h \
+		/home/akrik/Qt/6.0.2/gcc_64/include/QtCore/qsharedpointer.h \
+		/home/akrik/Qt/6.0.2/gcc_64/include/QtCore/qsharedpointer_impl.h \
+		/home/akrik/Qt/6.0.2/gcc_64/include/QtGui/qfont.h \
+		/home/akrik/Qt/6.0.2/gcc_64/include/QtGui/qpen.h \
+		../lab_01/constants.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o edge.o ../lab_01/edge.cpp
+
+event_handler.o: ../lab_01/event_handler.cpp ../lab_01/event_handler.h \
+		/home/akrik/Qt/6.0.2/gcc_64/include/QtWidgets/QGraphicsScene \
+		/home/akrik/Qt/6.0.2/gcc_64/include/QtWidgets/qgraphicsscene.h \
+		/home/akrik/Qt/6.0.2/gcc_64/include/QtWidgets/qtwidgetsglobal.h \
+		/home/akrik/Qt/6.0.2/gcc_64/include/QtGui/qtguiglobal.h \
+		/home/akrik/Qt/6.0.2/gcc_64/include/QtCore/qglobal.h \
+		/home/akrik/Qt/6.0.2/gcc_64/include/QtCore/qconfig-bootstrapped.h \
+		/home/akrik/Qt/6.0.2/gcc_64/include/QtCore/qconfig.h \
+		/home/akrik/Qt/6.0.2/gcc_64/include/QtCore/qtcore-config.h \
+		/home/akrik/Qt/6.0.2/gcc_64/include/QtCore/qsystemdetection.h \
+		/home/akrik/Qt/6.0.2/gcc_64/include/QtCore/qprocessordetection.h \
+		/home/akrik/Qt/6.0.2/gcc_64/include/QtCore/qcompilerdetection.h \
+		/home/akrik/Qt/6.0.2/gcc_64/include/QtCore/qtypeinfo.h \
+		/home/akrik/Qt/6.0.2/gcc_64/include/QtCore/qcontainerfwd.h \
+		/home/akrik/Qt/6.0.2/gcc_64/include/QtCore/qsysinfo.h \
+		/home/akrik/Qt/6.0.2/gcc_64/include/QtCore/qlogging.h \
+		/home/akrik/Qt/6.0.2/gcc_64/include/QtCore/qflags.h \
+		/home/akrik/Qt/6.0.2/gcc_64/include/QtCore/qatomic.h \
+		/home/akrik/Qt/6.0.2/gcc_64/include/QtCore/qbasicatomic.h \
+		/home/akrik/Qt/6.0.2/gcc_64/include/QtCore/qatomic_bootstrap.h \
+		/home/akrik/Qt/6.0.2/gcc_64/include/QtCore/qgenericatomic.h \
+		/home/akrik/Qt/6.0.2/gcc_64/include/QtCore/qatomic_cxx11.h \
+		/home/akrik/Qt/6.0.2/gcc_64/include/QtCore/qatomic_msvc.h \
+		/home/akrik/Qt/6.0.2/gcc_64/include/QtCore/qglobalstatic.h \
+		/home/akrik/Qt/6.0.2/gcc_64/include/QtCore/qmutex.h \
+		/home/akrik/Qt/6.0.2/gcc_64/include/QtCore/qnumeric.h \
+		/home/akrik/Qt/6.0.2/gcc_64/include/QtCore/qversiontagging.h \
+		/home/akrik/Qt/6.0.2/gcc_64/include/QtGui/qtgui-config.h \
+		/home/akrik/Qt/6.0.2/gcc_64/include/QtWidgets/qtwidgets-config.h \
+		/home/akrik/Qt/6.0.2/gcc_64/include/QtCore/qobject.h \
+		/home/akrik/Qt/6.0.2/gcc_64/include/QtCore/qobjectdefs.h \
+		/home/akrik/Qt/6.0.2/gcc_64/include/QtCore/qnamespace.h \
+		/home/akrik/Qt/6.0.2/gcc_64/include/QtCore/qtmetamacros.h \
+		/home/akrik/Qt/6.0.2/gcc_64/include/QtCore/qobjectdefs_impl.h \
+		/home/akrik/Qt/6.0.2/gcc_64/include/QtCore/qstring.h \
+		/home/akrik/Qt/6.0.2/gcc_64/include/QtCore/qchar.h \
+		/home/akrik/Qt/6.0.2/gcc_64/include/QtCore/qstringview.h \
+		/home/akrik/Qt/6.0.2/gcc_64/include/QtCore/qbytearray.h \
+		/home/akrik/Qt/6.0.2/gcc_64/include/QtCore/qrefcount.h \
+		/home/akrik/Qt/6.0.2/gcc_64/include/QtCore/qarraydata.h \
+		/home/akrik/Qt/6.0.2/gcc_64/include/QtCore/qpair.h \
+		/home/akrik/Qt/6.0.2/gcc_64/include/QtCore/qarraydatapointer.h \
+		/home/akrik/Qt/6.0.2/gcc_64/include/QtCore/qarraydataops.h \
+		/home/akrik/Qt/6.0.2/gcc_64/include/QtCore/qcontainertools_impl.h \
+		/home/akrik/Qt/6.0.2/gcc_64/include/QtCore/qbytearrayalgorithms.h \
+		/home/akrik/Qt/6.0.2/gcc_64/include/QtCore/qbytearrayview.h \
+		/home/akrik/Qt/6.0.2/gcc_64/include/QtCore/qstringliteral.h \
+		/home/akrik/Qt/6.0.2/gcc_64/include/QtCore/qstringalgorithms.h \
+		/home/akrik/Qt/6.0.2/gcc_64/include/QtCore/qanystringview.h \
+		/home/akrik/Qt/6.0.2/gcc_64/include/QtCore/qutf8stringview.h \
+		/home/akrik/Qt/6.0.2/gcc_64/include/QtCore/qstringtokenizer.h \
+		/home/akrik/Qt/6.0.2/gcc_64/include/QtCore/qstringbuilder.h \
+		/home/akrik/Qt/6.0.2/gcc_64/include/QtCore/qlist.h \
+		/home/akrik/Qt/6.0.2/gcc_64/include/QtCore/qhashfunctions.h \
+		/home/akrik/Qt/6.0.2/gcc_64/include/QtCore/qiterator.h \
+		/home/akrik/Qt/6.0.2/gcc_64/include/QtCore/qbytearraylist.h \
+		/home/akrik/Qt/6.0.2/gcc_64/include/QtCore/qstringlist.h \
+		/home/akrik/Qt/6.0.2/gcc_64/include/QtCore/qalgorithms.h \
+		/home/akrik/Qt/6.0.2/gcc_64/include/QtCore/qstringmatcher.h \
+		/home/akrik/Qt/6.0.2/gcc_64/include/QtCore/qcoreevent.h \
+		/home/akrik/Qt/6.0.2/gcc_64/include/QtCore/qscopedpointer.h \
+		/home/akrik/Qt/6.0.2/gcc_64/include/QtCore/qmetatype.h \
+		/home/akrik/Qt/6.0.2/gcc_64/include/QtCore/qcompare.h \
+		/home/akrik/Qt/6.0.2/gcc_64/include/QtCore/qvarlengtharray.h \
+		/home/akrik/Qt/6.0.2/gcc_64/include/QtCore/qdatastream.h \
+		/home/akrik/Qt/6.0.2/gcc_64/include/QtCore/qiodevicebase.h \
+		/home/akrik/Qt/6.0.2/gcc_64/include/QtCore/qiterable.h \
+		/home/akrik/Qt/6.0.2/gcc_64/include/QtCore/qmetacontainer.h \
+		/home/akrik/Qt/6.0.2/gcc_64/include/QtCore/qcontainerinfo.h \
+		/home/akrik/Qt/6.0.2/gcc_64/include/QtCore/qtaggedpointer.h \
+		/home/akrik/Qt/6.0.2/gcc_64/include/QtCore/qmath.h \
+		/home/akrik/Qt/6.0.2/gcc_64/include/QtCore/qobject_impl.h \
+		/home/akrik/Qt/6.0.2/gcc_64/include/QtCore/qproperty.h \
+		/home/akrik/Qt/6.0.2/gcc_64/include/QtCore/qshareddata.h \
+		/home/akrik/Qt/6.0.2/gcc_64/include/QtCore/qpropertyprivate.h \
+		/home/akrik/Qt/6.0.2/gcc_64/include/QtCore/qpoint.h \
+		/home/akrik/Qt/6.0.2/gcc_64/include/QtCore/qrect.h \
+		/home/akrik/Qt/6.0.2/gcc_64/include/QtCore/qmargins.h \
+		/home/akrik/Qt/6.0.2/gcc_64/include/QtCore/qsize.h \
+		/home/akrik/Qt/6.0.2/gcc_64/include/QtGui/qbrush.h \
+		/home/akrik/Qt/6.0.2/gcc_64/include/QtGui/qcolor.h \
+		/home/akrik/Qt/6.0.2/gcc_64/include/QtGui/qrgb.h \
+		/home/akrik/Qt/6.0.2/gcc_64/include/QtGui/qrgba64.h \
+		/home/akrik/Qt/6.0.2/gcc_64/include/QtGui/qimage.h \
+		/home/akrik/Qt/6.0.2/gcc_64/include/QtGui/qpaintdevice.h \
+		/home/akrik/Qt/6.0.2/gcc_64/include/QtGui/qwindowdefs.h \
+		/home/akrik/Qt/6.0.2/gcc_64/include/QtGui/qwindowdefs_win.h \
+		/home/akrik/Qt/6.0.2/gcc_64/include/QtGui/qpixelformat.h \
+		/home/akrik/Qt/6.0.2/gcc_64/include/QtGui/qtransform.h \
+		/home/akrik/Qt/6.0.2/gcc_64/include/QtGui/qpolygon.h \
+		/home/akrik/Qt/6.0.2/gcc_64/include/QtGui/qregion.h \
+		/home/akrik/Qt/6.0.2/gcc_64/include/QtCore/qline.h \
+		/home/akrik/Qt/6.0.2/gcc_64/include/QtGui/qpixmap.h \
+		/home/akrik/Qt/6.0.2/gcc_64/include/QtCore/qsharedpointer.h \
+		/home/akrik/Qt/6.0.2/gcc_64/include/QtCore/qsharedpointer_impl.h \
+		/home/akrik/Qt/6.0.2/gcc_64/include/QtGui/qfont.h \
+		/home/akrik/Qt/6.0.2/gcc_64/include/QtGui/qpen.h \
 		../lab_01/structures.h \
 		../lab_01/constants.h \
 		../lab_01/model.h \
 		../lab_01/point.h \
-		../lab_01/file_handler.h \
+		../lab_01/edge.h \
 		../lab_01/draw.h \
-		../lab_01/operations.h
+		../lab_01/draw_qt.h \
+		../lab_01/mainwindow.h \
+		/home/akrik/Qt/6.0.2/gcc_64/include/QtWidgets/QMainWindow \
+		/home/akrik/Qt/6.0.2/gcc_64/include/QtWidgets/qmainwindow.h \
+		/home/akrik/Qt/6.0.2/gcc_64/include/QtWidgets/qwidget.h \
+		/home/akrik/Qt/6.0.2/gcc_64/include/QtGui/qpalette.h \
+		/home/akrik/Qt/6.0.2/gcc_64/include/QtGui/qfontmetrics.h \
+		/home/akrik/Qt/6.0.2/gcc_64/include/QtGui/qfontinfo.h \
+		/home/akrik/Qt/6.0.2/gcc_64/include/QtWidgets/qsizepolicy.h \
+		/home/akrik/Qt/6.0.2/gcc_64/include/QtGui/qcursor.h \
+		/home/akrik/Qt/6.0.2/gcc_64/include/QtGui/qbitmap.h \
+		/home/akrik/Qt/6.0.2/gcc_64/include/QtGui/qkeysequence.h \
+		/home/akrik/Qt/6.0.2/gcc_64/include/QtGui/qevent.h \
+		/home/akrik/Qt/6.0.2/gcc_64/include/QtCore/qiodevice.h \
+		/home/akrik/Qt/6.0.2/gcc_64/include/QtCore/qpointer.h \
+		/home/akrik/Qt/6.0.2/gcc_64/include/QtCore/qurl.h \
+		/home/akrik/Qt/6.0.2/gcc_64/include/QtCore/qvariant.h \
+		/home/akrik/Qt/6.0.2/gcc_64/include/QtCore/qmap.h \
+		/home/akrik/Qt/6.0.2/gcc_64/include/QtCore/qshareddata_impl.h \
+		/home/akrik/Qt/6.0.2/gcc_64/include/QtCore/qhash.h \
+		/home/akrik/Qt/6.0.2/gcc_64/include/QtCore/qdebug.h \
+		/home/akrik/Qt/6.0.2/gcc_64/include/QtCore/qtextstream.h \
+		/home/akrik/Qt/6.0.2/gcc_64/include/QtCore/qstringconverter.h \
+		/home/akrik/Qt/6.0.2/gcc_64/include/QtCore/qset.h \
+		/home/akrik/Qt/6.0.2/gcc_64/include/QtCore/qcontiguouscache.h \
+		/home/akrik/Qt/6.0.2/gcc_64/include/QtGui/qeventpoint.h \
+		/home/akrik/Qt/6.0.2/gcc_64/include/QtGui/qvector2d.h \
+		/home/akrik/Qt/6.0.2/gcc_64/include/QtGui/qvectornd.h \
+		/home/akrik/Qt/6.0.2/gcc_64/include/QtGui/qpointingdevice.h \
+		/home/akrik/Qt/6.0.2/gcc_64/include/QtGui/qinputdevice.h \
+		/home/akrik/Qt/6.0.2/gcc_64/include/QtGui/qscreen.h \
+		/home/akrik/Qt/6.0.2/gcc_64/include/QtCore/QList \
+		/home/akrik/Qt/6.0.2/gcc_64/include/QtCore/QObject \
+		/home/akrik/Qt/6.0.2/gcc_64/include/QtCore/QRect \
+		/home/akrik/Qt/6.0.2/gcc_64/include/QtCore/QSize \
+		/home/akrik/Qt/6.0.2/gcc_64/include/QtCore/QSizeF \
+		/home/akrik/Qt/6.0.2/gcc_64/include/QtGui/QTransform \
+		/home/akrik/Qt/6.0.2/gcc_64/include/QtWidgets/qtabwidget.h \
+		/home/akrik/Qt/6.0.2/gcc_64/include/QtGui/qicon.h \
+		/home/akrik/Qt/6.0.2/gcc_64/include/QtGui/QPainter \
+		/home/akrik/Qt/6.0.2/gcc_64/include/QtGui/qpainter.h \
+		/home/akrik/Qt/6.0.2/gcc_64/include/QtGui/qtextoption.h \
+		/home/akrik/Qt/6.0.2/gcc_64/include/QtWidgets/QGraphicsView \
+		/home/akrik/Qt/6.0.2/gcc_64/include/QtWidgets/qgraphicsview.h \
+		/home/akrik/Qt/6.0.2/gcc_64/include/QtWidgets/qscrollarea.h \
+		/home/akrik/Qt/6.0.2/gcc_64/include/QtWidgets/qabstractscrollarea.h \
+		/home/akrik/Qt/6.0.2/gcc_64/include/QtWidgets/qframe.h \
+		/home/akrik/Qt/6.0.2/gcc_64/include/QtWidgets/QMessageBox \
+		/home/akrik/Qt/6.0.2/gcc_64/include/QtWidgets/qmessagebox.h \
+		/home/akrik/Qt/6.0.2/gcc_64/include/QtWidgets/qdialog.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o event_handler.o ../lab_01/event_handler.cpp
-
-file_handler.o: ../lab_01/file_handler.cpp ../lab_01/file_handler.h \
-		../lab_01/model.h \
-		../lab_01/structures.h \
-		../lab_01/point.h \
-		../lab_01/constants.h
-	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o file_handler.o ../lab_01/file_handler.cpp
 
 main.o: ../lab_01/main.cpp ../lab_01/mainwindow.h \
 		/home/akrik/Qt/6.0.2/gcc_64/include/QtWidgets/QMainWindow \
@@ -1113,6 +1424,9 @@ main.o: ../lab_01/main.cpp ../lab_01/mainwindow.h \
 		/home/akrik/Qt/6.0.2/gcc_64/include/QtWidgets/QMessageBox \
 		/home/akrik/Qt/6.0.2/gcc_64/include/QtWidgets/qmessagebox.h \
 		/home/akrik/Qt/6.0.2/gcc_64/include/QtWidgets/qdialog.h \
+		../lab_01/event_handler.h \
+		../lab_01/structures.h \
+		../lab_01/constants.h \
 		/home/akrik/Qt/6.0.2/gcc_64/include/QtWidgets/QApplication \
 		/home/akrik/Qt/6.0.2/gcc_64/include/QtWidgets/qapplication.h \
 		/home/akrik/Qt/6.0.2/gcc_64/include/QtCore/qcoreapplication.h \
@@ -1306,32 +1620,372 @@ mainwindow.o: ../lab_01/mainwindow.cpp ui_mainwindow.h \
 		../lab_01/structures.h \
 		../lab_01/constants.h \
 		../lab_01/model.h \
-		../lab_01/point.h
+		../lab_01/point.h \
+		../lab_01/edge.h \
+		../lab_01/check.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o mainwindow.o ../lab_01/mainwindow.cpp
 
 model.o: ../lab_01/model.cpp ../lab_01/model.h \
 		../lab_01/structures.h \
+		/home/akrik/Qt/6.0.2/gcc_64/include/QtWidgets/QGraphicsScene \
+		/home/akrik/Qt/6.0.2/gcc_64/include/QtWidgets/qgraphicsscene.h \
+		/home/akrik/Qt/6.0.2/gcc_64/include/QtWidgets/qtwidgetsglobal.h \
+		/home/akrik/Qt/6.0.2/gcc_64/include/QtGui/qtguiglobal.h \
+		/home/akrik/Qt/6.0.2/gcc_64/include/QtCore/qglobal.h \
+		/home/akrik/Qt/6.0.2/gcc_64/include/QtCore/qconfig-bootstrapped.h \
+		/home/akrik/Qt/6.0.2/gcc_64/include/QtCore/qconfig.h \
+		/home/akrik/Qt/6.0.2/gcc_64/include/QtCore/qtcore-config.h \
+		/home/akrik/Qt/6.0.2/gcc_64/include/QtCore/qsystemdetection.h \
+		/home/akrik/Qt/6.0.2/gcc_64/include/QtCore/qprocessordetection.h \
+		/home/akrik/Qt/6.0.2/gcc_64/include/QtCore/qcompilerdetection.h \
+		/home/akrik/Qt/6.0.2/gcc_64/include/QtCore/qtypeinfo.h \
+		/home/akrik/Qt/6.0.2/gcc_64/include/QtCore/qcontainerfwd.h \
+		/home/akrik/Qt/6.0.2/gcc_64/include/QtCore/qsysinfo.h \
+		/home/akrik/Qt/6.0.2/gcc_64/include/QtCore/qlogging.h \
+		/home/akrik/Qt/6.0.2/gcc_64/include/QtCore/qflags.h \
+		/home/akrik/Qt/6.0.2/gcc_64/include/QtCore/qatomic.h \
+		/home/akrik/Qt/6.0.2/gcc_64/include/QtCore/qbasicatomic.h \
+		/home/akrik/Qt/6.0.2/gcc_64/include/QtCore/qatomic_bootstrap.h \
+		/home/akrik/Qt/6.0.2/gcc_64/include/QtCore/qgenericatomic.h \
+		/home/akrik/Qt/6.0.2/gcc_64/include/QtCore/qatomic_cxx11.h \
+		/home/akrik/Qt/6.0.2/gcc_64/include/QtCore/qatomic_msvc.h \
+		/home/akrik/Qt/6.0.2/gcc_64/include/QtCore/qglobalstatic.h \
+		/home/akrik/Qt/6.0.2/gcc_64/include/QtCore/qmutex.h \
+		/home/akrik/Qt/6.0.2/gcc_64/include/QtCore/qnumeric.h \
+		/home/akrik/Qt/6.0.2/gcc_64/include/QtCore/qversiontagging.h \
+		/home/akrik/Qt/6.0.2/gcc_64/include/QtGui/qtgui-config.h \
+		/home/akrik/Qt/6.0.2/gcc_64/include/QtWidgets/qtwidgets-config.h \
+		/home/akrik/Qt/6.0.2/gcc_64/include/QtCore/qobject.h \
+		/home/akrik/Qt/6.0.2/gcc_64/include/QtCore/qobjectdefs.h \
+		/home/akrik/Qt/6.0.2/gcc_64/include/QtCore/qnamespace.h \
+		/home/akrik/Qt/6.0.2/gcc_64/include/QtCore/qtmetamacros.h \
+		/home/akrik/Qt/6.0.2/gcc_64/include/QtCore/qobjectdefs_impl.h \
+		/home/akrik/Qt/6.0.2/gcc_64/include/QtCore/qstring.h \
+		/home/akrik/Qt/6.0.2/gcc_64/include/QtCore/qchar.h \
+		/home/akrik/Qt/6.0.2/gcc_64/include/QtCore/qstringview.h \
+		/home/akrik/Qt/6.0.2/gcc_64/include/QtCore/qbytearray.h \
+		/home/akrik/Qt/6.0.2/gcc_64/include/QtCore/qrefcount.h \
+		/home/akrik/Qt/6.0.2/gcc_64/include/QtCore/qarraydata.h \
+		/home/akrik/Qt/6.0.2/gcc_64/include/QtCore/qpair.h \
+		/home/akrik/Qt/6.0.2/gcc_64/include/QtCore/qarraydatapointer.h \
+		/home/akrik/Qt/6.0.2/gcc_64/include/QtCore/qarraydataops.h \
+		/home/akrik/Qt/6.0.2/gcc_64/include/QtCore/qcontainertools_impl.h \
+		/home/akrik/Qt/6.0.2/gcc_64/include/QtCore/qbytearrayalgorithms.h \
+		/home/akrik/Qt/6.0.2/gcc_64/include/QtCore/qbytearrayview.h \
+		/home/akrik/Qt/6.0.2/gcc_64/include/QtCore/qstringliteral.h \
+		/home/akrik/Qt/6.0.2/gcc_64/include/QtCore/qstringalgorithms.h \
+		/home/akrik/Qt/6.0.2/gcc_64/include/QtCore/qanystringview.h \
+		/home/akrik/Qt/6.0.2/gcc_64/include/QtCore/qutf8stringview.h \
+		/home/akrik/Qt/6.0.2/gcc_64/include/QtCore/qstringtokenizer.h \
+		/home/akrik/Qt/6.0.2/gcc_64/include/QtCore/qstringbuilder.h \
+		/home/akrik/Qt/6.0.2/gcc_64/include/QtCore/qlist.h \
+		/home/akrik/Qt/6.0.2/gcc_64/include/QtCore/qhashfunctions.h \
+		/home/akrik/Qt/6.0.2/gcc_64/include/QtCore/qiterator.h \
+		/home/akrik/Qt/6.0.2/gcc_64/include/QtCore/qbytearraylist.h \
+		/home/akrik/Qt/6.0.2/gcc_64/include/QtCore/qstringlist.h \
+		/home/akrik/Qt/6.0.2/gcc_64/include/QtCore/qalgorithms.h \
+		/home/akrik/Qt/6.0.2/gcc_64/include/QtCore/qstringmatcher.h \
+		/home/akrik/Qt/6.0.2/gcc_64/include/QtCore/qcoreevent.h \
+		/home/akrik/Qt/6.0.2/gcc_64/include/QtCore/qscopedpointer.h \
+		/home/akrik/Qt/6.0.2/gcc_64/include/QtCore/qmetatype.h \
+		/home/akrik/Qt/6.0.2/gcc_64/include/QtCore/qcompare.h \
+		/home/akrik/Qt/6.0.2/gcc_64/include/QtCore/qvarlengtharray.h \
+		/home/akrik/Qt/6.0.2/gcc_64/include/QtCore/qdatastream.h \
+		/home/akrik/Qt/6.0.2/gcc_64/include/QtCore/qiodevicebase.h \
+		/home/akrik/Qt/6.0.2/gcc_64/include/QtCore/qiterable.h \
+		/home/akrik/Qt/6.0.2/gcc_64/include/QtCore/qmetacontainer.h \
+		/home/akrik/Qt/6.0.2/gcc_64/include/QtCore/qcontainerinfo.h \
+		/home/akrik/Qt/6.0.2/gcc_64/include/QtCore/qtaggedpointer.h \
+		/home/akrik/Qt/6.0.2/gcc_64/include/QtCore/qmath.h \
+		/home/akrik/Qt/6.0.2/gcc_64/include/QtCore/qobject_impl.h \
+		/home/akrik/Qt/6.0.2/gcc_64/include/QtCore/qproperty.h \
+		/home/akrik/Qt/6.0.2/gcc_64/include/QtCore/qshareddata.h \
+		/home/akrik/Qt/6.0.2/gcc_64/include/QtCore/qpropertyprivate.h \
+		/home/akrik/Qt/6.0.2/gcc_64/include/QtCore/qpoint.h \
+		/home/akrik/Qt/6.0.2/gcc_64/include/QtCore/qrect.h \
+		/home/akrik/Qt/6.0.2/gcc_64/include/QtCore/qmargins.h \
+		/home/akrik/Qt/6.0.2/gcc_64/include/QtCore/qsize.h \
+		/home/akrik/Qt/6.0.2/gcc_64/include/QtGui/qbrush.h \
+		/home/akrik/Qt/6.0.2/gcc_64/include/QtGui/qcolor.h \
+		/home/akrik/Qt/6.0.2/gcc_64/include/QtGui/qrgb.h \
+		/home/akrik/Qt/6.0.2/gcc_64/include/QtGui/qrgba64.h \
+		/home/akrik/Qt/6.0.2/gcc_64/include/QtGui/qimage.h \
+		/home/akrik/Qt/6.0.2/gcc_64/include/QtGui/qpaintdevice.h \
+		/home/akrik/Qt/6.0.2/gcc_64/include/QtGui/qwindowdefs.h \
+		/home/akrik/Qt/6.0.2/gcc_64/include/QtGui/qwindowdefs_win.h \
+		/home/akrik/Qt/6.0.2/gcc_64/include/QtGui/qpixelformat.h \
+		/home/akrik/Qt/6.0.2/gcc_64/include/QtGui/qtransform.h \
+		/home/akrik/Qt/6.0.2/gcc_64/include/QtGui/qpolygon.h \
+		/home/akrik/Qt/6.0.2/gcc_64/include/QtGui/qregion.h \
+		/home/akrik/Qt/6.0.2/gcc_64/include/QtCore/qline.h \
+		/home/akrik/Qt/6.0.2/gcc_64/include/QtGui/qpixmap.h \
+		/home/akrik/Qt/6.0.2/gcc_64/include/QtCore/qsharedpointer.h \
+		/home/akrik/Qt/6.0.2/gcc_64/include/QtCore/qsharedpointer_impl.h \
+		/home/akrik/Qt/6.0.2/gcc_64/include/QtGui/qfont.h \
+		/home/akrik/Qt/6.0.2/gcc_64/include/QtGui/qpen.h \
 		../lab_01/point.h \
+		../lab_01/edge.h \
 		../lab_01/constants.h \
-		../lab_01/file_handler.h
+		../lab_01/check.h \
+		../lab_01/draw.h \
+		../lab_01/draw_qt.h \
+		../lab_01/mainwindow.h \
+		/home/akrik/Qt/6.0.2/gcc_64/include/QtWidgets/QMainWindow \
+		/home/akrik/Qt/6.0.2/gcc_64/include/QtWidgets/qmainwindow.h \
+		/home/akrik/Qt/6.0.2/gcc_64/include/QtWidgets/qwidget.h \
+		/home/akrik/Qt/6.0.2/gcc_64/include/QtGui/qpalette.h \
+		/home/akrik/Qt/6.0.2/gcc_64/include/QtGui/qfontmetrics.h \
+		/home/akrik/Qt/6.0.2/gcc_64/include/QtGui/qfontinfo.h \
+		/home/akrik/Qt/6.0.2/gcc_64/include/QtWidgets/qsizepolicy.h \
+		/home/akrik/Qt/6.0.2/gcc_64/include/QtGui/qcursor.h \
+		/home/akrik/Qt/6.0.2/gcc_64/include/QtGui/qbitmap.h \
+		/home/akrik/Qt/6.0.2/gcc_64/include/QtGui/qkeysequence.h \
+		/home/akrik/Qt/6.0.2/gcc_64/include/QtGui/qevent.h \
+		/home/akrik/Qt/6.0.2/gcc_64/include/QtCore/qiodevice.h \
+		/home/akrik/Qt/6.0.2/gcc_64/include/QtCore/qpointer.h \
+		/home/akrik/Qt/6.0.2/gcc_64/include/QtCore/qurl.h \
+		/home/akrik/Qt/6.0.2/gcc_64/include/QtCore/qvariant.h \
+		/home/akrik/Qt/6.0.2/gcc_64/include/QtCore/qmap.h \
+		/home/akrik/Qt/6.0.2/gcc_64/include/QtCore/qshareddata_impl.h \
+		/home/akrik/Qt/6.0.2/gcc_64/include/QtCore/qhash.h \
+		/home/akrik/Qt/6.0.2/gcc_64/include/QtCore/qdebug.h \
+		/home/akrik/Qt/6.0.2/gcc_64/include/QtCore/qtextstream.h \
+		/home/akrik/Qt/6.0.2/gcc_64/include/QtCore/qstringconverter.h \
+		/home/akrik/Qt/6.0.2/gcc_64/include/QtCore/qset.h \
+		/home/akrik/Qt/6.0.2/gcc_64/include/QtCore/qcontiguouscache.h \
+		/home/akrik/Qt/6.0.2/gcc_64/include/QtGui/qeventpoint.h \
+		/home/akrik/Qt/6.0.2/gcc_64/include/QtGui/qvector2d.h \
+		/home/akrik/Qt/6.0.2/gcc_64/include/QtGui/qvectornd.h \
+		/home/akrik/Qt/6.0.2/gcc_64/include/QtGui/qpointingdevice.h \
+		/home/akrik/Qt/6.0.2/gcc_64/include/QtGui/qinputdevice.h \
+		/home/akrik/Qt/6.0.2/gcc_64/include/QtGui/qscreen.h \
+		/home/akrik/Qt/6.0.2/gcc_64/include/QtCore/QList \
+		/home/akrik/Qt/6.0.2/gcc_64/include/QtCore/QObject \
+		/home/akrik/Qt/6.0.2/gcc_64/include/QtCore/QRect \
+		/home/akrik/Qt/6.0.2/gcc_64/include/QtCore/QSize \
+		/home/akrik/Qt/6.0.2/gcc_64/include/QtCore/QSizeF \
+		/home/akrik/Qt/6.0.2/gcc_64/include/QtGui/QTransform \
+		/home/akrik/Qt/6.0.2/gcc_64/include/QtWidgets/qtabwidget.h \
+		/home/akrik/Qt/6.0.2/gcc_64/include/QtGui/qicon.h \
+		/home/akrik/Qt/6.0.2/gcc_64/include/QtGui/QPainter \
+		/home/akrik/Qt/6.0.2/gcc_64/include/QtGui/qpainter.h \
+		/home/akrik/Qt/6.0.2/gcc_64/include/QtGui/qtextoption.h \
+		/home/akrik/Qt/6.0.2/gcc_64/include/QtWidgets/QGraphicsView \
+		/home/akrik/Qt/6.0.2/gcc_64/include/QtWidgets/qgraphicsview.h \
+		/home/akrik/Qt/6.0.2/gcc_64/include/QtWidgets/qscrollarea.h \
+		/home/akrik/Qt/6.0.2/gcc_64/include/QtWidgets/qabstractscrollarea.h \
+		/home/akrik/Qt/6.0.2/gcc_64/include/QtWidgets/qframe.h \
+		/home/akrik/Qt/6.0.2/gcc_64/include/QtWidgets/QMessageBox \
+		/home/akrik/Qt/6.0.2/gcc_64/include/QtWidgets/qmessagebox.h \
+		/home/akrik/Qt/6.0.2/gcc_64/include/QtWidgets/qdialog.h \
+		../lab_01/event_handler.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o model.o ../lab_01/model.cpp
-
-operations.o: ../lab_01/operations.cpp ../lab_01/operations.h \
-		../lab_01/model.h \
-		../lab_01/structures.h \
-		../lab_01/point.h \
-		../lab_01/constants.h \
-		../lab_01/utils.h
-	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o operations.o ../lab_01/operations.cpp
 
 point.o: ../lab_01/point.cpp ../lab_01/point.h \
 		../lab_01/structures.h \
+		/home/akrik/Qt/6.0.2/gcc_64/include/QtWidgets/QGraphicsScene \
+		/home/akrik/Qt/6.0.2/gcc_64/include/QtWidgets/qgraphicsscene.h \
+		/home/akrik/Qt/6.0.2/gcc_64/include/QtWidgets/qtwidgetsglobal.h \
+		/home/akrik/Qt/6.0.2/gcc_64/include/QtGui/qtguiglobal.h \
+		/home/akrik/Qt/6.0.2/gcc_64/include/QtCore/qglobal.h \
+		/home/akrik/Qt/6.0.2/gcc_64/include/QtCore/qconfig-bootstrapped.h \
+		/home/akrik/Qt/6.0.2/gcc_64/include/QtCore/qconfig.h \
+		/home/akrik/Qt/6.0.2/gcc_64/include/QtCore/qtcore-config.h \
+		/home/akrik/Qt/6.0.2/gcc_64/include/QtCore/qsystemdetection.h \
+		/home/akrik/Qt/6.0.2/gcc_64/include/QtCore/qprocessordetection.h \
+		/home/akrik/Qt/6.0.2/gcc_64/include/QtCore/qcompilerdetection.h \
+		/home/akrik/Qt/6.0.2/gcc_64/include/QtCore/qtypeinfo.h \
+		/home/akrik/Qt/6.0.2/gcc_64/include/QtCore/qcontainerfwd.h \
+		/home/akrik/Qt/6.0.2/gcc_64/include/QtCore/qsysinfo.h \
+		/home/akrik/Qt/6.0.2/gcc_64/include/QtCore/qlogging.h \
+		/home/akrik/Qt/6.0.2/gcc_64/include/QtCore/qflags.h \
+		/home/akrik/Qt/6.0.2/gcc_64/include/QtCore/qatomic.h \
+		/home/akrik/Qt/6.0.2/gcc_64/include/QtCore/qbasicatomic.h \
+		/home/akrik/Qt/6.0.2/gcc_64/include/QtCore/qatomic_bootstrap.h \
+		/home/akrik/Qt/6.0.2/gcc_64/include/QtCore/qgenericatomic.h \
+		/home/akrik/Qt/6.0.2/gcc_64/include/QtCore/qatomic_cxx11.h \
+		/home/akrik/Qt/6.0.2/gcc_64/include/QtCore/qatomic_msvc.h \
+		/home/akrik/Qt/6.0.2/gcc_64/include/QtCore/qglobalstatic.h \
+		/home/akrik/Qt/6.0.2/gcc_64/include/QtCore/qmutex.h \
+		/home/akrik/Qt/6.0.2/gcc_64/include/QtCore/qnumeric.h \
+		/home/akrik/Qt/6.0.2/gcc_64/include/QtCore/qversiontagging.h \
+		/home/akrik/Qt/6.0.2/gcc_64/include/QtGui/qtgui-config.h \
+		/home/akrik/Qt/6.0.2/gcc_64/include/QtWidgets/qtwidgets-config.h \
+		/home/akrik/Qt/6.0.2/gcc_64/include/QtCore/qobject.h \
+		/home/akrik/Qt/6.0.2/gcc_64/include/QtCore/qobjectdefs.h \
+		/home/akrik/Qt/6.0.2/gcc_64/include/QtCore/qnamespace.h \
+		/home/akrik/Qt/6.0.2/gcc_64/include/QtCore/qtmetamacros.h \
+		/home/akrik/Qt/6.0.2/gcc_64/include/QtCore/qobjectdefs_impl.h \
+		/home/akrik/Qt/6.0.2/gcc_64/include/QtCore/qstring.h \
+		/home/akrik/Qt/6.0.2/gcc_64/include/QtCore/qchar.h \
+		/home/akrik/Qt/6.0.2/gcc_64/include/QtCore/qstringview.h \
+		/home/akrik/Qt/6.0.2/gcc_64/include/QtCore/qbytearray.h \
+		/home/akrik/Qt/6.0.2/gcc_64/include/QtCore/qrefcount.h \
+		/home/akrik/Qt/6.0.2/gcc_64/include/QtCore/qarraydata.h \
+		/home/akrik/Qt/6.0.2/gcc_64/include/QtCore/qpair.h \
+		/home/akrik/Qt/6.0.2/gcc_64/include/QtCore/qarraydatapointer.h \
+		/home/akrik/Qt/6.0.2/gcc_64/include/QtCore/qarraydataops.h \
+		/home/akrik/Qt/6.0.2/gcc_64/include/QtCore/qcontainertools_impl.h \
+		/home/akrik/Qt/6.0.2/gcc_64/include/QtCore/qbytearrayalgorithms.h \
+		/home/akrik/Qt/6.0.2/gcc_64/include/QtCore/qbytearrayview.h \
+		/home/akrik/Qt/6.0.2/gcc_64/include/QtCore/qstringliteral.h \
+		/home/akrik/Qt/6.0.2/gcc_64/include/QtCore/qstringalgorithms.h \
+		/home/akrik/Qt/6.0.2/gcc_64/include/QtCore/qanystringview.h \
+		/home/akrik/Qt/6.0.2/gcc_64/include/QtCore/qutf8stringview.h \
+		/home/akrik/Qt/6.0.2/gcc_64/include/QtCore/qstringtokenizer.h \
+		/home/akrik/Qt/6.0.2/gcc_64/include/QtCore/qstringbuilder.h \
+		/home/akrik/Qt/6.0.2/gcc_64/include/QtCore/qlist.h \
+		/home/akrik/Qt/6.0.2/gcc_64/include/QtCore/qhashfunctions.h \
+		/home/akrik/Qt/6.0.2/gcc_64/include/QtCore/qiterator.h \
+		/home/akrik/Qt/6.0.2/gcc_64/include/QtCore/qbytearraylist.h \
+		/home/akrik/Qt/6.0.2/gcc_64/include/QtCore/qstringlist.h \
+		/home/akrik/Qt/6.0.2/gcc_64/include/QtCore/qalgorithms.h \
+		/home/akrik/Qt/6.0.2/gcc_64/include/QtCore/qstringmatcher.h \
+		/home/akrik/Qt/6.0.2/gcc_64/include/QtCore/qcoreevent.h \
+		/home/akrik/Qt/6.0.2/gcc_64/include/QtCore/qscopedpointer.h \
+		/home/akrik/Qt/6.0.2/gcc_64/include/QtCore/qmetatype.h \
+		/home/akrik/Qt/6.0.2/gcc_64/include/QtCore/qcompare.h \
+		/home/akrik/Qt/6.0.2/gcc_64/include/QtCore/qvarlengtharray.h \
+		/home/akrik/Qt/6.0.2/gcc_64/include/QtCore/qdatastream.h \
+		/home/akrik/Qt/6.0.2/gcc_64/include/QtCore/qiodevicebase.h \
+		/home/akrik/Qt/6.0.2/gcc_64/include/QtCore/qiterable.h \
+		/home/akrik/Qt/6.0.2/gcc_64/include/QtCore/qmetacontainer.h \
+		/home/akrik/Qt/6.0.2/gcc_64/include/QtCore/qcontainerinfo.h \
+		/home/akrik/Qt/6.0.2/gcc_64/include/QtCore/qtaggedpointer.h \
+		/home/akrik/Qt/6.0.2/gcc_64/include/QtCore/qmath.h \
+		/home/akrik/Qt/6.0.2/gcc_64/include/QtCore/qobject_impl.h \
+		/home/akrik/Qt/6.0.2/gcc_64/include/QtCore/qproperty.h \
+		/home/akrik/Qt/6.0.2/gcc_64/include/QtCore/qshareddata.h \
+		/home/akrik/Qt/6.0.2/gcc_64/include/QtCore/qpropertyprivate.h \
+		/home/akrik/Qt/6.0.2/gcc_64/include/QtCore/qpoint.h \
+		/home/akrik/Qt/6.0.2/gcc_64/include/QtCore/qrect.h \
+		/home/akrik/Qt/6.0.2/gcc_64/include/QtCore/qmargins.h \
+		/home/akrik/Qt/6.0.2/gcc_64/include/QtCore/qsize.h \
+		/home/akrik/Qt/6.0.2/gcc_64/include/QtGui/qbrush.h \
+		/home/akrik/Qt/6.0.2/gcc_64/include/QtGui/qcolor.h \
+		/home/akrik/Qt/6.0.2/gcc_64/include/QtGui/qrgb.h \
+		/home/akrik/Qt/6.0.2/gcc_64/include/QtGui/qrgba64.h \
+		/home/akrik/Qt/6.0.2/gcc_64/include/QtGui/qimage.h \
+		/home/akrik/Qt/6.0.2/gcc_64/include/QtGui/qpaintdevice.h \
+		/home/akrik/Qt/6.0.2/gcc_64/include/QtGui/qwindowdefs.h \
+		/home/akrik/Qt/6.0.2/gcc_64/include/QtGui/qwindowdefs_win.h \
+		/home/akrik/Qt/6.0.2/gcc_64/include/QtGui/qpixelformat.h \
+		/home/akrik/Qt/6.0.2/gcc_64/include/QtGui/qtransform.h \
+		/home/akrik/Qt/6.0.2/gcc_64/include/QtGui/qpolygon.h \
+		/home/akrik/Qt/6.0.2/gcc_64/include/QtGui/qregion.h \
+		/home/akrik/Qt/6.0.2/gcc_64/include/QtCore/qline.h \
+		/home/akrik/Qt/6.0.2/gcc_64/include/QtGui/qpixmap.h \
+		/home/akrik/Qt/6.0.2/gcc_64/include/QtCore/qsharedpointer.h \
+		/home/akrik/Qt/6.0.2/gcc_64/include/QtCore/qsharedpointer_impl.h \
+		/home/akrik/Qt/6.0.2/gcc_64/include/QtGui/qfont.h \
+		/home/akrik/Qt/6.0.2/gcc_64/include/QtGui/qpen.h \
 		../lab_01/constants.h \
-		../lab_01/utils.h
+		../lab_01/utils.h \
+		../lab_01/model.h \
+		../lab_01/edge.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o point.o ../lab_01/point.cpp
 
 utils.o: ../lab_01/utils.cpp ../lab_01/utils.h \
 		../lab_01/structures.h \
+		/home/akrik/Qt/6.0.2/gcc_64/include/QtWidgets/QGraphicsScene \
+		/home/akrik/Qt/6.0.2/gcc_64/include/QtWidgets/qgraphicsscene.h \
+		/home/akrik/Qt/6.0.2/gcc_64/include/QtWidgets/qtwidgetsglobal.h \
+		/home/akrik/Qt/6.0.2/gcc_64/include/QtGui/qtguiglobal.h \
+		/home/akrik/Qt/6.0.2/gcc_64/include/QtCore/qglobal.h \
+		/home/akrik/Qt/6.0.2/gcc_64/include/QtCore/qconfig-bootstrapped.h \
+		/home/akrik/Qt/6.0.2/gcc_64/include/QtCore/qconfig.h \
+		/home/akrik/Qt/6.0.2/gcc_64/include/QtCore/qtcore-config.h \
+		/home/akrik/Qt/6.0.2/gcc_64/include/QtCore/qsystemdetection.h \
+		/home/akrik/Qt/6.0.2/gcc_64/include/QtCore/qprocessordetection.h \
+		/home/akrik/Qt/6.0.2/gcc_64/include/QtCore/qcompilerdetection.h \
+		/home/akrik/Qt/6.0.2/gcc_64/include/QtCore/qtypeinfo.h \
+		/home/akrik/Qt/6.0.2/gcc_64/include/QtCore/qcontainerfwd.h \
+		/home/akrik/Qt/6.0.2/gcc_64/include/QtCore/qsysinfo.h \
+		/home/akrik/Qt/6.0.2/gcc_64/include/QtCore/qlogging.h \
+		/home/akrik/Qt/6.0.2/gcc_64/include/QtCore/qflags.h \
+		/home/akrik/Qt/6.0.2/gcc_64/include/QtCore/qatomic.h \
+		/home/akrik/Qt/6.0.2/gcc_64/include/QtCore/qbasicatomic.h \
+		/home/akrik/Qt/6.0.2/gcc_64/include/QtCore/qatomic_bootstrap.h \
+		/home/akrik/Qt/6.0.2/gcc_64/include/QtCore/qgenericatomic.h \
+		/home/akrik/Qt/6.0.2/gcc_64/include/QtCore/qatomic_cxx11.h \
+		/home/akrik/Qt/6.0.2/gcc_64/include/QtCore/qatomic_msvc.h \
+		/home/akrik/Qt/6.0.2/gcc_64/include/QtCore/qglobalstatic.h \
+		/home/akrik/Qt/6.0.2/gcc_64/include/QtCore/qmutex.h \
+		/home/akrik/Qt/6.0.2/gcc_64/include/QtCore/qnumeric.h \
+		/home/akrik/Qt/6.0.2/gcc_64/include/QtCore/qversiontagging.h \
+		/home/akrik/Qt/6.0.2/gcc_64/include/QtGui/qtgui-config.h \
+		/home/akrik/Qt/6.0.2/gcc_64/include/QtWidgets/qtwidgets-config.h \
+		/home/akrik/Qt/6.0.2/gcc_64/include/QtCore/qobject.h \
+		/home/akrik/Qt/6.0.2/gcc_64/include/QtCore/qobjectdefs.h \
+		/home/akrik/Qt/6.0.2/gcc_64/include/QtCore/qnamespace.h \
+		/home/akrik/Qt/6.0.2/gcc_64/include/QtCore/qtmetamacros.h \
+		/home/akrik/Qt/6.0.2/gcc_64/include/QtCore/qobjectdefs_impl.h \
+		/home/akrik/Qt/6.0.2/gcc_64/include/QtCore/qstring.h \
+		/home/akrik/Qt/6.0.2/gcc_64/include/QtCore/qchar.h \
+		/home/akrik/Qt/6.0.2/gcc_64/include/QtCore/qstringview.h \
+		/home/akrik/Qt/6.0.2/gcc_64/include/QtCore/qbytearray.h \
+		/home/akrik/Qt/6.0.2/gcc_64/include/QtCore/qrefcount.h \
+		/home/akrik/Qt/6.0.2/gcc_64/include/QtCore/qarraydata.h \
+		/home/akrik/Qt/6.0.2/gcc_64/include/QtCore/qpair.h \
+		/home/akrik/Qt/6.0.2/gcc_64/include/QtCore/qarraydatapointer.h \
+		/home/akrik/Qt/6.0.2/gcc_64/include/QtCore/qarraydataops.h \
+		/home/akrik/Qt/6.0.2/gcc_64/include/QtCore/qcontainertools_impl.h \
+		/home/akrik/Qt/6.0.2/gcc_64/include/QtCore/qbytearrayalgorithms.h \
+		/home/akrik/Qt/6.0.2/gcc_64/include/QtCore/qbytearrayview.h \
+		/home/akrik/Qt/6.0.2/gcc_64/include/QtCore/qstringliteral.h \
+		/home/akrik/Qt/6.0.2/gcc_64/include/QtCore/qstringalgorithms.h \
+		/home/akrik/Qt/6.0.2/gcc_64/include/QtCore/qanystringview.h \
+		/home/akrik/Qt/6.0.2/gcc_64/include/QtCore/qutf8stringview.h \
+		/home/akrik/Qt/6.0.2/gcc_64/include/QtCore/qstringtokenizer.h \
+		/home/akrik/Qt/6.0.2/gcc_64/include/QtCore/qstringbuilder.h \
+		/home/akrik/Qt/6.0.2/gcc_64/include/QtCore/qlist.h \
+		/home/akrik/Qt/6.0.2/gcc_64/include/QtCore/qhashfunctions.h \
+		/home/akrik/Qt/6.0.2/gcc_64/include/QtCore/qiterator.h \
+		/home/akrik/Qt/6.0.2/gcc_64/include/QtCore/qbytearraylist.h \
+		/home/akrik/Qt/6.0.2/gcc_64/include/QtCore/qstringlist.h \
+		/home/akrik/Qt/6.0.2/gcc_64/include/QtCore/qalgorithms.h \
+		/home/akrik/Qt/6.0.2/gcc_64/include/QtCore/qstringmatcher.h \
+		/home/akrik/Qt/6.0.2/gcc_64/include/QtCore/qcoreevent.h \
+		/home/akrik/Qt/6.0.2/gcc_64/include/QtCore/qscopedpointer.h \
+		/home/akrik/Qt/6.0.2/gcc_64/include/QtCore/qmetatype.h \
+		/home/akrik/Qt/6.0.2/gcc_64/include/QtCore/qcompare.h \
+		/home/akrik/Qt/6.0.2/gcc_64/include/QtCore/qvarlengtharray.h \
+		/home/akrik/Qt/6.0.2/gcc_64/include/QtCore/qdatastream.h \
+		/home/akrik/Qt/6.0.2/gcc_64/include/QtCore/qiodevicebase.h \
+		/home/akrik/Qt/6.0.2/gcc_64/include/QtCore/qiterable.h \
+		/home/akrik/Qt/6.0.2/gcc_64/include/QtCore/qmetacontainer.h \
+		/home/akrik/Qt/6.0.2/gcc_64/include/QtCore/qcontainerinfo.h \
+		/home/akrik/Qt/6.0.2/gcc_64/include/QtCore/qtaggedpointer.h \
+		/home/akrik/Qt/6.0.2/gcc_64/include/QtCore/qmath.h \
+		/home/akrik/Qt/6.0.2/gcc_64/include/QtCore/qobject_impl.h \
+		/home/akrik/Qt/6.0.2/gcc_64/include/QtCore/qproperty.h \
+		/home/akrik/Qt/6.0.2/gcc_64/include/QtCore/qshareddata.h \
+		/home/akrik/Qt/6.0.2/gcc_64/include/QtCore/qpropertyprivate.h \
+		/home/akrik/Qt/6.0.2/gcc_64/include/QtCore/qpoint.h \
+		/home/akrik/Qt/6.0.2/gcc_64/include/QtCore/qrect.h \
+		/home/akrik/Qt/6.0.2/gcc_64/include/QtCore/qmargins.h \
+		/home/akrik/Qt/6.0.2/gcc_64/include/QtCore/qsize.h \
+		/home/akrik/Qt/6.0.2/gcc_64/include/QtGui/qbrush.h \
+		/home/akrik/Qt/6.0.2/gcc_64/include/QtGui/qcolor.h \
+		/home/akrik/Qt/6.0.2/gcc_64/include/QtGui/qrgb.h \
+		/home/akrik/Qt/6.0.2/gcc_64/include/QtGui/qrgba64.h \
+		/home/akrik/Qt/6.0.2/gcc_64/include/QtGui/qimage.h \
+		/home/akrik/Qt/6.0.2/gcc_64/include/QtGui/qpaintdevice.h \
+		/home/akrik/Qt/6.0.2/gcc_64/include/QtGui/qwindowdefs.h \
+		/home/akrik/Qt/6.0.2/gcc_64/include/QtGui/qwindowdefs_win.h \
+		/home/akrik/Qt/6.0.2/gcc_64/include/QtGui/qpixelformat.h \
+		/home/akrik/Qt/6.0.2/gcc_64/include/QtGui/qtransform.h \
+		/home/akrik/Qt/6.0.2/gcc_64/include/QtGui/qpolygon.h \
+		/home/akrik/Qt/6.0.2/gcc_64/include/QtGui/qregion.h \
+		/home/akrik/Qt/6.0.2/gcc_64/include/QtCore/qline.h \
+		/home/akrik/Qt/6.0.2/gcc_64/include/QtGui/qpixmap.h \
+		/home/akrik/Qt/6.0.2/gcc_64/include/QtCore/qsharedpointer.h \
+		/home/akrik/Qt/6.0.2/gcc_64/include/QtCore/qsharedpointer_impl.h \
+		/home/akrik/Qt/6.0.2/gcc_64/include/QtGui/qfont.h \
+		/home/akrik/Qt/6.0.2/gcc_64/include/QtGui/qpen.h \
+		../lab_01/model.h \
+		../lab_01/point.h \
+		../lab_01/edge.h \
 		../lab_01/constants.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o utils.o ../lab_01/utils.cpp
 

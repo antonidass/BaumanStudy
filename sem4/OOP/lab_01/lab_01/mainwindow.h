@@ -43,7 +43,7 @@ private:
 
     void makeErrorMessage(const char msg[]);
 
-    void handleError(const int &check);
+    int handleRepsond(const int &check);
 
     eventT makeDrawEvent();
 };

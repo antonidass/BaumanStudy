@@ -3,9 +3,7 @@
 #include "event_handler.h"
 #include "constants.h"
 #include "model.h"
-#include "file_handler.h"
 #include "draw.h"
-#include "operations.h"
 
 
 int eventHandler(const eventT &event) {
@@ -16,7 +14,7 @@ int eventHandler(const eventT &event) {
         check = loadModel(model, event.fileName);
     }
     else if (event.type == DRAW_MODEL) {
-        check = drawModel(model, event.scene);
+        check = drawModel(model, event.canvas);
     }
     else if (event.type == MOVE_MODEL) {
         check = moveModel(model, event.move);
