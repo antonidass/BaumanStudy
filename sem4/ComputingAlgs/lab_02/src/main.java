@@ -5,7 +5,7 @@ import java.util.Scanner;
 public class main {
 
     public static Double f(Double x, Double y) {
-        return x * x + y * y;
+        return x * x;
     }
 
     public static void printMatrix(ArrayList<Double> x, ArrayList<Double> y, ArrayList<ArrayList<Double>> z) {
