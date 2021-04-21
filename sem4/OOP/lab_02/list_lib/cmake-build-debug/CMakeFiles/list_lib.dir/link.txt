@@ -1,0 +1,1 @@
+/usr/bin/c++ -g CMakeFiles/list_lib.dir/main.cpp.o -o list_lib 

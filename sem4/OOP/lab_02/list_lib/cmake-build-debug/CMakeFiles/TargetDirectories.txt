@@ -1,0 +1,3 @@
+/home/akrik/CLionProjects/list_lib/cmake-build-debug/CMakeFiles/rebuild_cache.dir
+/home/akrik/CLionProjects/list_lib/cmake-build-debug/CMakeFiles/edit_cache.dir
+/home/akrik/CLionProjects/list_lib/cmake-build-debug/CMakeFiles/list_lib.dir
