@@ -11,6 +11,12 @@
 /home/akrik/CLionProjects/list_lib/exceptions.h
 exception
 -
+chrono
+/home/akrik/CLionProjects/list_lib/chrono
+ctime
+/home/akrik/CLionProjects/list_lib/ctime
+string
+-
 
 /home/akrik/CLionProjects/list_lib/iterator.h
 iterator

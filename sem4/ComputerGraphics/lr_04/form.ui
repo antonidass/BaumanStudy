@@ -1,0 +1,880 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>GUI</class>
+ <widget class="QWidget" name="GUI">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>1223</width>
+    <height>777</height>
+   </rect>
+  </property>
+  <property name="palette">
+   <palette>
+    <active>
+     <colorrole role="Button">
+      <brush brushstyle="SolidPattern">
+       <color alpha="255">
+        <red>238</red>
+        <green>238</green>
+        <blue>236</blue>
+       </color>
+      </brush>
+     </colorrole>
+     <colorrole role="Base">
+      <brush brushstyle="SolidPattern">
+       <color alpha="255">
+        <red>255</red>
+        <green>255</green>
+        <blue>255</blue>
+       </color>
+      </brush>
+     </colorrole>
+     <colorrole role="Window">
+      <brush brushstyle="SolidPattern">
+       <color alpha="255">
+        <red>231</red>
+        <green>183</green>
+        <blue>112</blue>
+       </color>
+      </brush>
+     </colorrole>
+    </active>
+    <inactive>
+     <colorrole role="Button">
+      <brush brushstyle="SolidPattern">
+       <color alpha="255">
+        <red>238</red>
+        <green>238</green>
+        <blue>236</blue>
+       </color>
+      </brush>
+     </colorrole>
+     <colorrole role="Base">
+      <brush brushstyle="SolidPattern">
+       <color alpha="255">
+        <red>255</red>
+        <green>255</green>
+        <blue>255</blue>
+       </color>
+      </brush>
+     </colorrole>
+     <colorrole role="Window">
+      <brush brushstyle="SolidPattern">
+       <color alpha="255">
+        <red>231</red>
+        <green>183</green>
+        <blue>112</blue>
+       </color>
+      </brush>
+     </colorrole>
+    </inactive>
+    <disabled>
+     <colorrole role="Button">
+      <brush brushstyle="SolidPattern">
+       <color alpha="255">
+        <red>238</red>
+        <green>238</green>
+        <blue>236</blue>
+       </color>
+      </brush>
+     </colorrole>
+     <colorrole role="Base">
+      <brush brushstyle="SolidPattern">
+       <color alpha="255">
+        <red>231</red>
+        <green>183</green>
+        <blue>112</blue>
+       </color>
+      </brush>
+     </colorrole>
+     <colorrole role="Window">
+      <brush brushstyle="SolidPattern">
+       <color alpha="255">
+        <red>231</red>
+        <green>183</green>
+        <blue>112</blue>
+       </color>
+      </brush>
+     </colorrole>
+    </disabled>
+   </palette>
+  </property>
+  <property name="windowTitle">
+   <string>GUI</string>
+  </property>
+  <property name="autoFillBackground">
+   <bool>false</bool>
+  </property>
+  <widget class="QGraphicsView" name="graphicsView">
+   <property name="geometry">
+    <rect>
+     <x>460</x>
+     <y>10</y>
+     <width>761</width>
+     <height>761</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label">
+   <property name="geometry">
+    <rect>
+     <x>60</x>
+     <y>100</y>
+     <width>121</width>
+     <height>31</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">font: 16pt &quot;Ubuntu&quot;;</string>
+   </property>
+   <property name="text">
+    <string>Цвет линии</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_2">
+   <property name="geometry">
+    <rect>
+     <x>290</x>
+     <y>100</y>
+     <width>121</width>
+     <height>31</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">font: 16pt &quot;Ubuntu&quot;;</string>
+   </property>
+   <property name="text">
+    <string>Цвет фона</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_3">
+   <property name="geometry">
+    <rect>
+     <x>70</x>
+     <y>10</y>
+     <width>161</width>
+     <height>31</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">font: 16pt &quot;Ubuntu&quot;;</string>
+   </property>
+   <property name="lineWidth">
+    <number>1</number>
+   </property>
+   <property name="text">
+    <string>Алгоритм</string>
+   </property>
+   <property name="buddy">
+    <cstring></cstring>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="drawFigureButton">
+   <property name="geometry">
+    <rect>
+     <x>100</x>
+     <y>400</y>
+     <width>251</width>
+     <height>41</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Нарисовать</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_12">
+   <property name="geometry">
+    <rect>
+     <x>70</x>
+     <y>500</y>
+     <width>31</width>
+     <height>31</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Шаг</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_14">
+   <property name="geometry">
+    <rect>
+     <x>120</x>
+     <y>220</y>
+     <width>201</width>
+     <height>31</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">font: 16pt &quot;Ubuntu&quot;;</string>
+   </property>
+   <property name="text">
+    <string>Нарисовать фигуру</string>
+   </property>
+   <property name="indent">
+    <number>-3</number>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="compareTimeButton">
+   <property name="geometry">
+    <rect>
+     <x>20</x>
+     <y>720</y>
+     <width>191</width>
+     <height>41</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Сравнение по времени</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="clearScreenButton">
+   <property name="geometry">
+    <rect>
+     <x>240</x>
+     <y>720</y>
+     <width>191</width>
+     <height>41</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Очистить экран</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_10">
+   <property name="geometry">
+    <rect>
+     <x>70</x>
+     <y>260</y>
+     <width>41</width>
+     <height>31</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>x_c</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_11">
+   <property name="geometry">
+    <rect>
+     <x>240</x>
+     <y>260</y>
+     <width>31</width>
+     <height>31</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>y_c</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_15">
+   <property name="geometry">
+    <rect>
+     <x>120</x>
+     <y>460</y>
+     <width>201</width>
+     <height>31</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">font: 16pt &quot;Ubuntu&quot;;</string>
+   </property>
+   <property name="text">
+    <string>Нарисовать спектр</string>
+   </property>
+   <property name="indent">
+    <number>-3</number>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="drawSpectrumButton">
+   <property name="geometry">
+    <rect>
+     <x>100</x>
+     <y>670</y>
+     <width>251</width>
+     <height>41</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Нарисовать</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_16">
+   <property name="geometry">
+    <rect>
+     <x>70</x>
+     <y>350</y>
+     <width>31</width>
+     <height>31</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>R_b</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_17">
+   <property name="geometry">
+    <rect>
+     <x>70</x>
+     <y>320</y>
+     <width>31</width>
+     <height>20</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>R_a</string>
+   </property>
+  </widget>
+  <widget class="QGroupBox" name="groupBox_2">
+   <property name="geometry">
+    <rect>
+     <x>290</x>
+     <y>150</y>
+     <width>101</width>
+     <height>61</height>
+    </rect>
+   </property>
+   <property name="title">
+    <string/>
+   </property>
+   <widget class="QRadioButton" name="white_back">
+    <property name="geometry">
+     <rect>
+      <x>0</x>
+      <y>0</y>
+      <width>112</width>
+      <height>23</height>
+     </rect>
+    </property>
+    <property name="contextMenuPolicy">
+     <enum>Qt::ActionsContextMenu</enum>
+    </property>
+    <property name="text">
+     <string>Белый</string>
+    </property>
+    <property name="checked">
+     <bool>true</bool>
+    </property>
+   </widget>
+   <widget class="QRadioButton" name="black_back">
+    <property name="geometry">
+     <rect>
+      <x>0</x>
+      <y>20</y>
+      <width>112</width>
+      <height>23</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Черный</string>
+    </property>
+   </widget>
+   <widget class="QRadioButton" name="yellow_back">
+    <property name="geometry">
+     <rect>
+      <x>0</x>
+      <y>40</y>
+      <width>112</width>
+      <height>23</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Серый</string>
+    </property>
+   </widget>
+  </widget>
+  <widget class="QGroupBox" name="groupBox_3">
+   <property name="geometry">
+    <rect>
+     <x>70</x>
+     <y>130</y>
+     <width>101</width>
+     <height>81</height>
+    </rect>
+   </property>
+   <property name="title">
+    <string/>
+   </property>
+   <widget class="QRadioButton" name="white_fg">
+    <property name="geometry">
+     <rect>
+      <x>0</x>
+      <y>0</y>
+      <width>112</width>
+      <height>23</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Белый</string>
+    </property>
+   </widget>
+   <widget class="QRadioButton" name="black_fg">
+    <property name="geometry">
+     <rect>
+      <x>0</x>
+      <y>20</y>
+      <width>112</width>
+      <height>23</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Черный</string>
+    </property>
+    <property name="checked">
+     <bool>true</bool>
+    </property>
+   </widget>
+   <widget class="QRadioButton" name="blue_fg">
+    <property name="geometry">
+     <rect>
+      <x>0</x>
+      <y>40</y>
+      <width>112</width>
+      <height>21</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Синий</string>
+    </property>
+   </widget>
+   <widget class="QRadioButton" name="blue_fg_2">
+    <property name="geometry">
+     <rect>
+      <x>0</x>
+      <y>60</y>
+      <width>112</width>
+      <height>21</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Красный</string>
+    </property>
+   </widget>
+  </widget>
+  <widget class="QLineEdit" name="x_centr">
+   <property name="geometry">
+    <rect>
+     <x>100</x>
+     <y>260</y>
+     <width>71</width>
+     <height>31</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>380</string>
+   </property>
+  </widget>
+  <widget class="QLineEdit" name="y_centr">
+   <property name="geometry">
+    <rect>
+     <x>280</x>
+     <y>260</y>
+     <width>71</width>
+     <height>31</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>380</string>
+   </property>
+  </widget>
+  <widget class="QLineEdit" name="R_a_figure">
+   <property name="enabled">
+    <bool>false</bool>
+   </property>
+   <property name="geometry">
+    <rect>
+     <x>100</x>
+     <y>310</y>
+     <width>71</width>
+     <height>31</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>200</string>
+   </property>
+  </widget>
+  <widget class="QLineEdit" name="R_b_figure">
+   <property name="enabled">
+    <bool>false</bool>
+   </property>
+   <property name="geometry">
+    <rect>
+     <x>100</x>
+     <y>350</y>
+     <width>71</width>
+     <height>31</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>200</string>
+   </property>
+  </widget>
+  <widget class="QLineEdit" name="step">
+   <property name="geometry">
+    <rect>
+     <x>110</x>
+     <y>500</y>
+     <width>71</width>
+     <height>31</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>5</string>
+   </property>
+  </widget>
+  <widget class="QLineEdit" name="N">
+   <property name="geometry">
+    <rect>
+     <x>310</x>
+     <y>500</y>
+     <width>71</width>
+     <height>31</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>50</string>
+   </property>
+  </widget>
+  <widget class="QGroupBox" name="groupBox_4">
+   <property name="geometry">
+    <rect>
+     <x>290</x>
+     <y>40</y>
+     <width>111</width>
+     <height>51</height>
+    </rect>
+   </property>
+   <property name="title">
+    <string/>
+   </property>
+   <widget class="QRadioButton" name="circle">
+    <property name="geometry">
+     <rect>
+      <x>0</x>
+      <y>10</y>
+      <width>112</width>
+      <height>23</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Окружность</string>
+    </property>
+    <property name="checked">
+     <bool>true</bool>
+    </property>
+   </widget>
+   <widget class="QRadioButton" name="ellipse">
+    <property name="geometry">
+     <rect>
+      <x>0</x>
+      <y>30</y>
+      <width>112</width>
+      <height>23</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Эллипс</string>
+    </property>
+    <property name="checked">
+     <bool>false</bool>
+    </property>
+   </widget>
+  </widget>
+  <widget class="QLabel" name="label_13">
+   <property name="geometry">
+    <rect>
+     <x>210</x>
+     <y>500</y>
+     <width>91</width>
+     <height>31</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Количество</string>
+   </property>
+  </widget>
+  <widget class="QComboBox" name="algoBox">
+   <property name="geometry">
+    <rect>
+     <x>20</x>
+     <y>50</y>
+     <width>241</width>
+     <height>31</height>
+    </rect>
+   </property>
+   <property name="currentText">
+    <string>Библиотечная функция</string>
+   </property>
+   <item>
+    <property name="text">
+     <string>Библиотечная функция</string>
+    </property>
+   </item>
+   <item>
+    <property name="text">
+     <string>Каноническое уравнение</string>
+    </property>
+   </item>
+   <item>
+    <property name="text">
+     <string>Параметрическое уравнение</string>
+    </property>
+   </item>
+   <item>
+    <property name="text">
+     <string>Брезенхем</string>
+    </property>
+   </item>
+   <item>
+    <property name="text">
+     <string>Алгоритм средней точки</string>
+    </property>
+   </item>
+  </widget>
+  <widget class="QLabel" name="label_5">
+   <property name="geometry">
+    <rect>
+     <x>300</x>
+     <y>10</y>
+     <width>121</width>
+     <height>31</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">font: 16pt &quot;Ubuntu&quot;;</string>
+   </property>
+   <property name="text">
+    <string>Фигура</string>
+   </property>
+  </widget>
+  <widget class="QLineEdit" name="R_figure">
+   <property name="geometry">
+    <rect>
+     <x>280</x>
+     <y>320</y>
+     <width>71</width>
+     <height>31</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>200</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_23">
+   <property name="geometry">
+    <rect>
+     <x>250</x>
+     <y>320</y>
+     <width>16</width>
+     <height>31</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>R</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_18">
+   <property name="geometry">
+    <rect>
+     <x>40</x>
+     <y>610</y>
+     <width>31</width>
+     <height>31</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>R_b</string>
+   </property>
+  </widget>
+  <widget class="QLineEdit" name="R_b_spectr">
+   <property name="enabled">
+    <bool>false</bool>
+   </property>
+   <property name="geometry">
+    <rect>
+     <x>80</x>
+     <y>611</y>
+     <width>71</width>
+     <height>31</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>65</string>
+   </property>
+  </widget>
+  <widget class="QLineEdit" name="R_a_spectr">
+   <property name="enabled">
+    <bool>false</bool>
+   </property>
+   <property name="geometry">
+    <rect>
+     <x>80</x>
+     <y>571</y>
+     <width>71</width>
+     <height>31</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>100</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_20">
+   <property name="geometry">
+    <rect>
+     <x>40</x>
+     <y>570</y>
+     <width>31</width>
+     <height>31</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>R_a</string>
+   </property>
+  </widget>
+  <widget class="QLineEdit" name="R_begin">
+   <property name="enabled">
+    <bool>false</bool>
+   </property>
+   <property name="geometry">
+    <rect>
+     <x>230</x>
+     <y>570</y>
+     <width>71</width>
+     <height>31</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>100</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_22">
+   <property name="geometry">
+    <rect>
+     <x>180</x>
+     <y>610</y>
+     <width>51</width>
+     <height>31</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>R_кон</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_25">
+   <property name="geometry">
+    <rect>
+     <x>180</x>
+     <y>570</y>
+     <width>51</width>
+     <height>31</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>R_нач</string>
+   </property>
+  </widget>
+  <widget class="QLineEdit" name="R_end">
+   <property name="enabled">
+    <bool>true</bool>
+   </property>
+   <property name="geometry">
+    <rect>
+     <x>230</x>
+     <y>610</y>
+     <width>71</width>
+     <height>31</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>300</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_26">
+   <property name="geometry">
+    <rect>
+     <x>340</x>
+     <y>540</y>
+     <width>71</width>
+     <height>17</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Скрыть</string>
+   </property>
+  </widget>
+  <widget class="QGroupBox" name="groupBox_5">
+   <property name="geometry">
+    <rect>
+     <x>320</x>
+     <y>560</y>
+     <width>111</width>
+     <height>81</height>
+    </rect>
+   </property>
+   <property name="title">
+    <string/>
+   </property>
+   <widget class="QRadioButton" name="R_beg_check">
+    <property name="geometry">
+     <rect>
+      <x>0</x>
+      <y>0</y>
+      <width>112</width>
+      <height>23</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>R_нач</string>
+    </property>
+    <property name="checked">
+     <bool>true</bool>
+    </property>
+   </widget>
+   <widget class="QRadioButton" name="R_end_check">
+    <property name="geometry">
+     <rect>
+      <x>0</x>
+      <y>20</y>
+      <width>112</width>
+      <height>23</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>R_кон</string>
+    </property>
+    <property name="checked">
+     <bool>false</bool>
+    </property>
+   </widget>
+   <widget class="QRadioButton" name="step_check">
+    <property name="geometry">
+     <rect>
+      <x>0</x>
+      <y>40</y>
+      <width>112</width>
+      <height>21</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Шаг</string>
+    </property>
+   </widget>
+   <widget class="QRadioButton" name="n_check">
+    <property name="geometry">
+     <rect>
+      <x>0</x>
+      <y>60</y>
+      <width>112</width>
+      <height>21</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Количество</string>
+    </property>
+   </widget>
+  </widget>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>

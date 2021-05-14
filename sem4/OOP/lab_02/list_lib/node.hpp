@@ -29,8 +29,7 @@ void Node<T>::setNext(const shared_ptr<Node<T>> &node) {
 
 
 template <typename T>
-void Node<T>::setNext(const Node<T> &node)
-{
+void Node<T>::setNext(const Node<T> &node) {
     shared_ptr<Node<T>> nodePtr(node);
     this->next = nodePtr;
 }

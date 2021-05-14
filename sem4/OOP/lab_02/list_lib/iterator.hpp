@@ -4,124 +4,172 @@
 #include "exceptions.h"
 
 
-template <typename T>
-ListIterator<T>::ListIterator() {
-    this->ptr.reset();
-}
-
 
 template <typename T>
-ListIterator<T>::ListIterator(const shared_ptr<Node<T>> &node) {
-    this->ptr = node;
+BaseIterator<T>::BaseIterator() {
+    this->ptr.lock() = nullptr;
 }
-
 
 template <typename T>
-ListIterator<T>::ListIterator(const ListIterator<T> &it) {
-    this->ptr = it.ptr.lock();
-}
-
+BaseIterator<T>::BaseIterator(const BaseIterator<T> &it) : ptr(it.ptr){}
 
 template <typename T>
-void ListIterator<T>::next() {
-    this->ptr = this->ptr.lock()->getNext();
-}
-
+BaseIterator<T>::BaseIterator(const shared_ptr<Node<T>> node) : ptr(node) {}
 
 template <typename T>
-bool ListIterator<T>::isOutOfBounds() const {
-    return this->ptr.lock() == nullptr;
-}
-
-
-template <typename T>
-ListIterator<T>::operator bool() const {
-    return this->ptr.lock() != nullptr;
-}
-
-
-template<typename T>
-weak_ptr<Node<T>> ListIterator<T>::getPtr() {
-    return this->ptr;
-}
-
-
-template <typename T>
-T* ListIterator<T>::operator->() {
-    return this->ptr;
-}
-
-
-template <typename T>
-const T* ListIterator<T>::operator->() const {
-    return this->ptr;
-}
-
-
-template <typename T>
-const T& ListIterator<T>::operator*() const {
-    if (this->isOutOfBounds()) {
-        throw iteratorException(__FUNCTION__ );
+BaseIterator<T> &BaseIterator<T>::operator= (const BaseIterator<T> &it) {
+    if (this != &it) {
+        this->ptr = it.ptr;
     }
-
-    return this->ptr.lock()->getData();
+    return *this;
 }
 
 
 template <typename T>
-T& ListIterator<T>::operator*() {
+BaseIterator<T>& BaseIterator<T>::next() {
     if (this->isOutOfBounds()) {
-        throw iteratorException(__FUNCTION__ );
-    }
-
-    return this->ptr.lock()->getData();
-}
-
-
-template <typename T>
-ListIterator<T> ListIterator<T>::operator++ (int) {
-    if (this->isOutOfBounds()) {
-        throw iteratorException(__FUNCTION__ );
-    }
-
-    ListIterator<T> newIt(*this);
-    this->next();
-    return newIt;
-}
-
-
-template <typename T>
-ListIterator<T> &ListIterator<T>::operator++ () {
-    if (this->isOutOfBounds()) {
-        throw iteratorException(__FUNCTION__ );
+        auto time = chrono::system_clock::to_time_t(chrono::system_clock::now());
+        throw iteratorException(__FUNCTION__, ctime(&time));
     }
 
     this->ptr = this->ptr.lock()->getNext();
     return *this;
 }
 
+template <typename T>
+BaseIterator<T> BaseIterator<T>::operator++ (int) {
+    BaseIterator<T> newIt(*this);
+    this->operator++();
+    return newIt;
+}
 
 template <typename T>
-bool ListIterator<T>::operator!= (const ListIterator<T> &it) const {
+BaseIterator<T> &BaseIterator<T>::operator++ () {
+    this->next();
+    return *this;
+}
+
+template <typename T>
+bool BaseIterator<T>::isOutOfBounds() const {
+    return this->ptr.lock() == nullptr;
+}
+
+template <typename T>
+bool BaseIterator<T>::operator!= (const BaseIterator<T> &it) const {
     return this->ptr.lock() != it.ptr.lock();
 }
 
-
 template <typename T>
-bool ListIterator<T>::operator== (const ListIterator<T> &it) const {
+bool BaseIterator<T>::operator== (const BaseIterator<T> &it) const {
     return this->ptr.lock() == it.ptr.lock();
 }
 
 
+
+template <typename T>
+ListIterator<T>::ListIterator() : BaseIterator<T>() {}
+
+template <typename T>
+ListIterator<T>::ListIterator(const shared_ptr<Node<T>> node) : BaseIterator<T>(node) {}
+
+template <typename T>
+ListIterator<T>::ListIterator(const ListIterator<T> &it) : BaseIterator<T>(it) {}
+
+
+template<typename T>
+T &ListIterator<T>::getCur() {
+    if (this->isOutOfBounds()) {
+        auto time = chrono::system_clock::to_time_t(chrono::system_clock::now());
+        throw iteratorException(__FUNCTION__, ctime(&time));
+    }
+
+    return this->ptr.lock()->getData();
+}
+
+
+template<typename T>
+const T &ListIterator<T>::getCur() const {
+    if (this->isOutOfBounds()) {
+        auto time = chrono::system_clock::to_time_t(chrono::system_clock::now());
+        throw iteratorException(__FUNCTION__, ctime(&time));
+    }
+
+    return this->ptr.lock()->getData();
+}
+
+
+template <typename T>
+T &ListIterator<T>::getNext() {
+    if (this->isOutOfBounds() || this->ptr.lock()->getNext() == nullptr) {
+        auto time = chrono::system_clock::to_time_t(chrono::system_clock::now());
+        throw iteratorException(__FUNCTION__, ctime(&time));
+    }
+
+    return this->ptr.lock()->getNext()->getData();
+}
+
+
+template <typename T>
+const T &ListIterator<T>::getNext() const {
+    if (this->isOutOfBounds() || this->ptr.lock()->getNext() == nullptr) {
+        auto time = chrono::system_clock::to_time_t(chrono::system_clock::now());
+        throw iteratorException(__FUNCTION__, ctime(&time));
+    }
+
+    return this->ptr.lock()->getNext()->getData();
+}
+
+template <typename T>
+T* ListIterator<T>::operator->() {
+    if (this->isOutOfBounds()) {
+        auto time = chrono::system_clock::to_time_t(chrono::system_clock::now());
+        throw iteratorException(__FUNCTION__, ctime(&time));
+    }
+
+    return &this->ptr.lock()->getData();
+}
+
+template <typename T>
+const T* ListIterator<T>::operator->() const {
+    if (this->isOutOfBounds()) {
+        auto time = chrono::system_clock::to_time_t(chrono::system_clock::now());
+        throw iteratorException(__FUNCTION__, ctime(&time));
+    }
+
+    return &this->ptr.lock()->getData();
+}
+
+template <typename T>
+const T& ListIterator<T>::operator*() const {
+    if (this->isOutOfBounds()) {
+        auto time = chrono::system_clock::to_time_t(chrono::system_clock::now());
+        throw iteratorException(__FUNCTION__, ctime(&time));
+    }
+
+    return this->ptr.lock()->getData();
+}
+
+template <typename T>
+T& ListIterator<T>::operator*() {
+    if (this->isOutOfBounds()) {
+        auto time = chrono::system_clock::to_time_t(chrono::system_clock::now());
+        throw iteratorException(__FUNCTION__, ctime(&time));
+    }
+
+    return this->ptr.lock()->getData();
+}
+
 template <typename T>
 ListIterator<T> &ListIterator<T>::operator+= (const int &size) {
     if (size < 0) {
-        throw sizeException(__FUNCTION__);
+        auto time = chrono::system_clock::to_time_t(chrono::system_clock::now());
+        throw sizeException(__FUNCTION__, ctime(&time));
     }
 
     for (int i = 0; i < size; i++) {
-        if (this->getPtr().lock() == nullptr) {
-            throw pointerException(__FUNCTION__);
+        if (this->ptr.lock() == nullptr) {
+            auto time = chrono::system_clock::to_time_t(chrono::system_clock::now());
+            throw pointerException(__FUNCTION__, ctime(&time));
         }
         this->next();
     }
@@ -133,7 +181,8 @@ ListIterator<T> &ListIterator<T>::operator+= (const int &size) {
 template <typename T>
 ListIterator<T> ListIterator<T>::operator+ (const int &size) const {
     if (size < 0) {
-        throw sizeException(__FUNCTION__);
+        auto time = chrono::system_clock::to_time_t(chrono::system_clock::now());
+        throw sizeException(__FUNCTION__, ctime(&time));
     }
 
     ListIterator<T> newIt(*this);
@@ -141,62 +190,68 @@ ListIterator<T> ListIterator<T>::operator+ (const int &size) const {
     return newIt;
 }
 
-
 template <typename T>
-ListIterator<T> ListIterator<T>::operator= (const ListIterator<T> &it) {
-    this->ptr = it.ptr.lock();
+ListIterator<T> &ListIterator<T>::operator= (const ListIterator<T> &it) {
+    if (this != &it) {
+        this->ptr = it.ptr;
+    }
     return *this;
 }
 
-
-
-
 template <typename T>
-ConstListIterator<T>::ConstListIterator() {
-    this->ptr = nullptr;
+ListIterator<T>::operator bool() const {
+    return this->ptr.lock() != nullptr;
 }
 
 
+
 template <typename T>
-ConstListIterator<T>::ConstListIterator(const ConstListIterator<T> &it) {
-    this->ptr = it.ptr.lock();
+ConstListIterator<T>::ConstListIterator() : BaseIterator<T>() {}
+
+template <typename T>
+ConstListIterator<T>::ConstListIterator(const ConstListIterator<T> &it) : BaseIterator<T>(it){}
+
+template <typename T>
+ConstListIterator<T>::ConstListIterator(const std::shared_ptr<Node<T>> node) : BaseIterator<T>(node){}
+
+
+template <typename T>
+const T &ConstListIterator<T>::getNext() const {
+    if (this->isOutOfBounds() || this->ptr.lock()->getNext() == nullptr) {
+        auto time = chrono::system_clock::to_time_t(chrono::system_clock::now());
+        throw iteratorException(__FUNCTION__, ctime(&time));
+    }
+
+    return this->ptr.lock()->getNext()->getData();
 }
 
+template<typename T>
+const T &ConstListIterator<T>::getCur() const {
+    if (this->isOutOfBounds()) {
+        auto time = chrono::system_clock::to_time_t(chrono::system_clock::now());
+        throw iteratorException(__FUNCTION__, ctime(&time));
+    }
 
-template <typename T>
-ConstListIterator<T>::ConstListIterator(const std::shared_ptr<Node<T>> &node) {
-    this->ptr = node;
-}
-
-
-template <typename T>
-void ConstListIterator<T>::next() {
-    this->ptr = this->ptr.lock()->getNext();
-}
-
-
-template <typename T>
-bool ConstListIterator<T>::isOutOfBounds() const {
-    return this->ptr.lock() == nullptr;
+    return this->ptr.lock()->getData();
 }
 
 
 template <typename T>
 const T* ConstListIterator<T>::operator->() const {
-    return this->ptr.lock().get();
-}
+    if (this->isOutOfBounds()) {
+        auto time = chrono::system_clock::to_time_t(chrono::system_clock::now());
+        throw iteratorException(__FUNCTION__, ctime(&time));
+    }
 
-
-template <typename T>
-weak_ptr<Node<T>> ConstListIterator<T>::getPtr() {
-    return this->ptr;
+    return &this->ptr.lock()->getData();
 }
 
 
 template <typename T>
 const T& ConstListIterator<T>::operator*() const {
     if (this->isOutOfBounds()) {
-        throw iteratorException(__FUNCTION__ );
+        auto time = chrono::system_clock::to_time_t(chrono::system_clock::now());
+        throw iteratorException(__FUNCTION__, ctime(&time));
     }
 
     return this->ptr.lock()->getData();
@@ -208,51 +263,26 @@ ConstListIterator<T>::operator bool() const {
     return this->ptr.lock() != nullptr;
 }
 
-
 template <typename T>
-ConstListIterator<T> &ConstListIterator<T>::operator++ () {
-    if (this->isOutOfBounds()) {
-        throw iteratorException(__FUNCTION__ );
+ConstListIterator<T> &ConstListIterator<T>::operator= (const ConstListIterator<T> &it) {
+    if (this != &it) {
+        this->ptr = it.ptr;
     }
-
-    this->next();
     return *this;
-}
-
-
-template <typename T>
-ConstListIterator<T> ConstListIterator<T>::operator++ (int) {
-    if (this->isOutOfBounds()) {
-        throw iteratorException(__FUNCTION__ );
-    }
-
-    ConstListIterator<T> newIt(*this);
-    this->next();
-    return newIt;
-}
-
-
-template <typename T>
-bool ConstListIterator<T>::operator!= (const ConstListIterator<T> &it) const {
-    return this->ptr.lock() != it.ptr.lock();
-}
-
-
-template <typename T>
-bool ConstListIterator<T>::operator== (const ConstListIterator<T> &it) const {
-    return this->ptr.lock() == it.ptr.lock();
 }
 
 
 template <typename T>
 ConstListIterator<T> &ConstListIterator<T>::operator+= (const int &size) {
     if (size < 0) {
-        throw sizeException(__FUNCTION__);
+        auto time = chrono::system_clock::to_time_t(chrono::system_clock::now());
+        throw sizeException(__FUNCTION__, ctime(&time));
     }
 
     for (int i = 0; i < size; i++) {
-        if (this->getPtr().lock() == nullptr) {
-            throw pointerException(__FUNCTION__);
+        if (this->ptr.lock() == nullptr) {
+            auto time = chrono::system_clock::to_time_t(chrono::system_clock::now());
+            throw pointerException(__FUNCTION__, ctime(&time));
         }
         this->next();
     }
@@ -262,16 +292,15 @@ ConstListIterator<T> &ConstListIterator<T>::operator+= (const int &size) {
 
 
 template <typename T>
-ConstListIterator<T> ConstListIterator<T>::operator= (const ListIterator<T> &it) {
-    this->ptr = it.ptr.lock();
-    return *this;
-}
-
-
-template <typename T>
 ConstListIterator<T> ConstListIterator<T>::operator+ (const int &size) const {
     if (size < 0) {
-        throw sizeException(__FUNCTION__);
+        auto time = chrono::system_clock::to_time_t(chrono::system_clock::now());
+        throw sizeException(__FUNCTION__, ctime(&time));
+    }
+
+    if (this->isOutOfBounds()) {
+        auto time = chrono::system_clock::to_time_t(chrono::system_clock::now());
+        throw iteratorException(__FUNCTION__, ctime(&time));
     }
 
     ConstListIterator<T> newIt(*this);

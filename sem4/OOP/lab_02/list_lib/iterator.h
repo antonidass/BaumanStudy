@@ -4,75 +4,73 @@
 #include <iterator>
 #include "node.h"
 
-
 template <typename T>
 class BaseIterator : iterator<input_iterator_tag, T> {
 public:
+    BaseIterator();
+    BaseIterator(const BaseIterator<T> &baseIt);
+    BaseIterator(const shared_ptr<Node<T>> node);
     virtual ~BaseIterator() = default;
+
+    BaseIterator<T> &operator=(const BaseIterator<T> &baseIt);
+
+    BaseIterator<T> &next();
+    BaseIterator<T> &operator++();
+    BaseIterator<T> operator++(int);
+
+    bool isOutOfBounds() const;
+
+    bool operator==(const BaseIterator<T> &baseIt) const;
+    bool operator!=(const BaseIterator<T> &baseIt) const;
 
 protected:
     weak_ptr<Node<T>> ptr;
-    virtual bool isOutOfBounds() const = 0;
-    virtual weak_ptr<Node<T>> getPtr() = 0;
 };
 
 
 template <typename T>
-class ListIterator : BaseIterator<T> {
+class ListIterator : public BaseIterator<T> {
 public:
     ListIterator();
     ListIterator(const ListIterator<T> &iterator);
-    ListIterator(const shared_ptr<Node<T>> &node);
+    ListIterator(const shared_ptr<Node<T>> node);
 
-    virtual void next();
-    bool isOutOfBounds() const override;
-    weak_ptr<Node<T>> getPtr() override;
+    T &getCur();
+    const T &getCur() const;
 
-    operator bool() const;
+    T &getNext();
+    const T &getNext() const;
 
-    T* operator-> ();
-    const T* operator-> () const;
+    explicit operator bool() const;
 
-    const T& operator* () const;
-    T& operator* ();
+    T *operator->();
+    const T *operator->() const;
 
-    ListIterator<T> &operator++ ();
-    ListIterator<T> operator++ (int);
+    T &operator*();
+    const T &operator*() const;
 
-    bool operator!= (const ListIterator<T> &it) const;
-    bool operator== (const ListIterator<T> &it) const;
-
-    ListIterator<T> &operator+= (const int &size);
-    ListIterator<T> operator+ (const int &size) const;
-    ListIterator<T> operator= (const ListIterator<T> &it);
+    ListIterator<T> &operator+=(const int &size);
+    ListIterator<T> operator+(const int &size) const;
+    ListIterator<T> &operator=(const ListIterator<T> &it);
 };
 
 
 template <typename T>
-class ConstListIterator : BaseIterator<T> {
+class ConstListIterator : public BaseIterator<T> {
 public:
     ConstListIterator();
     ConstListIterator(const ConstListIterator<T> &it);
-    ConstListIterator(const shared_ptr<Node<T>> &node);
+    ConstListIterator(const shared_ptr<Node<T>> node);
 
-    virtual void next();
-    virtual bool isOutOfBounds() const override;
-    weak_ptr<Node<T>> getPtr() override;
-
-    operator bool() const;
-
+    const T &getNext() const;
+    const T &getCur() const;
+    explicit operator bool() const;
     const T *operator->() const;
     const T &operator*() const;
 
-    ConstListIterator<T> &operator++ ();
-    ConstListIterator<T> operator++ (int);
-
-    bool operator!= (const ConstListIterator<T> &it) const;
-    bool operator== (const ConstListIterator<T> &it) const;
-
+    ConstListIterator<T> &operator=(const ConstListIterator<T> &it);
     ConstListIterator<T> &operator+= (const int &size);
     ConstListIterator<T> operator+ (const int &size) const;
-    ConstListIterator<T> operator= (const ListIterator<T> &it);
 };
 
 #include "iterator.hpp"

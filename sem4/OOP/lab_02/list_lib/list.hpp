@@ -3,7 +3,7 @@
 
 
 template <typename T>
-List<T>::List() {
+List<T>::List() noexcept {
     this->size = 0;
     this->setHead(nullptr);
     this->setTail(nullptr);
@@ -11,7 +11,7 @@ List<T>::List() {
 
 
 template <typename T>
-List<T>::List(List<T> &&list) {
+List<T>::List(List<T> &&list) noexcept {
     this->size = list.size;
     this->setHead(list.head);
     this->setTail(list.tail);
@@ -20,8 +20,9 @@ List<T>::List(List<T> &&list) {
 
 template <typename T>
 List<T>::List(List<T> &list) : List() {
-    for (Node<T> node: list) {
-        this->pushBack(node.getData());
+    auto it = list.begin();
+    for (; it != list.end() + 1; it++) {
+        this->pushBack(*it);
     }
 }
 
@@ -29,11 +30,13 @@ List<T>::List(List<T> &list) : List() {
 template <typename T>
 List<T>::List(T *const array, const int &size) : List() {
     if (!array) {
-        throw pointerException(__FUNCTION__);
+        auto time = chrono::system_clock::to_time_t(chrono::system_clock::now());
+        throw pointerException(__FUNCTION__, ctime(&time));
     }
 
     if (size <= 0) {
-        throw sizeException(__FUNCTION__);
+        auto time = chrono::system_clock::to_time_t(chrono::system_clock::now());
+        throw sizeException(__FUNCTION__, ctime(&time));
     }
 
     for (int i = 0; i < size; i++) {
@@ -44,8 +47,8 @@ List<T>::List(T *const array, const int &size) : List() {
 
 template <typename T>
 List<T>::List(initializer_list<T> nodes) : List() {
-    for (const Node<T> &node: nodes) {
-        this->pushBack(node.getData());
+    for (const T &data: nodes) {
+        this->pushBack(data);
     }
 }
 
@@ -74,9 +77,9 @@ void List<T>::clear() {
 
 
 template <typename T>
-void List<T>::swap(List<T> &other) {
-    shared_ptr<Node<T>> tempHead = other.getHead();
-    shared_ptr<Node<T>> tempTail = other.getTail();
+void List<T>::swap(List<T> &other) noexcept {
+    shared_ptr<Node<T>> tempHead = other.head;
+    shared_ptr<Node<T>> tempTail = other.tail;
 
     other.setHead(this->head);
     other.setTail(this->tail);
@@ -89,7 +92,8 @@ void List<T>::swap(List<T> &other) {
 template <typename T>
 T List<T>::popFront() {
     if (!this->head) {
-        throw emptyListException(__FUNCTION__ );
+        auto time = chrono::system_clock::to_time_t(chrono::system_clock::now());
+        throw emptyListException(__FUNCTION__ , ctime(&time));
     }
 
     T data = this->head->getData();
@@ -110,7 +114,8 @@ T List<T>::popFront() {
 template <typename T>
 T List<T>::popBack() {
     if (this->isEmpty()) {
-        throw emptyListException(__FUNCTION__ );
+        auto time = chrono::system_clock::to_time_t(chrono::system_clock::now());
+        throw emptyListException(__FUNCTION__ , ctime(&time));
     }
 
     T data = this->tail->getData();
@@ -148,7 +153,8 @@ void List<T>::pushBack(const T &data) {
     shared_ptr<Node<T>> node = make_shared<Node<T>>(data);
 
     if (!node) {
-        throw memoryException(__FUNCTION__);
+        auto time = chrono::system_clock::to_time_t(chrono::system_clock::now());
+        throw memoryException(__FUNCTION__, ctime(&time));
     }
 
     if (!this->size) {
@@ -176,7 +182,8 @@ void List<T>::pushFront(const T &data) {
     shared_ptr<Node<T>> node = make_shared<Node<T>>(data);
 
     if (!node) {
-        throw memoryException(__FUNCTION__);
+        auto time = chrono::system_clock::to_time_t(chrono::system_clock::now());
+        throw memoryException(__FUNCTION__, ctime(&time));
     }
 
     node->setNext(this->head);
@@ -192,87 +199,143 @@ void List<T>::pushFront(const T &data) {
 
 
 template <typename T>
-void List<T>::insert(ListIterator<T> &iterator, const T &data) {
-    if (iterator.isOutOfBounds()) {
-        throw iteratorException(__FUNCTION__);
-    }
+void List<T>::insert(ListIterator<T> &it, const T &data) {
+    shared_ptr<Node<T>> curNode = this->head;
+    shared_ptr<Node<T>> tmp = nullptr;
+    ListIterator<T> cur = this->begin();
 
-    if (iterator == this->begin()) {
-        this->pushFront(data);
-    }
-    else if (iterator == this->end()) {
-        this->pushBack(data);
-    }
-    else {
-        std::shared_ptr<Node<T>> temp_node = make_shared<Node<T>>(data);
+    if (this->head == nullptr && cur == it) {
+        shared_ptr<Node<T>> newNode = make_shared<Node<T>>(data);
 
-        if (!temp_node) {
-            throw memoryException(__FUNCTION__ );
+        if (!newNode) {
+            auto time = chrono::system_clock::to_time_t(chrono::system_clock::now());
+            throw memoryException(__FUNCTION__, ctime(&time));
         }
+        this->head = newNode;
+        this->tail = newNode;
+        return;
+    }
 
-        ListIterator<T> tempIt = this->begin();
+    for (; curNode && cur != it; tmp = curNode, curNode = curNode->getNext(), cur.next()) { ; }
 
-        while (tempIt + 1 != iterator) {
-            tempIt++;
-        }
+    if (curNode == nullptr) {
+        auto time = chrono::system_clock::to_time_t(chrono::system_clock::now());
+        throw iteratorException(__FUNCTION__, ctime(&time));
+    }
 
-        shared_ptr<Node<T>> nextNode = iterator.getPtr().lock();
-        tempIt.getPtr().lock()->setNext(temp_node);
-        temp_node->setNext(nextNode);
-        this->size++;
+    shared_ptr<Node<T>> newNode = make_shared<Node<T>>(data);
+
+    if (!newNode) {
+        auto time = chrono::system_clock::to_time_t(chrono::system_clock::now());
+        throw memoryException(__FUNCTION__, ctime(&time));
+    }
+
+    if (curNode == this->head) {
+        newNode->setNext(this->head);
+        this->head = newNode;
+    } else {
+        newNode->setNext(tmp->getNext());
+        tmp->setNext(newNode);
     }
 }
 
 
 template <typename T>
-void List<T>::insert(ListIterator<T> &iterator, const List<T> &list) {
-    if (iterator.isOutOfBounds()) {
-        throw iteratorException(__FUNCTION__);
+void List<T>::insert(ListIterator<T> &it, const List<T> &list) {
+    if (it.isOutOfBounds()) {
+        auto time = chrono::system_clock::to_time_t(chrono::system_clock::now());
+        throw iteratorException(__FUNCTION__, ctime(&time));
     }
 
     for (int i = 0; i < list.size; i++) {
-        insert(iterator, (*(list.cbegin() + i)));
+        insert(it, (*(list.cbegin() + i)));
     }
 }
 
 
 template <typename T>
-void List<T>::remove(const T& value)
-{
-    if (this->isEmpty()) {
-        throw emptyListException(__FUNCTION__);
+template<typename V>
+void List<T>::insert(ListIterator<T> &it, const V &first, const V &last) {
+    if (it.isOutOfBounds()) {
+        auto time = chrono::system_clock::to_time_t(chrono::system_clock::now());
+        throw iteratorException(__FUNCTION__, ctime(&time));
     }
 
-    if (this->head->getData() == value) {
-        this->popFront();
+    for (auto cur = first; cur != last; cur++) {
+        insert(it, *cur);
     }
-    else {
-        ListIterator<T> it = this->begin();
-        while (it + 1 != this->end() && *(it + 1) != value) {
-            it++;
-        }
+}
 
-        if (it + 1 != this->end()) {
-            shared_ptr<Node<T>> curNode = it.getPtr().lock();
-            curNode->setNext(curNode->getNext()->getNext());
-            this->size--;
-        }
+
+template <typename T>
+template<typename V>
+void List<T>::insert(ConstListIterator<T> &it, const V &first, const V &last) {
+    if (it.isOutOfBounds()) {
+        auto time = chrono::system_clock::to_time_t(chrono::system_clock::now());
+        throw iteratorException(__FUNCTION__, ctime(&time));
     }
+
+    for (auto cur = first; cur != last; cur++) {
+        insert(it, *cur);
+    }
+}
+
+
+
+template <typename T>
+T List<T>::remove(const ListIterator<T> &it) {
+    if (it.isOutOfBounds()) {
+        auto time = chrono::system_clock::to_time_t(chrono::system_clock::now());
+        throw iteratorException(__FUNCTION__, ctime(&time));
+    }
+
+    if (!this->size) {
+        auto time = chrono::system_clock::to_time_t(chrono::system_clock::now());
+        throw emptyListException(__FUNCTION__ , ctime(&time));
+    }
+
+    shared_ptr<Node<T>> curNode = this->head;
+    shared_ptr<Node<T>> tmp = nullptr;
+    ListIterator<T> cur = this->begin();
+
+    for (; curNode && cur != it; tmp = curNode, curNode = curNode->getNext(), cur.next()) { ; }
+
+    if (curNode == nullptr) {
+        auto time = chrono::system_clock::to_time_t(chrono::system_clock::now());
+        throw iteratorException(__FUNCTION__, ctime(&time));
+    }
+
+    T data = it.getCur();
+
+    if (curNode->getNext() == nullptr) {
+        this->tail = tmp;
+    }
+
+    if (curNode == this->head) {
+        this->head = this->head->getNext();
+    } else {
+        tmp->setNext(curNode->getNext());
+    }
+
+    this->size--;
+
+    return data;
 }
 
 
 template <typename T>
 shared_ptr<Node<T>> List<T>::reverseOrder(shared_ptr<Node<T>> temp) {
     if (!temp) {
-        return nullptr;
+        auto time = chrono::system_clock::to_time_t(chrono::system_clock::now());
+        throw emptyListException(__FUNCTION__, ctime(&time));
     }
 
     if (!temp->getNext()) {
         return temp;
     }
 
-    shared_ptr<Node<T>> rev_head = reverseOrder(temp->getNext());
-    shared_ptr<Node<T>> node = rev_head;
+    shared_ptr<Node<T>> revHead = reverseOrder(temp->getNext());
+    shared_ptr<Node<T>> node = revHead;
 
     while (node->getNext()) {
         node = node->getNext();
@@ -281,7 +344,7 @@ shared_ptr<Node<T>> List<T>::reverseOrder(shared_ptr<Node<T>> temp) {
     node->setNext(temp);
     temp->setNext(nullptr);
 
-    return rev_head;
+    return revHead;
 }
 
 
@@ -330,10 +393,24 @@ List<T> &List<T>::operator= (const List<T> &list) {
 
 
 template <typename T>
-List<T> &List<T>::operator= (const List<T> &&list) {
+List<T> &List<T>::operator+ (const List<T> &list) {
+    this->pushBack(list);
+    return *this;
+}
+
+
+template <typename T>
+List<T> &List<T>::operator+ (const T &data) {
+    this->pushBack(data);
+    return *this;
+}
+
+
+template <typename T>
+List<T> &List<T>::operator= (List<T> &&list) noexcept {
     this->size = list.size;
-    this->head = list.head;
-    this->tail = list.tail;
+    this->setHead(list.head);
+    this->setTail(list.tail);
 }
 
 
@@ -352,53 +429,49 @@ List<T> &List<T>::operator+= (const T &data) {
 
 
 template<typename V>
-ostream &operator<< (ostream &os, const List<V> &list) {
-    for (auto it = list.cbegin(); it != list.cend(); it++) {
-        os << (*it) << " ";
+ostream &operator<< (ostream &os, List<V> &list) {
+    ListIterator<V> it = list.begin();
+    for (; !it.isOutOfBounds(); it.next()) {
+        os << it.getCur() << " ";
     }
+    os << endl;
 
     return os;
 }
 
 
 template <typename T>
-ListIterator<T> List<T>::begin() {
-    ListIterator<T> it(this->head);
-    return it;
+ConstListIterator<T> List<T>::begin() const {
+    return cbegin();
 }
 
+template <typename T>
+ListIterator<T> List<T>::begin() {
+    return ListIterator<T>(head);
+}
 
 template <typename T>
 ConstListIterator<T> List<T>::cbegin() const {
-    ConstListIterator<T> it(this->head);
-    return it;
+    return ConstListIterator<T>(head);
 }
 
 
 template <typename T>
 ListIterator<T> List<T>::end() {
-    ListIterator<T> it(this->tail);
-    return ++it;
+    return ListIterator<T>(tail);
 }
 
 
 template <typename T>
 ConstListIterator<T> List<T>::cend() const {
-    ConstListIterator<T> it(this->tail);
-    return ++it;
+    return ConstListIterator<T>(tail);
 }
-
 
 template <typename T>
-shared_ptr<Node<T>> List<T>::getHead() {
-    return this->head;
+ConstListIterator<T> List<T>::end() const {
+    return cend();
 }
 
-
-template <typename T>
-shared_ptr<Node<T>> List<T>::getTail() {
-    return this->tail;
-}
 
 
 template <typename T>

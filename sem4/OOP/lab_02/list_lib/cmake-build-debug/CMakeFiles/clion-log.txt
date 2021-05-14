@@ -1,4 +1,4 @@
-/snap/clion/149/bin/cmake/linux/bin/cmake -DCMAKE_BUILD_TYPE=Debug -G "CodeBlocks - Unix Makefiles" /home/akrik/CLionProjects/list_lib
+/snap/clion/151/bin/cmake/linux/bin/cmake -DCMAKE_BUILD_TYPE=Debug -G "CodeBlocks - Unix Makefiles" /home/akrik/CLionProjects/list_lib
 -- Configuring done
 -- Generating done
 -- Build files have been written to: /home/akrik/CLionProjects/list_lib/cmake-build-debug

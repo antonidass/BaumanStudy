@@ -9,11 +9,11 @@ template <typename T>
 class Node {
 public:
     Node();
-    Node(const T &data);
-    Node(shared_ptr<Node<T>> &node);
+    explicit Node(const T &data);
+    explicit Node(shared_ptr<Node<T>> &node);
     ~Node() = default;
 
-    void setNext(const std::shared_ptr<Node<T>> &node);
+    void setNext(const shared_ptr<Node<T>> &node);
     void setNext(const Node<T> &node);
     void setNextNull();
 
