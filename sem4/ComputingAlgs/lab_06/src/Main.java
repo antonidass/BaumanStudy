@@ -1,7 +1,8 @@
 public class Main {
     private static Double[] X = {1.0, 2.0, 3.0, 4.0, 5.0, 6.0};
     private static Double[] Y = {0.571, 0.889, 1.091, 1.231, 1.333, 1.412};
-    private static Double[][] table = {{0.0, 0.0, 0.0, 0.0, 0.0, 0.0},
+    private static Double[][] table = {
+            {0.0, 0.0, 0.0, 0.0, 0.0, 0.0},
             {0.0, 0.0, 0.0, 0.0, 0.0, 0.0},
             {0.0, 0.0, 0.0, 0.0, 0.0, 0.0},
             {0.0, 0.0, 0.0, 0.0, 0.0, 0.0},
@@ -48,7 +49,7 @@ public class Main {
         return null;
     }
 
-    private static Double alignVarsDiff(Double[] y, Double[] x, Double step, int i) {
+    private static Double alignVarsDiff(Double[] y, Double[] x, int i) {
         if (i <= y.length - 2) {
             Double etaKsiDiff = (1 / y[i + 1] - 1 / y[i]) / (1 / x[i + 1] - 1 / x[i]);
             Double Y = y[i];
@@ -60,26 +61,16 @@ public class Main {
 
 
     public static void main(String[] args) {
-        System.out.print("x : ");
-        for (Double x : X) {
-            System.out.print(x + " ");
-        }
-        System.out.print("\ny : ");
-        for (Double y : Y) {
-            System.out.print(y + " ");
-        }
-        System.out.println();
-
-        System.out.println("Left side    Center Side    Runge Diff    Align Vars Diff     SecondDiff");
+        System.out.println(" X          Y        Left side    Center Side    RungeDiff      AlignVarsDiff      SecondDiff");
 
         for (int i = 0; i < X.length; i++) {
+            System.out.print(X[i] + "   |   " + Y[i] + "   |   ");
             Double res = leftSide(Y, X[1] - X[0], i);
             if (res != null) {
                 System.out.printf(" %.3f    |  ", res);
             } else {
                 System.out.printf(" -----    |  ");
             }
-
             res = centerSide(Y, X[1] - X[0], i);
             if (res != null) {
                 System.out.printf("  %.3f     | ", res);
@@ -92,7 +83,7 @@ public class Main {
             } else {
                 System.out.printf("   -----     | ");
             }
-            res = alignVarsDiff(Y, X, X[1] - X[0], i);
+            res = alignVarsDiff(Y, X, i);
             if (res != null) {
                 System.out.printf("    %.3f       | ", res);
             } else {

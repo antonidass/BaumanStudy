@@ -1,5 +1,4 @@
 import sys
-import os
 
 import ui
 from PyQt5 import QtWidgets, QtCore, QtGui
@@ -13,8 +12,8 @@ HEIGHT = 651
 UI_WIDE = 461
 UI_HEIGHT = 11
 
-global pen_color
-global bg_color
+# global pen_color
+# global bg_color
 
 
 class GUI(QtWidgets.QMainWindow, ui.Ui_GUI):
@@ -30,13 +29,18 @@ class GUI(QtWidgets.QMainWindow, ui.Ui_GUI):
         w = self.graphicsView.width()
         self.scene.setSceneRect(0, 0, w-2, h-2)
 
-        bg_color = Qt.white
-        pen_color = Qt.black
-        self.pen = QPen(pen_color)
+        # bg_color = Qt.white
+        # pen_color = Qt.black
+        self.pen_color = Qt.black
+        self.bg_color = Qt.white
+
+        self.pen = QPen(self.pen_color)
         self.pen.setWidth(1)
 
+        
+
         self.image = QImage(WIDE, HEIGHT, QImage.Format_ARGB32_Premultiplied)
-        self.image.fill(bg_color)
+        self.image.fill(self.bg_color)
 
         self.black_back.clicked.connect(self.set_black_bg)
         self.white_back.clicked.connect(self.set_white_bg)
@@ -52,27 +56,26 @@ class GUI(QtWidgets.QMainWindow, ui.Ui_GUI):
         self.edges = []
         self.point_now = None
         self.point_start = None
+
+        self.locked = False
  
 
+
     def set_black_bg(self):
-        global bg_color
-        bg_color = Qt.black
+        self.bg_color = Qt.black
         self.graphicsView.setStyleSheet("background-color: black")
 
     def set_white_bg(self):
-        global bg_color
-        bg_color = Qt.white
+        self.bg_color = Qt.white
         self.graphicsView.setStyleSheet("background-color: white")
 
 
     def set_black_pen(self):
-        global pen_color
-        pen_color = Qt.black
+        self.pen_color = Qt.black
         self.pen.setColor(Qt.black)
 
     def set_white_pen(self):
-        global pen_color
-        pen_color = Qt.white
+        self.pen_color = Qt.white
         self.pen.setColor(Qt.white)
     
 
@@ -92,7 +95,8 @@ class GUI(QtWidgets.QMainWindow, ui.Ui_GUI):
         self.point_now = None
         self.point_start = None
         self.scene.clear()
-        self.image.fill(bg_color)
+        self.image.fill(self.bg_color)
+        self.locked = False
 
 
     
@@ -111,7 +115,6 @@ class GUI(QtWidgets.QMainWindow, ui.Ui_GUI):
         y = QTableWidgetItem("{0}".format(y))
         self.table.setItem(i, 0, x)
         self.table.setItem(i, 1, y)
-        
 
 
     def add_point_btn(self):
@@ -126,7 +129,6 @@ class GUI(QtWidgets.QMainWindow, ui.Ui_GUI):
         self.add_point(x, y)
 
 
-
     def lock(self):
         x1, y1 = self.point_now[0], self.point_now[1]
         x2, y2 = self.point_start[0], self.point_start[1]
@@ -135,27 +137,29 @@ class GUI(QtWidgets.QMainWindow, ui.Ui_GUI):
         self.scene.addLine(x1, y1, x2, y2, self.pen)
 
         self.point_now = None
-
+        self.locked = True
 
 
     def mousePressEvent(self, event):
         if event.button() == Qt.LeftButton:
             x = event.x() - UI_WIDE
             y = event.y() - UI_HEIGHT
+
+            if x < 0 or y < 0 or x > WIDE or y > HEIGHT:
+                return
+
             self.add_point(x, y)
         else:
             return self.lock()
 
 
-
     def draw_edges(self, image, edges):
         p = QPainter()
         p.begin(image)
-        p.setPen(QPen(pen_color))
+        p.setPen(QPen(self.pen_color))
         for e in edges:
             p.drawLine(e[0], e[1], e[2], e[3])
         p.end()
-
 
 
 
@@ -184,26 +188,35 @@ class GUI(QtWidgets.QMainWindow, ui.Ui_GUI):
 
 
     def activate_pixel(self, p, x, cur_y):
-        if QColor(self.image.pixel(x, cur_y)) == bg_color:
-            p.setPen(QPen(pen_color))
+        if QColor(self.image.pixel(x, cur_y)) == self.bg_color:
+            p.setPen(QPen(self.pen_color))
         else:
-            p.setPen(QPen(bg_color))
+            p.setPen(QPen(self.bg_color))
         
 
 
     def fill_polygon(self):
+        if self.locked == False:
+            QtWidgets.QMessageBox.critical(self, "Ошибка!", "Фигура не замкнута. Пожалуйста, замкните фигуру.")
+            return
+
+        if len(self.edges) <= 2:
+            QtWidgets.QMessageBox.critical(self, "Ошибка!", "Недостаточно ребер!")
+            return
+
+
         t = QTime()
         pix = QPixmap()
         p = QPainter()
 
         t.start()
-        xm = int(self.find_max_x(self.edges)) # находим крайнюю правую точку
+        xm = int(self.find_max_x(self.edges))
         p.begin(self.image)
 
         for ed in self.edges:
             x1, y1 = ed[0], ed[1]
             x2, y2 = ed[2], ed[3]
-
+       
             if y1 == y2:
                 continue
 
@@ -218,22 +231,23 @@ class GUI(QtWidgets.QMainWindow, ui.Ui_GUI):
 
             while cur_y < end_y:
                 x = start_x
-                while x < xm:
+                while x <= xm:
                     self.activate_pixel(p, x, cur_y)
                     p.drawPoint(x, cur_y)
                     x += 1
 
                 start_x += dx
                 cur_y += 1
+
                 if self.delayBox.isChecked():
                     self.delay(pix)
 
             pix.convertFromImage(self.image)
             self.scene.addPixmap(pix)
+
         p.end()
         self.displaytime(t.elapsed())
         self.draw_edges(self.image, self.edges)
-
 
 
     def add_row(self):

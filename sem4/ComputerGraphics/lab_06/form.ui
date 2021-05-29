@@ -1,0 +1,487 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>GUI</class>
+ <widget class="QWidget" name="GUI">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>1230</width>
+    <height>672</height>
+   </rect>
+  </property>
+  <property name="palette">
+   <palette>
+    <active>
+     <colorrole role="Button">
+      <brush brushstyle="SolidPattern">
+       <color alpha="255">
+        <red>238</red>
+        <green>238</green>
+        <blue>236</blue>
+       </color>
+      </brush>
+     </colorrole>
+     <colorrole role="Base">
+      <brush brushstyle="SolidPattern">
+       <color alpha="255">
+        <red>255</red>
+        <green>255</green>
+        <blue>255</blue>
+       </color>
+      </brush>
+     </colorrole>
+     <colorrole role="Window">
+      <brush brushstyle="SolidPattern">
+       <color alpha="255">
+        <red>231</red>
+        <green>183</green>
+        <blue>112</blue>
+       </color>
+      </brush>
+     </colorrole>
+    </active>
+    <inactive>
+     <colorrole role="Button">
+      <brush brushstyle="SolidPattern">
+       <color alpha="255">
+        <red>238</red>
+        <green>238</green>
+        <blue>236</blue>
+       </color>
+      </brush>
+     </colorrole>
+     <colorrole role="Base">
+      <brush brushstyle="SolidPattern">
+       <color alpha="255">
+        <red>255</red>
+        <green>255</green>
+        <blue>255</blue>
+       </color>
+      </brush>
+     </colorrole>
+     <colorrole role="Window">
+      <brush brushstyle="SolidPattern">
+       <color alpha="255">
+        <red>231</red>
+        <green>183</green>
+        <blue>112</blue>
+       </color>
+      </brush>
+     </colorrole>
+    </inactive>
+    <disabled>
+     <colorrole role="Button">
+      <brush brushstyle="SolidPattern">
+       <color alpha="255">
+        <red>238</red>
+        <green>238</green>
+        <blue>236</blue>
+       </color>
+      </brush>
+     </colorrole>
+     <colorrole role="Base">
+      <brush brushstyle="SolidPattern">
+       <color alpha="255">
+        <red>231</red>
+        <green>183</green>
+        <blue>112</blue>
+       </color>
+      </brush>
+     </colorrole>
+     <colorrole role="Window">
+      <brush brushstyle="SolidPattern">
+       <color alpha="255">
+        <red>231</red>
+        <green>183</green>
+        <blue>112</blue>
+       </color>
+      </brush>
+     </colorrole>
+    </disabled>
+   </palette>
+  </property>
+  <property name="windowTitle">
+   <string>GUI</string>
+  </property>
+  <property name="autoFillBackground">
+   <bool>false</bool>
+  </property>
+  <widget class="QGraphicsView" name="graphicsView">
+   <property name="geometry">
+    <rect>
+     <x>460</x>
+     <y>10</y>
+     <width>761</width>
+     <height>651</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label">
+   <property name="geometry">
+    <rect>
+     <x>80</x>
+     <y>80</y>
+     <width>91</width>
+     <height>31</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">font: 16pt &quot;Ubuntu&quot;;</string>
+   </property>
+   <property name="text">
+    <string>Заливка</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_2">
+   <property name="geometry">
+    <rect>
+     <x>210</x>
+     <y>80</y>
+     <width>51</width>
+     <height>31</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">font: 16pt &quot;Ubuntu&quot;;</string>
+   </property>
+   <property name="text">
+    <string>Фон</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="drawButton">
+   <property name="geometry">
+    <rect>
+     <x>100</x>
+     <y>410</y>
+     <width>251</width>
+     <height>41</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>14</pointsize>
+    </font>
+   </property>
+   <property name="text">
+    <string>Закрасить</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="clearScreenButton">
+   <property name="geometry">
+    <rect>
+     <x>100</x>
+     <y>460</y>
+     <width>251</width>
+     <height>41</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>14</pointsize>
+    </font>
+   </property>
+   <property name="text">
+    <string>Очистить экран</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_10">
+   <property name="geometry">
+    <rect>
+     <x>220</x>
+     <y>220</y>
+     <width>41</width>
+     <height>31</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>14</pointsize>
+    </font>
+   </property>
+   <property name="text">
+    <string>X</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_11">
+   <property name="geometry">
+    <rect>
+     <x>310</x>
+     <y>220</y>
+     <width>31</width>
+     <height>31</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>14</pointsize>
+    </font>
+   </property>
+   <property name="text">
+    <string>Y</string>
+   </property>
+  </widget>
+  <widget class="QLineEdit" name="X">
+   <property name="geometry">
+    <rect>
+     <x>200</x>
+     <y>250</y>
+     <width>71</width>
+     <height>31</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>380</string>
+   </property>
+  </widget>
+  <widget class="QLineEdit" name="Y">
+   <property name="geometry">
+    <rect>
+     <x>280</x>
+     <y>250</y>
+     <width>71</width>
+     <height>31</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>380</string>
+   </property>
+  </widget>
+  <widget class="QCheckBox" name="delayBox">
+   <property name="geometry">
+    <rect>
+     <x>170</x>
+     <y>50</y>
+     <width>131</width>
+     <height>21</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>14</pointsize>
+    </font>
+   </property>
+   <property name="text">
+    <string>Задержка</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="addPointButton">
+   <property name="geometry">
+    <rect>
+     <x>100</x>
+     <y>310</y>
+     <width>251</width>
+     <height>41</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>14</pointsize>
+    </font>
+   </property>
+   <property name="text">
+    <string>Добавить точку</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="closeButton">
+   <property name="geometry">
+    <rect>
+     <x>100</x>
+     <y>360</y>
+     <width>251</width>
+     <height>41</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>14</pointsize>
+    </font>
+   </property>
+   <property name="text">
+    <string>Замкнуть</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="timeLabel">
+   <property name="geometry">
+    <rect>
+     <x>260</x>
+     <y>10</y>
+     <width>191</width>
+     <height>31</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">font: 16pt &quot;Ubuntu&quot;;</string>
+   </property>
+   <property name="text">
+    <string>Время : </string>
+   </property>
+  </widget>
+  <widget class="QTableWidget" name="table">
+   <property name="geometry">
+    <rect>
+     <x>100</x>
+     <y>510</y>
+     <width>251</width>
+     <height>111</height>
+    </rect>
+   </property>
+   <attribute name="horizontalHeaderMinimumSectionSize">
+    <number>57</number>
+   </attribute>
+   <attribute name="horizontalHeaderDefaultSectionSize">
+    <number>125</number>
+   </attribute>
+   <column>
+    <property name="text">
+     <string>X</string>
+    </property>
+    <property name="textAlignment">
+     <set>AlignCenter</set>
+    </property>
+   </column>
+   <column>
+    <property name="text">
+     <string>Y</string>
+    </property>
+    <property name="textAlignment">
+     <set>AlignCenter</set>
+    </property>
+   </column>
+  </widget>
+  <widget class="QLabel" name="label_4">
+   <property name="geometry">
+    <rect>
+     <x>100</x>
+     <y>240</y>
+     <width>101</width>
+     <height>51</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Добавление точки</string>
+   </property>
+   <property name="wordWrap">
+    <bool>true</bool>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_5">
+   <property name="geometry">
+    <rect>
+     <x>300</x>
+     <y>80</y>
+     <width>101</width>
+     <height>31</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">font: 16pt &quot;Ubuntu&quot;;</string>
+   </property>
+   <property name="text">
+    <string>Границы</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="fg_colorButton">
+   <property name="geometry">
+    <rect>
+     <x>80</x>
+     <y>130</y>
+     <width>89</width>
+     <height>25</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="bg_colorButton">
+   <property name="geometry">
+    <rect>
+     <x>190</x>
+     <y>130</y>
+     <width>89</width>
+     <height>25</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="edge_colorButton">
+   <property name="geometry">
+    <rect>
+     <x>300</x>
+     <y>130</y>
+     <width>89</width>
+     <height>25</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+  </widget>
+  <widget class="QGroupBox" name="groupBox">
+   <property name="geometry">
+    <rect>
+     <x>100</x>
+     <y>180</y>
+     <width>211</width>
+     <height>41</height>
+    </rect>
+   </property>
+   <property name="title">
+    <string/>
+   </property>
+   <widget class="QRadioButton" name="checkPoint">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>0</y>
+      <width>131</width>
+      <height>23</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Выбор вершин</string>
+    </property>
+    <property name="checked">
+     <bool>true</bool>
+    </property>
+   </widget>
+   <widget class="QRadioButton" name="checkSeedPoint">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>20</y>
+      <width>191</width>
+      <height>23</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Выбор точки затравки</string>
+    </property>
+   </widget>
+  </widget>
+  <widget class="QLabel" name="seedLabel">
+   <property name="geometry">
+    <rect>
+     <x>320</x>
+     <y>160</y>
+     <width>121</width>
+     <height>61</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Точка затравки: (0, 0) </string>
+   </property>
+   <property name="alignment">
+    <set>Qt::AlignCenter</set>
+   </property>
+   <property name="wordWrap">
+    <bool>true</bool>
+   </property>
+  </widget>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>

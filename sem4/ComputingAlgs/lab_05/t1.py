@@ -167,7 +167,7 @@ def general_function(param):
 
 
 def Gauss(f, a, b, num):
-    args, coeffs = legendre(num)
+    args, coeffs = leggauss(num)
     res = 0
     sub_f = lambda tao : f((b + a) / 2 + ((b - a) / 2) * tao)
 
