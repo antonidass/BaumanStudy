@@ -1,0 +1,516 @@
+{
+	"BUILD_DIR" : "/home/akrik/Рабочий стол/lab_3/build_cmake/lab_03_autogen",
+	"CMAKE_BINARY_DIR" : "/home/akrik/Рабочий стол/lab_3/build_cmake",
+	"CMAKE_CURRENT_BINARY_DIR" : "/home/akrik/Рабочий стол/lab_3/build_cmake",
+	"CMAKE_CURRENT_SOURCE_DIR" : "/home/akrik/Рабочий стол/lab_3/build_cmake",
+	"CMAKE_EXECUTABLE" : "/snap/clion/152/bin/cmake/linux/bin/cmake",
+	"CMAKE_LIST_FILES" : 
+	[
+		"/home/akrik/Рабочий стол/lab_3/build_cmake/CMakeLists.txt",
+		"/home/akrik/Рабочий стол/lab_3/build_cmake/CMakeFiles/3.19.2/CMakeSystem.cmake",
+		"/snap/clion/152/bin/cmake/linux/share/cmake-3.19/Modules/CMakeSystemSpecificInitialize.cmake",
+		"/home/akrik/Рабочий стол/lab_3/build_cmake/CMakeFiles/3.19.2/CMakeCCompiler.cmake",
+		"/home/akrik/Рабочий стол/lab_3/build_cmake/CMakeFiles/3.19.2/CMakeCXXCompiler.cmake",
+		"/snap/clion/152/bin/cmake/linux/share/cmake-3.19/Modules/CMakeSystemSpecificInformation.cmake",
+		"/snap/clion/152/bin/cmake/linux/share/cmake-3.19/Modules/CMakeGenericSystem.cmake",
+		"/snap/clion/152/bin/cmake/linux/share/cmake-3.19/Modules/CMakeInitializeConfigs.cmake",
+		"/snap/clion/152/bin/cmake/linux/share/cmake-3.19/Modules/Platform/Linux.cmake",
+		"/snap/clion/152/bin/cmake/linux/share/cmake-3.19/Modules/Platform/UnixPaths.cmake",
+		"/snap/clion/152/bin/cmake/linux/share/cmake-3.19/Modules/CMakeFindCodeBlocks.cmake",
+		"/snap/clion/152/bin/cmake/linux/share/cmake-3.19/Modules/CMakeExtraGeneratorDetermineCompilerMacrosAndIncludeDirs.cmake",
+		"/snap/clion/152/bin/cmake/linux/share/cmake-3.19/Modules/ProcessorCount.cmake",
+		"/snap/clion/152/bin/cmake/linux/share/cmake-3.19/Modules/CMakeCInformation.cmake",
+		"/snap/clion/152/bin/cmake/linux/share/cmake-3.19/Modules/CMakeLanguageInformation.cmake",
+		"/snap/clion/152/bin/cmake/linux/share/cmake-3.19/Modules/Compiler/GNU-C.cmake",
+		"/snap/clion/152/bin/cmake/linux/share/cmake-3.19/Modules/Compiler/GNU.cmake",
+		"/snap/clion/152/bin/cmake/linux/share/cmake-3.19/Modules/Compiler/CMakeCommonCompilerMacros.cmake",
+		"/snap/clion/152/bin/cmake/linux/share/cmake-3.19/Modules/Platform/Linux-GNU-C.cmake",
+		"/snap/clion/152/bin/cmake/linux/share/cmake-3.19/Modules/Platform/Linux-GNU.cmake",
+		"/snap/clion/152/bin/cmake/linux/share/cmake-3.19/Modules/CMakeCommonLanguageInclude.cmake",
+		"/snap/clion/152/bin/cmake/linux/share/cmake-3.19/Modules/CMakeCXXInformation.cmake",
+		"/snap/clion/152/bin/cmake/linux/share/cmake-3.19/Modules/CMakeLanguageInformation.cmake",
+		"/snap/clion/152/bin/cmake/linux/share/cmake-3.19/Modules/Compiler/GNU-CXX.cmake",
+		"/snap/clion/152/bin/cmake/linux/share/cmake-3.19/Modules/Compiler/GNU.cmake",
+		"/snap/clion/152/bin/cmake/linux/share/cmake-3.19/Modules/Platform/Linux-GNU-CXX.cmake",
+		"/snap/clion/152/bin/cmake/linux/share/cmake-3.19/Modules/Platform/Linux-GNU.cmake",
+		"/snap/clion/152/bin/cmake/linux/share/cmake-3.19/Modules/CMakeCommonLanguageInclude.cmake",
+		"/usr/lib/x86_64-linux-gnu/cmake/Qt5/Qt5ConfigVersion.cmake",
+		"/usr/lib/x86_64-linux-gnu/cmake/Qt5/Qt5Config.cmake",
+		"/usr/lib/x86_64-linux-gnu/cmake/Qt5/Qt5ModuleLocation.cmake",
+		"/usr/lib/x86_64-linux-gnu/cmake/Qt5Core/Qt5CoreConfigVersion.cmake",
+		"/usr/lib/x86_64-linux-gnu/cmake/Qt5Core/Qt5CoreConfig.cmake",
+		"/usr/lib/x86_64-linux-gnu/cmake/Qt5Core/Qt5CoreConfigExtras.cmake",
+		"/usr/lib/x86_64-linux-gnu/cmake/Qt5Core/Qt5CoreConfigExtrasMkspecDir.cmake",
+		"/usr/lib/x86_64-linux-gnu/cmake/Qt5Core/Qt5CoreMacros.cmake",
+		"/snap/clion/152/bin/cmake/linux/share/cmake-3.19/Modules/CMakeParseArguments.cmake",
+		"/usr/lib/x86_64-linux-gnu/cmake/Qt5Gui/Qt5GuiConfigVersion.cmake",
+		"/usr/lib/x86_64-linux-gnu/cmake/Qt5Gui/Qt5GuiConfig.cmake",
+		"/usr/lib/x86_64-linux-gnu/cmake/Qt5Gui/Qt5Gui_QComposePlatformInputContextPlugin.cmake",
+		"/usr/lib/x86_64-linux-gnu/cmake/Qt5Gui/Qt5Gui_QEglFSEmulatorIntegrationPlugin.cmake",
+		"/usr/lib/x86_64-linux-gnu/cmake/Qt5Gui/Qt5Gui_QEglFSIntegrationPlugin.cmake",
+		"/usr/lib/x86_64-linux-gnu/cmake/Qt5Gui/Qt5Gui_QEglFSKmsEglDeviceIntegrationPlugin.cmake",
+		"/usr/lib/x86_64-linux-gnu/cmake/Qt5Gui/Qt5Gui_QEglFSKmsGbmIntegrationPlugin.cmake",
+		"/usr/lib/x86_64-linux-gnu/cmake/Qt5Gui/Qt5Gui_QEglFSX11IntegrationPlugin.cmake",
+		"/usr/lib/x86_64-linux-gnu/cmake/Qt5Gui/Qt5Gui_QEvdevKeyboardPlugin.cmake",
+		"/usr/lib/x86_64-linux-gnu/cmake/Qt5Gui/Qt5Gui_QEvdevMousePlugin.cmake",
+		"/usr/lib/x86_64-linux-gnu/cmake/Qt5Gui/Qt5Gui_QEvdevTabletPlugin.cmake",
+		"/usr/lib/x86_64-linux-gnu/cmake/Qt5Gui/Qt5Gui_QEvdevTouchScreenPlugin.cmake",
+		"/usr/lib/x86_64-linux-gnu/cmake/Qt5Gui/Qt5Gui_QGifPlugin.cmake",
+		"/usr/lib/x86_64-linux-gnu/cmake/Qt5Gui/Qt5Gui_QICOPlugin.cmake",
+		"/usr/lib/x86_64-linux-gnu/cmake/Qt5Gui/Qt5Gui_QIbusPlatformInputContextPlugin.cmake",
+		"/usr/lib/x86_64-linux-gnu/cmake/Qt5Gui/Qt5Gui_QJpegPlugin.cmake",
+		"/usr/lib/x86_64-linux-gnu/cmake/Qt5Gui/Qt5Gui_QLibInputPlugin.cmake",
+		"/usr/lib/x86_64-linux-gnu/cmake/Qt5Gui/Qt5Gui_QLinuxFbIntegrationPlugin.cmake",
+		"/usr/lib/x86_64-linux-gnu/cmake/Qt5Gui/Qt5Gui_QMinimalEglIntegrationPlugin.cmake",
+		"/usr/lib/x86_64-linux-gnu/cmake/Qt5Gui/Qt5Gui_QMinimalIntegrationPlugin.cmake",
+		"/usr/lib/x86_64-linux-gnu/cmake/Qt5Gui/Qt5Gui_QOffscreenIntegrationPlugin.cmake",
+		"/usr/lib/x86_64-linux-gnu/cmake/Qt5Gui/Qt5Gui_QSvgIconPlugin.cmake",
+		"/usr/lib/x86_64-linux-gnu/cmake/Qt5Gui/Qt5Gui_QSvgPlugin.cmake",
+		"/usr/lib/x86_64-linux-gnu/cmake/Qt5Gui/Qt5Gui_QTuioTouchPlugin.cmake",
+		"/usr/lib/x86_64-linux-gnu/cmake/Qt5Gui/Qt5Gui_QVncIntegrationPlugin.cmake",
+		"/usr/lib/x86_64-linux-gnu/cmake/Qt5Gui/Qt5Gui_QXcbEglIntegrationPlugin.cmake",
+		"/usr/lib/x86_64-linux-gnu/cmake/Qt5Gui/Qt5Gui_QXcbGlxIntegrationPlugin.cmake",
+		"/usr/lib/x86_64-linux-gnu/cmake/Qt5Gui/Qt5Gui_QXcbIntegrationPlugin.cmake",
+		"/usr/lib/x86_64-linux-gnu/cmake/Qt5Gui/Qt5GuiConfigExtras.cmake",
+		"/usr/lib/x86_64-linux-gnu/cmake/Qt5Widgets/Qt5WidgetsConfigVersion.cmake",
+		"/usr/lib/x86_64-linux-gnu/cmake/Qt5Widgets/Qt5WidgetsConfig.cmake",
+		"/usr/lib/x86_64-linux-gnu/cmake/Qt5Widgets/Qt5WidgetsConfigExtras.cmake",
+		"/usr/lib/x86_64-linux-gnu/cmake/Qt5Widgets/Qt5WidgetsMacros.cmake",
+		"/snap/clion/152/bin/cmake/linux/share/cmake-3.19/Modules/CMakeParseArguments.cmake"
+	],
+	"CMAKE_SOURCE_DIR" : "/home/akrik/Рабочий стол/lab_3/build_cmake",
+	"DEP_FILE" : "",
+	"DEP_FILE_RULE_NAME" : "",
+	"HEADERS" : 
+	[
+		[
+			"/home/akrik/Рабочий стол/lab_3/inc/builder/base_builder.h",
+			"MU",
+			"ROYEA4M7BD/moc_base_builder.cpp"
+		],
+		[
+			"/home/akrik/Рабочий стол/lab_3/inc/builder/builder_camera.h",
+			"MU",
+			"ROYEA4M7BD/moc_builder_camera.cpp"
+		],
+		[
+			"/home/akrik/Рабочий стол/lab_3/inc/builder/builder_figure.h",
+			"MU",
+			"ROYEA4M7BD/moc_builder_figure.cpp"
+		],
+		[
+			"/home/akrik/Рабочий стол/lab_3/inc/builder/builder_scene.h",
+			"MU",
+			"ROYEA4M7BD/moc_builder_scene.cpp"
+		],
+		[
+			"/home/akrik/Рабочий стол/lab_3/inc/commands/base_command.h",
+			"MU",
+			"3TPMNDYATT/moc_base_command.cpp"
+		],
+		[
+			"/home/akrik/Рабочий стол/lab_3/inc/commands/camera_command.h",
+			"MU",
+			"3TPMNDYATT/moc_camera_command.cpp"
+		],
+		[
+			"/home/akrik/Рабочий стол/lab_3/inc/commands/model_command.h",
+			"MU",
+			"3TPMNDYATT/moc_model_command.cpp"
+		],
+		[
+			"/home/akrik/Рабочий стол/lab_3/inc/commands/scene_command.h",
+			"MU",
+			"3TPMNDYATT/moc_scene_command.cpp"
+		],
+		[
+			"/home/akrik/Рабочий стол/lab_3/inc/configuration/abstract_cfg.h",
+			"MU",
+			"AAFYCSJIWA/moc_abstract_cfg.cpp"
+		],
+		[
+			"/home/akrik/Рабочий стол/lab_3/inc/configuration/configuration.h",
+			"MU",
+			"AAFYCSJIWA/moc_configuration.cpp"
+		],
+		[
+			"/home/akrik/Рабочий стол/lab_3/inc/configuration/creator_cfg.h",
+			"MU",
+			"AAFYCSJIWA/moc_creator_cfg.cpp"
+		],
+		[
+			"/home/akrik/Рабочий стол/lab_3/inc/drawer/abstract_drawer.h",
+			"MU",
+			"FJXGX6WBG5/moc_abstract_drawer.cpp"
+		],
+		[
+			"/home/akrik/Рабочий стол/lab_3/inc/drawer/abstract_drawer_factory.h",
+			"MU",
+			"FJXGX6WBG5/moc_abstract_drawer_factory.cpp"
+		],
+		[
+			"/home/akrik/Рабочий стол/lab_3/inc/drawer/drawer_qt.h",
+			"MU",
+			"FJXGX6WBG5/moc_drawer_qt.cpp"
+		],
+		[
+			"/home/akrik/Рабочий стол/lab_3/inc/drawer/drawer_qt_factory.h",
+			"MU",
+			"FJXGX6WBG5/moc_drawer_qt_factory.cpp"
+		],
+		[
+			"/home/akrik/Рабочий стол/lab_3/inc/exceptions.h",
+			"MU",
+			"LQIULNKSCQ/moc_exceptions.cpp"
+		],
+		[
+			"/home/akrik/Рабочий стол/lab_3/inc/facade/facade.h",
+			"MU",
+			"EW66V7SSOY/moc_facade.cpp"
+		],
+		[
+			"/home/akrik/Рабочий стол/lab_3/inc/loader/base_loader.h",
+			"MU",
+			"RDXSWVB33X/moc_base_loader.cpp"
+		],
+		[
+			"/home/akrik/Рабочий стол/lab_3/inc/loader/base_loader_camera.h",
+			"MU",
+			"RDXSWVB33X/moc_base_loader_camera.cpp"
+		],
+		[
+			"/home/akrik/Рабочий стол/lab_3/inc/loader/base_loader_figure.h",
+			"MU",
+			"RDXSWVB33X/moc_base_loader_figure.cpp"
+		],
+		[
+			"/home/akrik/Рабочий стол/lab_3/inc/loader/base_loader_scene.h",
+			"MU",
+			"RDXSWVB33X/moc_base_loader_scene.cpp"
+		],
+		[
+			"/home/akrik/Рабочий стол/lab_3/inc/loader/loader_camera_file.h",
+			"MU",
+			"RDXSWVB33X/moc_loader_camera_file.cpp"
+		],
+		[
+			"/home/akrik/Рабочий стол/lab_3/inc/loader/loader_figure_file.h",
+			"MU",
+			"RDXSWVB33X/moc_loader_figure_file.cpp"
+		],
+		[
+			"/home/akrik/Рабочий стол/lab_3/inc/loader/loader_scene_file.h",
+			"MU",
+			"RDXSWVB33X/moc_loader_scene_file.cpp"
+		],
+		[
+			"/home/akrik/Рабочий стол/lab_3/inc/mainwindow.h",
+			"MU",
+			"LQIULNKSCQ/moc_mainwindow.cpp"
+		],
+		[
+			"/home/akrik/Рабочий стол/lab_3/inc/managers/draw/draw_manager.h",
+			"MU",
+			"ID6SCM7KXK/moc_draw_manager.cpp"
+		],
+		[
+			"/home/akrik/Рабочий стол/lab_3/inc/managers/draw/draw_manager_creator.h",
+			"MU",
+			"ID6SCM7KXK/moc_draw_manager_creator.cpp"
+		],
+		[
+			"/home/akrik/Рабочий стол/lab_3/inc/managers/load/base_load_controller.h",
+			"MU",
+			"LQNJXML44B/moc_base_load_controller.cpp"
+		],
+		[
+			"/home/akrik/Рабочий стол/lab_3/inc/managers/load/load_manager.h",
+			"MU",
+			"LQNJXML44B/moc_load_manager.cpp"
+		],
+		[
+			"/home/akrik/Рабочий стол/lab_3/inc/managers/load/load_manager_creator.h",
+			"MU",
+			"LQNJXML44B/moc_load_manager_creator.cpp"
+		],
+		[
+			"/home/akrik/Рабочий стол/lab_3/inc/managers/load/load_model_controller.h",
+			"MU",
+			"LQNJXML44B/moc_load_model_controller.cpp"
+		],
+		[
+			"/home/akrik/Рабочий стол/lab_3/inc/managers/load/load_model_controller_creator.h",
+			"MU",
+			"LQNJXML44B/moc_load_model_controller_creator.cpp"
+		],
+		[
+			"/home/akrik/Рабочий стол/lab_3/inc/managers/load/load_scene_controller.h",
+			"MU",
+			"LQNJXML44B/moc_load_scene_controller.cpp"
+		],
+		[
+			"/home/akrik/Рабочий стол/lab_3/inc/managers/load/load_scene_controller_creator.h",
+			"MU",
+			"LQNJXML44B/moc_load_scene_controller_creator.cpp"
+		],
+		[
+			"/home/akrik/Рабочий стол/lab_3/inc/managers/scene/scene_manager.h",
+			"MU",
+			"WZD4T423RF/moc_scene_manager.cpp"
+		],
+		[
+			"/home/akrik/Рабочий стол/lab_3/inc/managers/scene/scene_manager_creator.h",
+			"MU",
+			"WZD4T423RF/moc_scene_manager_creator.cpp"
+		],
+		[
+			"/home/akrik/Рабочий стол/lab_3/inc/managers/transform/transform_manager.h",
+			"MU",
+			"4KTARQT4GA/moc_transform_manager.cpp"
+		],
+		[
+			"/home/akrik/Рабочий стол/lab_3/inc/managers/transform/transform_manager_creator.h",
+			"MU",
+			"4KTARQT4GA/moc_transform_manager_creator.cpp"
+		],
+		[
+			"/home/akrik/Рабочий стол/lab_3/inc/model/figure_details.h",
+			"MU",
+			"QX5IOWSFFE/moc_figure_details.cpp"
+		],
+		[
+			"/home/akrik/Рабочий стол/lab_3/inc/model/link.h",
+			"MU",
+			"QX5IOWSFFE/moc_link.cpp"
+		],
+		[
+			"/home/akrik/Рабочий стол/lab_3/inc/model/point.h",
+			"MU",
+			"QX5IOWSFFE/moc_point.cpp"
+		],
+		[
+			"/home/akrik/Рабочий стол/lab_3/inc/object/camera.h",
+			"MU",
+			"6WOD2ECLHZ/moc_camera.cpp"
+		],
+		[
+			"/home/akrik/Рабочий стол/lab_3/inc/object/composite.h",
+			"MU",
+			"6WOD2ECLHZ/moc_composite.cpp"
+		],
+		[
+			"/home/akrik/Рабочий стол/lab_3/inc/object/figure.h",
+			"MU",
+			"6WOD2ECLHZ/moc_figure.cpp"
+		],
+		[
+			"/home/akrik/Рабочий стол/lab_3/inc/object/object.h",
+			"MU",
+			"6WOD2ECLHZ/moc_object.cpp"
+		],
+		[
+			"/home/akrik/Рабочий стол/lab_3/inc/scene/scene.h",
+			"MU",
+			"JZZTG3FIRE/moc_scene.cpp"
+		],
+		[
+			"/home/akrik/Рабочий стол/lab_3/inc/visitor/transform_visitor.h",
+			"MU",
+			"BYQ32LXMAZ/moc_transform_visitor.cpp"
+		],
+		[
+			"/home/akrik/Рабочий стол/lab_3/inc/visitor/visitor.h",
+			"MU",
+			"BYQ32LXMAZ/moc_visitor.cpp"
+		]
+	],
+	"HEADER_EXTENSIONS" : [ "h", "hh", "h++", "hm", "hpp", "hxx", "in", "txx" ],
+	"INCLUDE_DIR" : "/home/akrik/Рабочий стол/lab_3/build_cmake/lab_03_autogen/include",
+	"MOC_COMPILATION_FILE" : "/home/akrik/Рабочий стол/lab_3/build_cmake/lab_03_autogen/mocs_compilation.cpp",
+	"MOC_DEFINITIONS" : [ "QT_CORE_LIB", "QT_GUI_LIB", "QT_WIDGETS_LIB" ],
+	"MOC_DEPEND_FILTERS" : 
+	[
+		[
+			"Q_PLUGIN_METADATA",
+			"[\n][ \t]*Q_PLUGIN_METADATA[ \t]*\\([^\\)]*FILE[ \t]*\"([^\"]+)\""
+		]
+	],
+	"MOC_INCLUDES" : 
+	[
+		"/usr/include/x86_64-linux-gnu/qt5",
+		"/usr/include/x86_64-linux-gnu/qt5/QtCore",
+		"/usr/lib/x86_64-linux-gnu/qt5/mkspecs/linux-g++",
+		"/usr/include/x86_64-linux-gnu/qt5/QtGui",
+		"/usr/include/x86_64-linux-gnu/qt5/QtWidgets",
+		"/usr/include/c++/10",
+		"/usr/include/x86_64-linux-gnu/c++/10",
+		"/usr/include/c++/10/backward",
+		"/usr/lib/gcc/x86_64-linux-gnu/10/include",
+		"/usr/local/include",
+		"/usr/include/x86_64-linux-gnu",
+		"/usr/include"
+	],
+	"MOC_MACRO_NAMES" : [ "Q_OBJECT", "Q_GADGET", "Q_NAMESPACE", "Q_NAMESPACE_EXPORT" ],
+	"MOC_OPTIONS" : [],
+	"MOC_PATH_PREFIX" : false,
+	"MOC_PREDEFS_CMD" : 
+	[
+		"/usr/bin/c++",
+		"-dM",
+		"-E",
+		"-c",
+		"/snap/clion/152/bin/cmake/linux/share/cmake-3.19/Modules/CMakeCXXCompilerABI.cpp"
+	],
+	"MOC_PREDEFS_FILE" : "/home/akrik/Рабочий стол/lab_3/build_cmake/lab_03_autogen/moc_predefs.h",
+	"MOC_RELAXED_MODE" : false,
+	"MOC_SKIP" : [],
+	"MULTI_CONFIG" : false,
+	"PARALLEL" : 6,
+	"PARSE_CACHE_FILE" : "/home/akrik/Рабочий стол/lab_3/build_cmake/CMakeFiles/lab_03_autogen.dir/ParseCache.txt",
+	"QT_MOC_EXECUTABLE" : "/usr/lib/qt5/bin/moc",
+	"QT_UIC_EXECUTABLE" : "/usr/lib/qt5/bin/uic",
+	"QT_VERSION_MAJOR" : 5,
+	"QT_VERSION_MINOR" : 14,
+	"SETTINGS_FILE" : "/home/akrik/Рабочий стол/lab_3/build_cmake/CMakeFiles/lab_03_autogen.dir/AutogenUsed.txt",
+	"SOURCES" : 
+	[
+		[
+			"/home/akrik/Рабочий стол/lab_3/src/builder/builder_camera.cpp",
+			"MU"
+		],
+		[
+			"/home/akrik/Рабочий стол/lab_3/src/builder/builder_figure.cpp",
+			"MU"
+		],
+		[
+			"/home/akrik/Рабочий стол/lab_3/src/builder/builder_scene.cpp",
+			"MU"
+		],
+		[
+			"/home/akrik/Рабочий стол/lab_3/src/commands/camera_command.cpp",
+			"MU"
+		],
+		[
+			"/home/akrik/Рабочий стол/lab_3/src/commands/model_command.cpp",
+			"MU"
+		],
+		[
+			"/home/akrik/Рабочий стол/lab_3/src/commands/scene_command.cpp",
+			"MU"
+		],
+		[
+			"/home/akrik/Рабочий стол/lab_3/src/configuration/configuration.cpp",
+			"MU"
+		],
+		[
+			"/home/akrik/Рабочий стол/lab_3/src/configuration/creator_cfg.cpp",
+			"MU"
+		],
+		[
+			"/home/akrik/Рабочий стол/lab_3/src/drawer/drawer_qt.cpp",
+			"MU"
+		],
+		[
+			"/home/akrik/Рабочий стол/lab_3/src/drawer/drawer_qt_factory.cpp",
+			"MU"
+		],
+		[
+			"/home/akrik/Рабочий стол/lab_3/src/facade/facade.cpp",
+			"MU"
+		],
+		[
+			"/home/akrik/Рабочий стол/lab_3/src/loader/loader_camera_file.cpp",
+			"MU"
+		],
+		[
+			"/home/akrik/Рабочий стол/lab_3/src/loader/loader_figure_file.cpp",
+			"MU"
+		],
+		[
+			"/home/akrik/Рабочий стол/lab_3/src/loader/loader_scene_file.cpp",
+			"MU"
+		],
+		[ "/home/akrik/Рабочий стол/lab_3/src/main.cpp", "MU" ],
+		[ "/home/akrik/Рабочий стол/lab_3/src/mainwindow.cpp", "MU" ],
+		[
+			"/home/akrik/Рабочий стол/lab_3/src/managers/draw/draw_manager.cpp",
+			"MU"
+		],
+		[
+			"/home/akrik/Рабочий стол/lab_3/src/managers/draw/draw_manager_creator.cpp",
+			"MU"
+		],
+		[
+			"/home/akrik/Рабочий стол/lab_3/src/managers/load/base_load_controller.cpp",
+			"MU"
+		],
+		[
+			"/home/akrik/Рабочий стол/lab_3/src/managers/load/load_manager.cpp",
+			"MU"
+		],
+		[
+			"/home/akrik/Рабочий стол/lab_3/src/managers/load/load_manager_creator.cpp",
+			"MU"
+		],
+		[
+			"/home/akrik/Рабочий стол/lab_3/src/managers/load/load_model_controller.cpp",
+			"MU"
+		],
+		[
+			"/home/akrik/Рабочий стол/lab_3/src/managers/load/load_model_controller_creator.cpp",
+			"MU"
+		],
+		[
+			"/home/akrik/Рабочий стол/lab_3/src/managers/load/load_scene_controller.cpp",
+			"MU"
+		],
+		[
+			"/home/akrik/Рабочий стол/lab_3/src/managers/load/load_scene_controller_creator.cpp",
+			"MU"
+		],
+		[
+			"/home/akrik/Рабочий стол/lab_3/src/managers/scene/scene_manager.cpp",
+			"MU"
+		],
+		[
+			"/home/akrik/Рабочий стол/lab_3/src/managers/scene/scene_manager_creator.cpp",
+			"MU"
+		],
+		[
+			"/home/akrik/Рабочий стол/lab_3/src/managers/transform/transform_manager.cpp",
+			"MU"
+		],
+		[
+			"/home/akrik/Рабочий стол/lab_3/src/managers/transform/transform_manager_creator.cpp",
+			"MU"
+		],
+		[
+			"/home/akrik/Рабочий стол/lab_3/src/model/figure_details.cpp",
+			"MU"
+		],
+		[ "/home/akrik/Рабочий стол/lab_3/src/model/link.cpp", "MU" ],
+		[ "/home/akrik/Рабочий стол/lab_3/src/model/point.cpp", "MU" ],
+		[
+			"/home/akrik/Рабочий стол/lab_3/src/object/camera.cpp",
+			"MU"
+		],
+		[
+			"/home/akrik/Рабочий стол/lab_3/src/object/composite.cpp",
+			"MU"
+		],
+		[
+			"/home/akrik/Рабочий стол/lab_3/src/object/figure.cpp",
+			"MU"
+		],
+		[ "/home/akrik/Рабочий стол/lab_3/src/scene/scene.cpp", "MU" ],
+		[
+			"/home/akrik/Рабочий стол/lab_3/src/visitor/transform_visitor.cpp",
+			"MU"
+		]
+	],
+	"UIC_OPTIONS" : [],
+	"UIC_SEARCH_PATHS" : [],
+	"UIC_SKIP" : [],
+	"UIC_UI_FILES" : [],
+	"VERBOSITY" : 0
+}

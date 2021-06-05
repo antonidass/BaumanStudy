@@ -1,0 +1,272 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/akrik/Рабочий стол/lab_3/inc/builder/base_builder.h
+../object/object.h
+/home/akrik/Рабочий стол/lab_3/inc/object/object.h
+
+/home/akrik/Рабочий стол/lab_3/inc/builder/builder_figure.h
+../model/figure_details.h
+/home/akrik/Рабочий стол/lab_3/inc/model/figure_details.h
+../object/figure.h
+/home/akrik/Рабочий стол/lab_3/inc/object/figure.h
+base_builder.h
+/home/akrik/Рабочий стол/lab_3/inc/builder/base_builder.h
+
+/home/akrik/Рабочий стол/lab_3/inc/builder/builder_scene.h
+../scene/scene.h
+/home/akrik/Рабочий стол/lab_3/inc/scene/scene.h
+base_builder.h
+/home/akrik/Рабочий стол/lab_3/inc/builder/base_builder.h
+
+/home/akrik/Рабочий стол/lab_3/inc/commands/base_command.h
+string
+-
+
+/home/akrik/Рабочий стол/lab_3/inc/commands/camera_command.h
+base_command.h
+/home/akrik/Рабочий стол/lab_3/inc/commands/base_command.h
+memory
+-
+cstddef
+-
+
+/home/akrik/Рабочий стол/lab_3/inc/commands/model_command.h
+cstddef
+-
+memory
+-
+base_command.h
+/home/akrik/Рабочий стол/lab_3/inc/commands/base_command.h
+../object/object.h
+/home/akrik/Рабочий стол/lab_3/inc/object/object.h
+../model/point.h
+/home/akrik/Рабочий стол/lab_3/inc/model/point.h
+
+/home/akrik/Рабочий стол/lab_3/inc/drawer/abstract_drawer.h
+../model/point.h
+/home/akrik/Рабочий стол/lab_3/inc/model/point.h
+
+/home/akrik/Рабочий стол/lab_3/inc/loader/base_loader.h
+string
+-
+fstream
+-
+
+/home/akrik/Рабочий стол/lab_3/inc/loader/base_loader_figure.h
+base_loader.h
+/home/akrik/Рабочий стол/lab_3/inc/loader/base_loader.h
+../builder/builder_figure.h
+/home/akrik/Рабочий стол/lab_3/inc/builder/builder_figure.h
+
+/home/akrik/Рабочий стол/lab_3/inc/loader/base_loader_scene.h
+base_loader.h
+/home/akrik/Рабочий стол/lab_3/inc/loader/base_loader.h
+../builder/builder_scene.h
+/home/akrik/Рабочий стол/lab_3/inc/builder/builder_scene.h
+
+/home/akrik/Рабочий стол/lab_3/inc/managers/draw/draw_manager.h
+../../model/point.h
+/home/akrik/Рабочий стол/lab_3/inc/model/point.h
+../../object/composite.h
+/home/akrik/Рабочий стол/lab_3/inc/object/composite.h
+../../object/object.h
+/home/akrik/Рабочий стол/lab_3/inc/object/object.h
+../../drawer/abstract_drawer.h
+/home/akrik/Рабочий стол/lab_3/inc/drawer/abstract_drawer.h
+../../../inc/scene/scene.h
+/home/akrik/Рабочий стол/lab_3/inc/scene/scene.h
+../../../inc/managers/scene/scene_manager.h
+/home/akrik/Рабочий стол/lab_3/inc/managers/scene/scene_manager.h
+
+/home/akrik/Рабочий стол/lab_3/inc/managers/load/base_load_controller.h
+memory
+-
+../../builder/base_builder.h
+/home/akrik/Рабочий стол/lab_3/inc/builder/base_builder.h
+../../loader/base_loader.h
+/home/akrik/Рабочий стол/lab_3/inc/loader/base_loader.h
+../../scene/scene.h
+/home/akrik/Рабочий стол/lab_3/inc/scene/scene.h
+
+/home/akrik/Рабочий стол/lab_3/inc/managers/load/load_manager.h
+memory
+-
+../../object/figure.h
+/home/akrik/Рабочий стол/lab_3/inc/object/figure.h
+base_load_controller.h
+/home/akrik/Рабочий стол/lab_3/inc/managers/load/base_load_controller.h
+load_scene_controller.h
+/home/akrik/Рабочий стол/lab_3/inc/managers/load/load_scene_controller.h
+load_model_controller.h
+/home/akrik/Рабочий стол/lab_3/inc/managers/load/load_model_controller.h
+
+/home/akrik/Рабочий стол/lab_3/inc/managers/load/load_manager_creator.h
+memory
+-
+load_manager.h
+/home/akrik/Рабочий стол/lab_3/inc/managers/load/load_manager.h
+
+/home/akrik/Рабочий стол/lab_3/inc/managers/load/load_model_controller.h
+base_load_controller.h
+/home/akrik/Рабочий стол/lab_3/inc/managers/load/base_load_controller.h
+../../loader/base_loader_figure.h
+/home/akrik/Рабочий стол/lab_3/inc/loader/base_loader_figure.h
+../../loader/base_loader.h
+/home/akrik/Рабочий стол/lab_3/inc/loader/base_loader.h
+../../builder/builder_figure.h
+/home/akrik/Рабочий стол/lab_3/inc/builder/builder_figure.h
+
+/home/akrik/Рабочий стол/lab_3/inc/managers/load/load_model_controller_creator.h
+load_model_controller.h
+/home/akrik/Рабочий стол/lab_3/inc/managers/load/load_model_controller.h
+
+/home/akrik/Рабочий стол/lab_3/inc/managers/load/load_scene_controller.h
+base_load_controller.h
+/home/akrik/Рабочий стол/lab_3/inc/managers/load/base_load_controller.h
+../../loader/base_loader_scene.h
+/home/akrik/Рабочий стол/lab_3/inc/loader/base_loader_scene.h
+../../loader/base_loader.h
+/home/akrik/Рабочий стол/lab_3/inc/loader/base_loader.h
+../../builder/builder_scene.h
+/home/akrik/Рабочий стол/lab_3/inc/builder/builder_scene.h
+
+/home/akrik/Рабочий стол/lab_3/inc/managers/scene/scene_manager.h
+../../scene/scene.h
+/home/akrik/Рабочий стол/lab_3/inc/scene/scene.h
+
+/home/akrik/Рабочий стол/lab_3/inc/managers/scene/scene_manager_creator.h
+memory
+-
+scene_manager.h
+/home/akrik/Рабочий стол/lab_3/inc/managers/scene/scene_manager.h
+
+/home/akrik/Рабочий стол/lab_3/inc/managers/transform/transform_manager.h
+../../object/object.h
+/home/akrik/Рабочий стол/lab_3/inc/object/object.h
+../../visitor/transform_visitor.h
+/home/akrik/Рабочий стол/lab_3/inc/visitor/transform_visitor.h
+
+/home/akrik/Рабочий стол/lab_3/inc/managers/transform/transform_manager_creator.h
+transform_manager.h
+/home/akrik/Рабочий стол/lab_3/inc/managers/transform/transform_manager.h
+
+/home/akrik/Рабочий стол/lab_3/inc/model/figure_details.h
+vector
+-
+point.h
+/home/akrik/Рабочий стол/lab_3/inc/model/point.h
+link.h
+/home/akrik/Рабочий стол/lab_3/inc/model/link.h
+
+/home/akrik/Рабочий стол/lab_3/inc/model/link.h
+cstddef
+-
+
+/home/akrik/Рабочий стол/lab_3/inc/model/point.h
+../object/object.h
+/home/akrik/Рабочий стол/lab_3/inc/object/object.h
+
+/home/akrik/Рабочий стол/lab_3/inc/object/camera.h
+object.h
+/home/akrik/Рабочий стол/lab_3/inc/object/object.h
+../model/point.h
+/home/akrik/Рабочий стол/lab_3/inc/model/point.h
+../managers/draw/draw_manager.h
+/home/akrik/Рабочий стол/lab_3/inc/managers/draw/draw_manager.h
+
+/home/akrik/Рабочий стол/lab_3/inc/object/composite.h
+object.h
+/home/akrik/Рабочий стол/lab_3/inc/object/object.h
+../scene/scene.h
+/home/akrik/Рабочий стол/lab_3/inc/scene/scene.h
+
+/home/akrik/Рабочий стол/lab_3/inc/object/figure.h
+memory
+-
+utility
+-
+../model/point.h
+/home/akrik/Рабочий стол/lab_3/inc/model/point.h
+../model/link.h
+/home/akrik/Рабочий стол/lab_3/inc/model/link.h
+../model/figure_details.h
+/home/akrik/Рабочий стол/lab_3/inc/model/figure_details.h
+../managers/draw/draw_manager.h
+/home/akrik/Рабочий стол/lab_3/inc/managers/draw/draw_manager.h
+
+/home/akrik/Рабочий стол/lab_3/inc/object/object.h
+memory
+-
+vector
+-
+../visitor/visitor.h
+/home/akrik/Рабочий стол/lab_3/inc/visitor/visitor.h
+
+/home/akrik/Рабочий стол/lab_3/inc/scene/scene.h
+vector
+-
+../object/object.h
+/home/akrik/Рабочий стол/lab_3/inc/object/object.h
+
+/home/akrik/Рабочий стол/lab_3/inc/visitor/transform_visitor.h
+visitor.h
+/home/akrik/Рабочий стол/lab_3/inc/visitor/visitor.h
+memory
+/home/akrik/Рабочий стол/lab_3/inc/visitor/memory
+../model/point.h
+/home/akrik/Рабочий стол/lab_3/inc/model/point.h
+../object/composite.h
+/home/akrik/Рабочий стол/lab_3/inc/object/composite.h
+../object/figure.h
+/home/akrik/Рабочий стол/lab_3/inc/object/figure.h
+../object/camera.h
+/home/akrik/Рабочий стол/lab_3/inc/object/camera.h
+
+/home/akrik/Рабочий стол/lab_3/inc/visitor/visitor.h
+memory
+-
+
+/home/akrik/Рабочий стол/lab_3/src/commands/camera_command.cpp
+../../inc/commands/camera_command.h
+/home/akrik/Рабочий стол/lab_3/inc/commands/camera_command.h
+../../inc/object/camera.h
+/home/akrik/Рабочий стол/lab_3/inc/object/camera.h
+../../inc/managers/scene/scene_manager_creator.h
+/home/akrik/Рабочий стол/lab_3/inc/managers/scene/scene_manager_creator.h
+../../inc/managers/transform/transform_manager_creator.h
+/home/akrik/Рабочий стол/lab_3/inc/managers/transform/transform_manager_creator.h
+
+/home/akrik/Рабочий стол/lab_3/src/commands/model_command.cpp
+../../inc/commands/model_command.h
+/home/akrik/Рабочий стол/lab_3/inc/commands/model_command.h
+../../inc/managers/load/load_manager_creator.h
+/home/akrik/Рабочий стол/lab_3/inc/managers/load/load_manager_creator.h
+../../inc/managers/load/load_model_controller_creator.h
+/home/akrik/Рабочий стол/lab_3/inc/managers/load/load_model_controller_creator.h
+../../inc/managers/scene/scene_manager_creator.h
+/home/akrik/Рабочий стол/lab_3/inc/managers/scene/scene_manager_creator.h
+../../inc/managers/transform/transform_manager_creator.h
+/home/akrik/Рабочий стол/lab_3/inc/managers/transform/transform_manager_creator.h
+iostream
+-
+
+/home/akrik/Рабочий стол/lab_3/src/managers/transform/transform_manager.cpp
+../../../inc/managers/transform/transform_manager.h
+/home/akrik/Рабочий стол/lab_3/inc/managers/transform/transform_manager.h
+
+/home/akrik/Рабочий стол/lab_3/src/managers/transform/transform_manager_creator.cpp
+../../../inc/managers/transform/transform_manager_creator.h
+/home/akrik/Рабочий стол/lab_3/inc/managers/transform/transform_manager_creator.h
+
+/home/akrik/Рабочий стол/lab_3/src/visitor/transform_visitor.cpp
+../../inc/visitor/transform_visitor.h
+/home/akrik/Рабочий стол/lab_3/inc/visitor/transform_visitor.h
+math.h
+-
+

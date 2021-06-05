@@ -1,0 +1,498 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CodeBlocks_project_file>
+	<FileVersion major="1" minor="6"/>
+	<Project>
+		<Option title="lab_03"/>
+		<Option makefile_is_custom="1"/>
+		<Option compiler="gcc"/>
+		<Option virtualFolders="CMake Files\;CMake Files\..\;CMake Files\..\..\;CMake Files\..\..\..\;CMake Files\..\..\..\..\;CMake Files\..\..\..\..\..\;CMake Files\..\..\..\..\..\usr\;CMake Files\..\..\..\..\..\usr\lib\;CMake Files\..\..\..\..\..\usr\lib\x86_64-linux-gnu\;CMake Files\..\..\..\..\..\usr\lib\x86_64-linux-gnu\cmake\;CMake Files\..\..\..\..\..\usr\lib\x86_64-linux-gnu\cmake\Qt5\;CMake Files\..\..\..\..\..\usr\lib\x86_64-linux-gnu\cmake\Qt5Core\;CMake Files\..\..\..\..\..\usr\lib\x86_64-linux-gnu\cmake\Qt5Gui\;CMake Files\..\..\..\..\..\usr\lib\x86_64-linux-gnu\cmake\Qt5Widgets\;"/>
+		<Build>
+			<Target title="all">
+				<Option working_dir="/home/akrik/Рабочий стол/lab_3/build_cmake"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/gmake -j12 -f &quot;/home/akrik/Рабочий\ стол/lab_3/build_cmake/Makefile&quot;  VERBOSE=1 all"/>
+					<CompileFile command="/usr/bin/gmake -j12 -f &quot;/home/akrik/Рабочий\ стол/lab_3/build_cmake/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/gmake -j12 -f &quot;/home/akrik/Рабочий\ стол/lab_3/build_cmake/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/gmake -j12 -f &quot;/home/akrik/Рабочий\ стол/lab_3/build_cmake/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="rebuild_cache">
+				<Option working_dir="/home/akrik/Рабочий стол/lab_3/build_cmake"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/gmake -j12 -f &quot;/home/akrik/Рабочий\ стол/lab_3/build_cmake/Makefile&quot;  VERBOSE=1 rebuild_cache"/>
+					<CompileFile command="/usr/bin/gmake -j12 -f &quot;/home/akrik/Рабочий\ стол/lab_3/build_cmake/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/gmake -j12 -f &quot;/home/akrik/Рабочий\ стол/lab_3/build_cmake/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/gmake -j12 -f &quot;/home/akrik/Рабочий\ стол/lab_3/build_cmake/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="edit_cache">
+				<Option working_dir="/home/akrik/Рабочий стол/lab_3/build_cmake"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/gmake -j12 -f &quot;/home/akrik/Рабочий\ стол/lab_3/build_cmake/Makefile&quot;  VERBOSE=1 edit_cache"/>
+					<CompileFile command="/usr/bin/gmake -j12 -f &quot;/home/akrik/Рабочий\ стол/lab_3/build_cmake/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/gmake -j12 -f &quot;/home/akrik/Рабочий\ стол/lab_3/build_cmake/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/gmake -j12 -f &quot;/home/akrik/Рабочий\ стол/lab_3/build_cmake/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="lab_03">
+				<Option output="/home/akrik/Рабочий стол/lab_3/build_cmake/lab_03" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/home/akrik/Рабочий стол/lab_3/build_cmake"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add option="-DQT_CORE_LIB"/>
+					<Add option="-DQT_GUI_LIB"/>
+					<Add option="-DQT_WIDGETS_LIB"/>
+					<Add directory="/home/akrik/Рабочий стол/lab_3/build_cmake/lab_03_autogen/include"/>
+					<Add directory="/usr/include/x86_64-linux-gnu/qt5"/>
+					<Add directory="/usr/include/x86_64-linux-gnu/qt5/QtCore"/>
+					<Add directory="/usr/lib/x86_64-linux-gnu/qt5/mkspecs/linux-g++"/>
+					<Add directory="/usr/include/x86_64-linux-gnu/qt5/QtGui"/>
+					<Add directory="/usr/include/x86_64-linux-gnu/qt5/QtWidgets"/>
+					<Add directory="/usr/include/c++/10"/>
+					<Add directory="/usr/include/x86_64-linux-gnu/c++/10"/>
+					<Add directory="/usr/include/c++/10/backward"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/10/include"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/usr/include/x86_64-linux-gnu"/>
+					<Add directory="/usr/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/gmake -j12 -f &quot;/home/akrik/Рабочий\ стол/lab_3/build_cmake/Makefile&quot;  VERBOSE=1 lab_03"/>
+					<CompileFile command="/usr/bin/gmake -j12 -f &quot;/home/akrik/Рабочий\ стол/lab_3/build_cmake/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/gmake -j12 -f &quot;/home/akrik/Рабочий\ стол/lab_3/build_cmake/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/gmake -j12 -f &quot;/home/akrik/Рабочий\ стол/lab_3/build_cmake/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="lab_03/fast">
+				<Option output="/home/akrik/Рабочий стол/lab_3/build_cmake/lab_03" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/home/akrik/Рабочий стол/lab_3/build_cmake"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add option="-DQT_CORE_LIB"/>
+					<Add option="-DQT_GUI_LIB"/>
+					<Add option="-DQT_WIDGETS_LIB"/>
+					<Add directory="/home/akrik/Рабочий стол/lab_3/build_cmake/lab_03_autogen/include"/>
+					<Add directory="/usr/include/x86_64-linux-gnu/qt5"/>
+					<Add directory="/usr/include/x86_64-linux-gnu/qt5/QtCore"/>
+					<Add directory="/usr/lib/x86_64-linux-gnu/qt5/mkspecs/linux-g++"/>
+					<Add directory="/usr/include/x86_64-linux-gnu/qt5/QtGui"/>
+					<Add directory="/usr/include/x86_64-linux-gnu/qt5/QtWidgets"/>
+					<Add directory="/usr/include/c++/10"/>
+					<Add directory="/usr/include/x86_64-linux-gnu/c++/10"/>
+					<Add directory="/usr/include/c++/10/backward"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/10/include"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/usr/include/x86_64-linux-gnu"/>
+					<Add directory="/usr/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/gmake -j12 -f &quot;/home/akrik/Рабочий\ стол/lab_3/build_cmake/Makefile&quot;  VERBOSE=1 lab_03/fast"/>
+					<CompileFile command="/usr/bin/gmake -j12 -f &quot;/home/akrik/Рабочий\ стол/lab_3/build_cmake/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/gmake -j12 -f &quot;/home/akrik/Рабочий\ стол/lab_3/build_cmake/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/gmake -j12 -f &quot;/home/akrik/Рабочий\ стол/lab_3/build_cmake/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="lab_03_autogen">
+				<Option working_dir="/home/akrik/Рабочий стол/lab_3/build_cmake"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/gmake -j12 -f &quot;/home/akrik/Рабочий\ стол/lab_3/build_cmake/Makefile&quot;  VERBOSE=1 lab_03_autogen"/>
+					<CompileFile command="/usr/bin/gmake -j12 -f &quot;/home/akrik/Рабочий\ стол/lab_3/build_cmake/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/gmake -j12 -f &quot;/home/akrik/Рабочий\ стол/lab_3/build_cmake/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/gmake -j12 -f &quot;/home/akrik/Рабочий\ стол/lab_3/build_cmake/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+		</Build>
+		<Unit filename="/home/akrik/Рабочий стол/lab_3/build_cmake/lab_03_autogen/mocs_compilation.cpp">
+			<Option target="lab_03"/>
+		</Unit>
+		<Unit filename="/home/akrik/Рабочий стол/lab_3/inc/builder/base_builder.h">
+			<Option target="lab_03"/>
+		</Unit>
+		<Unit filename="/home/akrik/Рабочий стол/lab_3/inc/builder/builder_camera.h">
+			<Option target="lab_03"/>
+		</Unit>
+		<Unit filename="/home/akrik/Рабочий стол/lab_3/inc/builder/builder_figure.h">
+			<Option target="lab_03"/>
+		</Unit>
+		<Unit filename="/home/akrik/Рабочий стол/lab_3/inc/builder/builder_scene.h">
+			<Option target="lab_03"/>
+		</Unit>
+		<Unit filename="/home/akrik/Рабочий стол/lab_3/inc/commands/base_command.h">
+			<Option target="lab_03"/>
+		</Unit>
+		<Unit filename="/home/akrik/Рабочий стол/lab_3/inc/commands/camera_command.h">
+			<Option target="lab_03"/>
+		</Unit>
+		<Unit filename="/home/akrik/Рабочий стол/lab_3/inc/commands/model_command.h">
+			<Option target="lab_03"/>
+		</Unit>
+		<Unit filename="/home/akrik/Рабочий стол/lab_3/inc/commands/scene_command.h">
+			<Option target="lab_03"/>
+		</Unit>
+		<Unit filename="/home/akrik/Рабочий стол/lab_3/inc/configuration/abstract_cfg.h">
+			<Option target="lab_03"/>
+		</Unit>
+		<Unit filename="/home/akrik/Рабочий стол/lab_3/inc/configuration/configuration.h">
+			<Option target="lab_03"/>
+		</Unit>
+		<Unit filename="/home/akrik/Рабочий стол/lab_3/inc/configuration/creator_cfg.h">
+			<Option target="lab_03"/>
+		</Unit>
+		<Unit filename="/home/akrik/Рабочий стол/lab_3/inc/drawer/abstract_drawer.h">
+			<Option target="lab_03"/>
+		</Unit>
+		<Unit filename="/home/akrik/Рабочий стол/lab_3/inc/drawer/abstract_drawer_factory.h">
+			<Option target="lab_03"/>
+		</Unit>
+		<Unit filename="/home/akrik/Рабочий стол/lab_3/inc/drawer/drawer_qt.h">
+			<Option target="lab_03"/>
+		</Unit>
+		<Unit filename="/home/akrik/Рабочий стол/lab_3/inc/drawer/drawer_qt_factory.h">
+			<Option target="lab_03"/>
+		</Unit>
+		<Unit filename="/home/akrik/Рабочий стол/lab_3/inc/exceptions.h">
+			<Option target="lab_03"/>
+		</Unit>
+		<Unit filename="/home/akrik/Рабочий стол/lab_3/inc/facade/facade.h">
+			<Option target="lab_03"/>
+		</Unit>
+		<Unit filename="/home/akrik/Рабочий стол/lab_3/inc/loader/base_loader.h">
+			<Option target="lab_03"/>
+		</Unit>
+		<Unit filename="/home/akrik/Рабочий стол/lab_3/inc/loader/base_loader_camera.h">
+			<Option target="lab_03"/>
+		</Unit>
+		<Unit filename="/home/akrik/Рабочий стол/lab_3/inc/loader/base_loader_figure.h">
+			<Option target="lab_03"/>
+		</Unit>
+		<Unit filename="/home/akrik/Рабочий стол/lab_3/inc/loader/base_loader_scene.h">
+			<Option target="lab_03"/>
+		</Unit>
+		<Unit filename="/home/akrik/Рабочий стол/lab_3/inc/loader/loader_camera_file.h">
+			<Option target="lab_03"/>
+		</Unit>
+		<Unit filename="/home/akrik/Рабочий стол/lab_3/inc/loader/loader_figure_file.h">
+			<Option target="lab_03"/>
+		</Unit>
+		<Unit filename="/home/akrik/Рабочий стол/lab_3/inc/loader/loader_scene_file.h">
+			<Option target="lab_03"/>
+		</Unit>
+		<Unit filename="/home/akrik/Рабочий стол/lab_3/inc/mainwindow.h">
+			<Option target="lab_03"/>
+		</Unit>
+		<Unit filename="/home/akrik/Рабочий стол/lab_3/inc/managers/draw/draw_manager.h">
+			<Option target="lab_03"/>
+		</Unit>
+		<Unit filename="/home/akrik/Рабочий стол/lab_3/inc/managers/draw/draw_manager_creator.h">
+			<Option target="lab_03"/>
+		</Unit>
+		<Unit filename="/home/akrik/Рабочий стол/lab_3/inc/managers/load/base_load_controller.h">
+			<Option target="lab_03"/>
+		</Unit>
+		<Unit filename="/home/akrik/Рабочий стол/lab_3/inc/managers/load/load_manager.h">
+			<Option target="lab_03"/>
+		</Unit>
+		<Unit filename="/home/akrik/Рабочий стол/lab_3/inc/managers/load/load_manager_creator.h">
+			<Option target="lab_03"/>
+		</Unit>
+		<Unit filename="/home/akrik/Рабочий стол/lab_3/inc/managers/load/load_model_controller.h">
+			<Option target="lab_03"/>
+		</Unit>
+		<Unit filename="/home/akrik/Рабочий стол/lab_3/inc/managers/load/load_model_controller_creator.h">
+			<Option target="lab_03"/>
+		</Unit>
+		<Unit filename="/home/akrik/Рабочий стол/lab_3/inc/managers/load/load_scene_controller.h">
+			<Option target="lab_03"/>
+		</Unit>
+		<Unit filename="/home/akrik/Рабочий стол/lab_3/inc/managers/load/load_scene_controller_creator.h">
+			<Option target="lab_03"/>
+		</Unit>
+		<Unit filename="/home/akrik/Рабочий стол/lab_3/inc/managers/scene/scene_manager.h">
+			<Option target="lab_03"/>
+		</Unit>
+		<Unit filename="/home/akrik/Рабочий стол/lab_3/inc/managers/scene/scene_manager_creator.h">
+			<Option target="lab_03"/>
+		</Unit>
+		<Unit filename="/home/akrik/Рабочий стол/lab_3/inc/managers/transform/transform_manager.h">
+			<Option target="lab_03"/>
+		</Unit>
+		<Unit filename="/home/akrik/Рабочий стол/lab_3/inc/managers/transform/transform_manager_creator.h">
+			<Option target="lab_03"/>
+		</Unit>
+		<Unit filename="/home/akrik/Рабочий стол/lab_3/inc/model/figure_details.h">
+			<Option target="lab_03"/>
+		</Unit>
+		<Unit filename="/home/akrik/Рабочий стол/lab_3/inc/model/link.h">
+			<Option target="lab_03"/>
+		</Unit>
+		<Unit filename="/home/akrik/Рабочий стол/lab_3/inc/model/point.h">
+			<Option target="lab_03"/>
+		</Unit>
+		<Unit filename="/home/akrik/Рабочий стол/lab_3/inc/object/camera.h">
+			<Option target="lab_03"/>
+		</Unit>
+		<Unit filename="/home/akrik/Рабочий стол/lab_3/inc/object/composite.h">
+			<Option target="lab_03"/>
+		</Unit>
+		<Unit filename="/home/akrik/Рабочий стол/lab_3/inc/object/figure.h">
+			<Option target="lab_03"/>
+		</Unit>
+		<Unit filename="/home/akrik/Рабочий стол/lab_3/inc/object/object.h">
+			<Option target="lab_03"/>
+		</Unit>
+		<Unit filename="/home/akrik/Рабочий стол/lab_3/inc/scene/scene.h">
+			<Option target="lab_03"/>
+		</Unit>
+		<Unit filename="/home/akrik/Рабочий стол/lab_3/inc/visitor/transform_visitor.h">
+			<Option target="lab_03"/>
+		</Unit>
+		<Unit filename="/home/akrik/Рабочий стол/lab_3/inc/visitor/visitor.h">
+			<Option target="lab_03"/>
+		</Unit>
+		<Unit filename="/home/akrik/Рабочий стол/lab_3/src/builder/builder_camera.cpp">
+			<Option target="lab_03"/>
+		</Unit>
+		<Unit filename="/home/akrik/Рабочий стол/lab_3/src/builder/builder_figure.cpp">
+			<Option target="lab_03"/>
+		</Unit>
+		<Unit filename="/home/akrik/Рабочий стол/lab_3/src/builder/builder_scene.cpp">
+			<Option target="lab_03"/>
+		</Unit>
+		<Unit filename="/home/akrik/Рабочий стол/lab_3/src/commands/camera_command.cpp">
+			<Option target="lab_03"/>
+		</Unit>
+		<Unit filename="/home/akrik/Рабочий стол/lab_3/src/commands/model_command.cpp">
+			<Option target="lab_03"/>
+		</Unit>
+		<Unit filename="/home/akrik/Рабочий стол/lab_3/src/commands/scene_command.cpp">
+			<Option target="lab_03"/>
+		</Unit>
+		<Unit filename="/home/akrik/Рабочий стол/lab_3/src/configuration/configuration.cpp">
+			<Option target="lab_03"/>
+		</Unit>
+		<Unit filename="/home/akrik/Рабочий стол/lab_3/src/configuration/creator_cfg.cpp">
+			<Option target="lab_03"/>
+		</Unit>
+		<Unit filename="/home/akrik/Рабочий стол/lab_3/src/drawer/drawer_qt.cpp">
+			<Option target="lab_03"/>
+		</Unit>
+		<Unit filename="/home/akrik/Рабочий стол/lab_3/src/drawer/drawer_qt_factory.cpp">
+			<Option target="lab_03"/>
+		</Unit>
+		<Unit filename="/home/akrik/Рабочий стол/lab_3/src/facade/facade.cpp">
+			<Option target="lab_03"/>
+		</Unit>
+		<Unit filename="/home/akrik/Рабочий стол/lab_3/src/loader/loader_camera_file.cpp">
+			<Option target="lab_03"/>
+		</Unit>
+		<Unit filename="/home/akrik/Рабочий стол/lab_3/src/loader/loader_figure_file.cpp">
+			<Option target="lab_03"/>
+		</Unit>
+		<Unit filename="/home/akrik/Рабочий стол/lab_3/src/loader/loader_scene_file.cpp">
+			<Option target="lab_03"/>
+		</Unit>
+		<Unit filename="/home/akrik/Рабочий стол/lab_3/src/main.cpp">
+			<Option target="lab_03"/>
+		</Unit>
+		<Unit filename="/home/akrik/Рабочий стол/lab_3/src/mainwindow.cpp">
+			<Option target="lab_03"/>
+		</Unit>
+		<Unit filename="/home/akrik/Рабочий стол/lab_3/src/managers/draw/draw_manager.cpp">
+			<Option target="lab_03"/>
+		</Unit>
+		<Unit filename="/home/akrik/Рабочий стол/lab_3/src/managers/draw/draw_manager_creator.cpp">
+			<Option target="lab_03"/>
+		</Unit>
+		<Unit filename="/home/akrik/Рабочий стол/lab_3/src/managers/load/base_load_controller.cpp">
+			<Option target="lab_03"/>
+		</Unit>
+		<Unit filename="/home/akrik/Рабочий стол/lab_3/src/managers/load/load_manager.cpp">
+			<Option target="lab_03"/>
+		</Unit>
+		<Unit filename="/home/akrik/Рабочий стол/lab_3/src/managers/load/load_manager_creator.cpp">
+			<Option target="lab_03"/>
+		</Unit>
+		<Unit filename="/home/akrik/Рабочий стол/lab_3/src/managers/load/load_model_controller.cpp">
+			<Option target="lab_03"/>
+		</Unit>
+		<Unit filename="/home/akrik/Рабочий стол/lab_3/src/managers/load/load_model_controller_creator.cpp">
+			<Option target="lab_03"/>
+		</Unit>
+		<Unit filename="/home/akrik/Рабочий стол/lab_3/src/managers/load/load_scene_controller.cpp">
+			<Option target="lab_03"/>
+		</Unit>
+		<Unit filename="/home/akrik/Рабочий стол/lab_3/src/managers/load/load_scene_controller_creator.cpp">
+			<Option target="lab_03"/>
+		</Unit>
+		<Unit filename="/home/akrik/Рабочий стол/lab_3/src/managers/scene/scene_manager.cpp">
+			<Option target="lab_03"/>
+		</Unit>
+		<Unit filename="/home/akrik/Рабочий стол/lab_3/src/managers/scene/scene_manager_creator.cpp">
+			<Option target="lab_03"/>
+		</Unit>
+		<Unit filename="/home/akrik/Рабочий стол/lab_3/src/managers/transform/transform_manager.cpp">
+			<Option target="lab_03"/>
+		</Unit>
+		<Unit filename="/home/akrik/Рабочий стол/lab_3/src/managers/transform/transform_manager_creator.cpp">
+			<Option target="lab_03"/>
+		</Unit>
+		<Unit filename="/home/akrik/Рабочий стол/lab_3/src/model/figure_details.cpp">
+			<Option target="lab_03"/>
+		</Unit>
+		<Unit filename="/home/akrik/Рабочий стол/lab_3/src/model/link.cpp">
+			<Option target="lab_03"/>
+		</Unit>
+		<Unit filename="/home/akrik/Рабочий стол/lab_3/src/model/point.cpp">
+			<Option target="lab_03"/>
+		</Unit>
+		<Unit filename="/home/akrik/Рабочий стол/lab_3/src/object/camera.cpp">
+			<Option target="lab_03"/>
+		</Unit>
+		<Unit filename="/home/akrik/Рабочий стол/lab_3/src/object/composite.cpp">
+			<Option target="lab_03"/>
+		</Unit>
+		<Unit filename="/home/akrik/Рабочий стол/lab_3/src/object/figure.cpp">
+			<Option target="lab_03"/>
+		</Unit>
+		<Unit filename="/home/akrik/Рабочий стол/lab_3/src/scene/scene.cpp">
+			<Option target="lab_03"/>
+		</Unit>
+		<Unit filename="/home/akrik/Рабочий стол/lab_3/src/visitor/transform_visitor.cpp">
+			<Option target="lab_03"/>
+		</Unit>
+		<Unit filename="/home/akrik/Рабочий стол/lab_3/build_cmake/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\"/>
+		</Unit>
+		<Unit filename="/home/akrik/Рабочий стол/lab_3/build_cmake/../../../../../usr/lib/x86_64-linux-gnu/cmake/Qt5/Qt5Config.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\..\usr\lib\x86_64-linux-gnu\cmake\Qt5\"/>
+		</Unit>
+		<Unit filename="/home/akrik/Рабочий стол/lab_3/build_cmake/../../../../../usr/lib/x86_64-linux-gnu/cmake/Qt5/Qt5ConfigVersion.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\..\usr\lib\x86_64-linux-gnu\cmake\Qt5\"/>
+		</Unit>
+		<Unit filename="/home/akrik/Рабочий стол/lab_3/build_cmake/../../../../../usr/lib/x86_64-linux-gnu/cmake/Qt5/Qt5ModuleLocation.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\..\usr\lib\x86_64-linux-gnu\cmake\Qt5\"/>
+		</Unit>
+		<Unit filename="/home/akrik/Рабочий стол/lab_3/build_cmake/../../../../../usr/lib/x86_64-linux-gnu/cmake/Qt5Core/Qt5CoreConfig.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\..\usr\lib\x86_64-linux-gnu\cmake\Qt5Core\"/>
+		</Unit>
+		<Unit filename="/home/akrik/Рабочий стол/lab_3/build_cmake/../../../../../usr/lib/x86_64-linux-gnu/cmake/Qt5Core/Qt5CoreConfigExtras.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\..\usr\lib\x86_64-linux-gnu\cmake\Qt5Core\"/>
+		</Unit>
+		<Unit filename="/home/akrik/Рабочий стол/lab_3/build_cmake/../../../../../usr/lib/x86_64-linux-gnu/cmake/Qt5Core/Qt5CoreConfigExtrasMkspecDir.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\..\usr\lib\x86_64-linux-gnu\cmake\Qt5Core\"/>
+		</Unit>
+		<Unit filename="/home/akrik/Рабочий стол/lab_3/build_cmake/../../../../../usr/lib/x86_64-linux-gnu/cmake/Qt5Core/Qt5CoreConfigVersion.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\..\usr\lib\x86_64-linux-gnu\cmake\Qt5Core\"/>
+		</Unit>
+		<Unit filename="/home/akrik/Рабочий стол/lab_3/build_cmake/../../../../../usr/lib/x86_64-linux-gnu/cmake/Qt5Core/Qt5CoreMacros.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\..\usr\lib\x86_64-linux-gnu\cmake\Qt5Core\"/>
+		</Unit>
+		<Unit filename="/home/akrik/Рабочий стол/lab_3/build_cmake/../../../../../usr/lib/x86_64-linux-gnu/cmake/Qt5Gui/Qt5GuiConfig.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\..\usr\lib\x86_64-linux-gnu\cmake\Qt5Gui\"/>
+		</Unit>
+		<Unit filename="/home/akrik/Рабочий стол/lab_3/build_cmake/../../../../../usr/lib/x86_64-linux-gnu/cmake/Qt5Gui/Qt5GuiConfigExtras.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\..\usr\lib\x86_64-linux-gnu\cmake\Qt5Gui\"/>
+		</Unit>
+		<Unit filename="/home/akrik/Рабочий стол/lab_3/build_cmake/../../../../../usr/lib/x86_64-linux-gnu/cmake/Qt5Gui/Qt5GuiConfigVersion.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\..\usr\lib\x86_64-linux-gnu\cmake\Qt5Gui\"/>
+		</Unit>
+		<Unit filename="/home/akrik/Рабочий стол/lab_3/build_cmake/../../../../../usr/lib/x86_64-linux-gnu/cmake/Qt5Gui/Qt5Gui_QComposePlatformInputContextPlugin.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\..\usr\lib\x86_64-linux-gnu\cmake\Qt5Gui\"/>
+		</Unit>
+		<Unit filename="/home/akrik/Рабочий стол/lab_3/build_cmake/../../../../../usr/lib/x86_64-linux-gnu/cmake/Qt5Gui/Qt5Gui_QEglFSEmulatorIntegrationPlugin.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\..\usr\lib\x86_64-linux-gnu\cmake\Qt5Gui\"/>
+		</Unit>
+		<Unit filename="/home/akrik/Рабочий стол/lab_3/build_cmake/../../../../../usr/lib/x86_64-linux-gnu/cmake/Qt5Gui/Qt5Gui_QEglFSIntegrationPlugin.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\..\usr\lib\x86_64-linux-gnu\cmake\Qt5Gui\"/>
+		</Unit>
+		<Unit filename="/home/akrik/Рабочий стол/lab_3/build_cmake/../../../../../usr/lib/x86_64-linux-gnu/cmake/Qt5Gui/Qt5Gui_QEglFSKmsEglDeviceIntegrationPlugin.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\..\usr\lib\x86_64-linux-gnu\cmake\Qt5Gui\"/>
+		</Unit>
+		<Unit filename="/home/akrik/Рабочий стол/lab_3/build_cmake/../../../../../usr/lib/x86_64-linux-gnu/cmake/Qt5Gui/Qt5Gui_QEglFSKmsGbmIntegrationPlugin.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\..\usr\lib\x86_64-linux-gnu\cmake\Qt5Gui\"/>
+		</Unit>
+		<Unit filename="/home/akrik/Рабочий стол/lab_3/build_cmake/../../../../../usr/lib/x86_64-linux-gnu/cmake/Qt5Gui/Qt5Gui_QEglFSX11IntegrationPlugin.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\..\usr\lib\x86_64-linux-gnu\cmake\Qt5Gui\"/>
+		</Unit>
+		<Unit filename="/home/akrik/Рабочий стол/lab_3/build_cmake/../../../../../usr/lib/x86_64-linux-gnu/cmake/Qt5Gui/Qt5Gui_QEvdevKeyboardPlugin.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\..\usr\lib\x86_64-linux-gnu\cmake\Qt5Gui\"/>
+		</Unit>
+		<Unit filename="/home/akrik/Рабочий стол/lab_3/build_cmake/../../../../../usr/lib/x86_64-linux-gnu/cmake/Qt5Gui/Qt5Gui_QEvdevMousePlugin.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\..\usr\lib\x86_64-linux-gnu\cmake\Qt5Gui\"/>
+		</Unit>
+		<Unit filename="/home/akrik/Рабочий стол/lab_3/build_cmake/../../../../../usr/lib/x86_64-linux-gnu/cmake/Qt5Gui/Qt5Gui_QEvdevTabletPlugin.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\..\usr\lib\x86_64-linux-gnu\cmake\Qt5Gui\"/>
+		</Unit>
+		<Unit filename="/home/akrik/Рабочий стол/lab_3/build_cmake/../../../../../usr/lib/x86_64-linux-gnu/cmake/Qt5Gui/Qt5Gui_QEvdevTouchScreenPlugin.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\..\usr\lib\x86_64-linux-gnu\cmake\Qt5Gui\"/>
+		</Unit>
+		<Unit filename="/home/akrik/Рабочий стол/lab_3/build_cmake/../../../../../usr/lib/x86_64-linux-gnu/cmake/Qt5Gui/Qt5Gui_QGifPlugin.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\..\usr\lib\x86_64-linux-gnu\cmake\Qt5Gui\"/>
+		</Unit>
+		<Unit filename="/home/akrik/Рабочий стол/lab_3/build_cmake/../../../../../usr/lib/x86_64-linux-gnu/cmake/Qt5Gui/Qt5Gui_QICOPlugin.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\..\usr\lib\x86_64-linux-gnu\cmake\Qt5Gui\"/>
+		</Unit>
+		<Unit filename="/home/akrik/Рабочий стол/lab_3/build_cmake/../../../../../usr/lib/x86_64-linux-gnu/cmake/Qt5Gui/Qt5Gui_QIbusPlatformInputContextPlugin.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\..\usr\lib\x86_64-linux-gnu\cmake\Qt5Gui\"/>
+		</Unit>
+		<Unit filename="/home/akrik/Рабочий стол/lab_3/build_cmake/../../../../../usr/lib/x86_64-linux-gnu/cmake/Qt5Gui/Qt5Gui_QJpegPlugin.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\..\usr\lib\x86_64-linux-gnu\cmake\Qt5Gui\"/>
+		</Unit>
+		<Unit filename="/home/akrik/Рабочий стол/lab_3/build_cmake/../../../../../usr/lib/x86_64-linux-gnu/cmake/Qt5Gui/Qt5Gui_QLibInputPlugin.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\..\usr\lib\x86_64-linux-gnu\cmake\Qt5Gui\"/>
+		</Unit>
+		<Unit filename="/home/akrik/Рабочий стол/lab_3/build_cmake/../../../../../usr/lib/x86_64-linux-gnu/cmake/Qt5Gui/Qt5Gui_QLinuxFbIntegrationPlugin.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\..\usr\lib\x86_64-linux-gnu\cmake\Qt5Gui\"/>
+		</Unit>
+		<Unit filename="/home/akrik/Рабочий стол/lab_3/build_cmake/../../../../../usr/lib/x86_64-linux-gnu/cmake/Qt5Gui/Qt5Gui_QMinimalEglIntegrationPlugin.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\..\usr\lib\x86_64-linux-gnu\cmake\Qt5Gui\"/>
+		</Unit>
+		<Unit filename="/home/akrik/Рабочий стол/lab_3/build_cmake/../../../../../usr/lib/x86_64-linux-gnu/cmake/Qt5Gui/Qt5Gui_QMinimalIntegrationPlugin.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\..\usr\lib\x86_64-linux-gnu\cmake\Qt5Gui\"/>
+		</Unit>
+		<Unit filename="/home/akrik/Рабочий стол/lab_3/build_cmake/../../../../../usr/lib/x86_64-linux-gnu/cmake/Qt5Gui/Qt5Gui_QOffscreenIntegrationPlugin.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\..\usr\lib\x86_64-linux-gnu\cmake\Qt5Gui\"/>
+		</Unit>
+		<Unit filename="/home/akrik/Рабочий стол/lab_3/build_cmake/../../../../../usr/lib/x86_64-linux-gnu/cmake/Qt5Gui/Qt5Gui_QSvgIconPlugin.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\..\usr\lib\x86_64-linux-gnu\cmake\Qt5Gui\"/>
+		</Unit>
+		<Unit filename="/home/akrik/Рабочий стол/lab_3/build_cmake/../../../../../usr/lib/x86_64-linux-gnu/cmake/Qt5Gui/Qt5Gui_QSvgPlugin.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\..\usr\lib\x86_64-linux-gnu\cmake\Qt5Gui\"/>
+		</Unit>
+		<Unit filename="/home/akrik/Рабочий стол/lab_3/build_cmake/../../../../../usr/lib/x86_64-linux-gnu/cmake/Qt5Gui/Qt5Gui_QTuioTouchPlugin.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\..\usr\lib\x86_64-linux-gnu\cmake\Qt5Gui\"/>
+		</Unit>
+		<Unit filename="/home/akrik/Рабочий стол/lab_3/build_cmake/../../../../../usr/lib/x86_64-linux-gnu/cmake/Qt5Gui/Qt5Gui_QVncIntegrationPlugin.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\..\usr\lib\x86_64-linux-gnu\cmake\Qt5Gui\"/>
+		</Unit>
+		<Unit filename="/home/akrik/Рабочий стол/lab_3/build_cmake/../../../../../usr/lib/x86_64-linux-gnu/cmake/Qt5Gui/Qt5Gui_QXcbEglIntegrationPlugin.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\..\usr\lib\x86_64-linux-gnu\cmake\Qt5Gui\"/>
+		</Unit>
+		<Unit filename="/home/akrik/Рабочий стол/lab_3/build_cmake/../../../../../usr/lib/x86_64-linux-gnu/cmake/Qt5Gui/Qt5Gui_QXcbGlxIntegrationPlugin.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\..\usr\lib\x86_64-linux-gnu\cmake\Qt5Gui\"/>
+		</Unit>
+		<Unit filename="/home/akrik/Рабочий стол/lab_3/build_cmake/../../../../../usr/lib/x86_64-linux-gnu/cmake/Qt5Gui/Qt5Gui_QXcbIntegrationPlugin.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\..\usr\lib\x86_64-linux-gnu\cmake\Qt5Gui\"/>
+		</Unit>
+		<Unit filename="/home/akrik/Рабочий стол/lab_3/build_cmake/../../../../../usr/lib/x86_64-linux-gnu/cmake/Qt5Widgets/Qt5WidgetsConfig.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\..\usr\lib\x86_64-linux-gnu\cmake\Qt5Widgets\"/>
+		</Unit>
+		<Unit filename="/home/akrik/Рабочий стол/lab_3/build_cmake/../../../../../usr/lib/x86_64-linux-gnu/cmake/Qt5Widgets/Qt5WidgetsConfigExtras.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\..\usr\lib\x86_64-linux-gnu\cmake\Qt5Widgets\"/>
+		</Unit>
+		<Unit filename="/home/akrik/Рабочий стол/lab_3/build_cmake/../../../../../usr/lib/x86_64-linux-gnu/cmake/Qt5Widgets/Qt5WidgetsConfigVersion.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\..\usr\lib\x86_64-linux-gnu\cmake\Qt5Widgets\"/>
+		</Unit>
+		<Unit filename="/home/akrik/Рабочий стол/lab_3/build_cmake/../../../../../usr/lib/x86_64-linux-gnu/cmake/Qt5Widgets/Qt5WidgetsMacros.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\..\usr\lib\x86_64-linux-gnu\cmake\Qt5Widgets\"/>
+		</Unit>
+	</Project>
+</CodeBlocks_project_file>

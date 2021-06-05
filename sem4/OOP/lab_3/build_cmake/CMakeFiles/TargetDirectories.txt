@@ -1,0 +1,4 @@
+/home/akrik/Рабочий стол/lab_3/build_cmake/CMakeFiles/rebuild_cache.dir
+/home/akrik/Рабочий стол/lab_3/build_cmake/CMakeFiles/edit_cache.dir
+/home/akrik/Рабочий стол/lab_3/build_cmake/CMakeFiles/lab_03.dir
+/home/akrik/Рабочий стол/lab_3/build_cmake/CMakeFiles/lab_03_autogen.dir
