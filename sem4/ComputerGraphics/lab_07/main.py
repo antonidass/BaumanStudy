@@ -1,17 +1,14 @@
 import sys
 
 import ui
-# from PyQt5 import QtWidgets, QtCore, QtGui
-# from PyQt5.QtWidgets import QGraphicsScene, QTableWidgetItem
-# from PyQt5.QtGui import QPen, QColor, QImage, QPixmap, QPainter
-# from PyQt5.QtCore import Qt, QTime, QCoreApplication, QEventLoop, QPoint
 
 from PyQt5.QtWidgets import *
 from PyQt5.QtCore import *
 from PyQt5.QtGui import *
 
 
-from funcs import *
+from structs import *
+
 
 
 WIDE = 761
@@ -66,11 +63,6 @@ class GUI(QMainWindow, ui.Ui_GUI):
         self.image.fill(Qt.white)
 
 
-        # self.bg_color = QColor(Qt.white)
-        # self.line_color = QColor(Qt.black)
-        # self.cutter_color = QColor(Qt.red)
-        # self.cut_line_color = QColor(Qt.blue)
-
         self.cutter_color = QColor(100, 200, 100)
         self.line_color = QColor(Qt.black)
         self.cut_line_color = QColor(229, 204, 255)
@@ -85,7 +77,6 @@ class GUI(QMainWindow, ui.Ui_GUI):
         self.cur_cutter = []
         self.follow_cutter = None
 
-
         self.cutOff_colorButton.clicked.connect(self.get_cutter_color)    
         self.result_colorButton.clicked.connect(self.get_result_color)    
         self.segment_olorButton.clicked.connect(self.get_line_color)    
@@ -94,14 +85,12 @@ class GUI(QMainWindow, ui.Ui_GUI):
         self.addSegmentButton.clicked.connect(self.get_line)
         self.addCutOffButton.clicked.connect(self.get_cutter)
         self.chooseCutOffButton.clicked.connect(self.choose_cutter)
-        self.cutOffButton.clicked.connect(self.cut)
+        self.cutOffButton.clicked.connect(self.solution_wrapper)
 
         self.first_color_buttons()
 
         self.graphicsView.setMouseTracking(True)
         self.graphicsView.viewport().installEventFilter(self)
-
-
 
 
     def first_color_buttons(self):
@@ -145,30 +134,26 @@ class GUI(QMainWindow, ui.Ui_GUI):
 
 
 
-    # Отслеживание передвижения мыши
     def eventFilter(self, source, event):
         if event.type() == QEvent.MouseMove and source is self.graphicsView.viewport():
             x = event.x()
             y = event.y()
 
-            following_line(self, x, y)
-            following_cutter(self, x, y)
+            self.following_line(x, y)
+            self.following_cutter(x, y)
 
         return QWidget.eventFilter(self, source, event)
 
-    # Нажатие клавиши
     def keyPressEvent(self, event):
         key = event.key()
         if key == Qt.Key_Control:
             self.ctrl_pressed = True
 
-    # Отжатие клавиши
     def keyReleaseEvent(self, event):
         key = event.key()
         if key == Qt.Key_Control:
             self.ctrl_pressed = False
 
-    # Нажатие кнопки мыши
     def mousePressEvent(self, event):
         but = event.button()
         x = event.x()
@@ -181,9 +166,8 @@ class GUI(QMainWindow, ui.Ui_GUI):
             return
 
         if but == 1:
-            line_on_screen(self, x, y)
-            cutter_on_screen(self, x, y)
-
+            self.line_on_screen(x, y)
+            self.cutter_on_screen(x, y)
 
 
 
@@ -194,11 +178,10 @@ class GUI(QMainWindow, ui.Ui_GUI):
             x2 = int(self.X_2.text())
             y2 = int(self.Y_2.text())
         except ValueError:
-            mes("Неверные данные отрезка")
+            QMessageBox.critical(self, "Ошибка", "Введены некорректные данные отрезка!")
             return -1
 
-        add_line(self, x1, y1, x2, y2, self.line_color)
-
+        self.add_line(x1, y1, x2, y2, self.line_color)
 
     def get_cutter(self):
         try:
@@ -207,164 +190,169 @@ class GUI(QMainWindow, ui.Ui_GUI):
             x_right = int(self.X_right.text())
             y_down = int(self.Y_down.text())
         except ValueError:
-            mes("Неверные данные отрезка")
+            QMessageBox.critical(self, "Ошибка", "Введены некорректные данные отсекателя!")
             return -1
 
-        del_cutter(self)
-        add_cutter(self, x_left, y_up, x_right, y_down, self.cutter_color)
+        if x_left == x_right or y_up == y_down:
+            QMessageBox.critical(self, "Ошибка", "Введен некорректный отсекатель!")
+            return -1
 
+        self.del_cutter()
+        self.add_cutter(x_left, y_up, x_right, y_down, self.cutter_color)
 
     def choose_cutter(self):
-        del_cutter(self)
+        self.del_cutter()
         self.drawing_cutter = True
 
+    def add_line(self, x1, y1, x2, y2, color):
+        self.pen.setColor(color)
+
+        line = Line()
+
+        line.x1 = x1
+        line.y1 = y1
+        line.x2 = x2
+        line.y2 = y2
+        line.scene_item = self.scene.addLine(x1, y1, x2, y2, self.pen)
+
+        self.lines.append(line)
+
+    def drawPoly(self):
+        rect = QRect(self.cutter.x_left, self.cutter.y_down, self.cutter.x_right - self.cutter.x_left, self.cutter.y_up - self.cutter.y_down)
+        pix = QPixmap()
+        painter = QPainter()
+
+        image = QImage(WIDE, HEIGHT, QImage.Format_RGB32)
+        image.fill(Qt.white)
+        painter.begin(image)
+
+        pen = QPen(self.line_color)
+        pen.setWidth(1)
+        painter.setPen(pen)
+           
+        for line in self.lines:
+            painter.drawLine(line.x1, line.y1, line.x2, line.y2)
+
+        painter.fillRect(rect, QBrush(Qt.white))
+        pen = QPen(self.cutter_color)
+        painter.setPen(pen)
+        painter.drawRect(rect)
+
+        painter.end()
+        pix.convertFromImage(image)
+        self.scene.clear()
+        self.scene.addPixmap(pix)
+        
+
+    def add_cutter(self, x_l, y_u, x_r, y_d, color):
+        self.pen.setColor(color)
+
+        if x_l > x_r:
+            x_l, x_r = x_r, x_l
+        if y_u > y_d:
+            y_u, y_d = y_d, y_u
+
+        cutter = Cutter()
+
+        cutter.x_left = x_l
+        cutter.y_up = y_u
+        cutter.x_right = x_r
+        cutter.y_down = y_d
+        cutter.scene_item = self.scene.addRect(x_l, y_u, x_r - x_l, y_d - y_u, self.pen)
+
+        self.cutter = cutter
+
+    def del_cutter(self):
+        if self.cutter:
+            self.scene.removeItem(self.cutter.scene_item)
+        self.cutter = None
 
 
+    def line_on_screen(self, x, y):
+        if not self.drawing_cutter:
+            if self.ctrl_pressed == 0 or len(self.cur_line) == 0:
+                self.cur_line.append((x, y))
 
+            else:
+                prev = self.cur_line[0]
 
+                dx = x - prev[0]
+                dy = y - prev[1]
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    def cut(self):    # Возвращает концы видимого отрезка.
-        # Если отрезок невидим, то возвращает INVISIBLE_LINE
-        """
-        flag - Положение отрезка:
-        1 = общего положения
-        0 = горизонтальный
-        -1 = вертикальный
-        """
-        # Изначально считаем, что отрезок общего положения.
-        flag, m = NORMAL_LINE, 1
-        # Проверка на то, что отрезок вертикальный.
-        if line[X1] - line[X2] == 0:
-            flag = VERTICAL_LINE
-        else:
-            # Если отрезок не вертикальный, то вычисляем тангенс.
-            m = (line[Y2] - line[Y1]) / (line[X2] - line[X1])
-            # Проверка на то, что отрезок горизонтальный.
-            if m == 0:
-                flag = HORIZONTAL_LINE
-
-        # Итерируемся по 4 сторонам отсекателя
-        # В порядке: (x_левое, x_правое, y_нижнее, y_верхнее)
-        for i in range(4):
-            # Формируем четырехразрядный код начала отрезка.
-            code_1 = create_code([line[X1], line[Y1]], rectangle)
-            # Формируем четырехразрядный код конца отрезка.
-            code_2 = create_code([line[X2], line[Y2]], rectangle)
-            # Определяем видимость отрезка.
-            vis = is_visible(code_1, code_2, rectangle)
-            # Если отрезок видимый, возвращаем его координаты (начало и конец).
-            if vis == VISIBLE_LINE:
-                return line
-            # Если отрезок невидимый возвращаем признак невидимости.
-            elif vis == INVISIBLE_LINE:
-                return INVISIBLE_LINE
-
-            # Проверяем пересечение отрезка и стороны отсекателя.
-            # До этого момента не дойдет отрезок, у которого две
-            # координаты по одну сторону, потому что выше мы это обработали.
-            # Т.е. в данном случае может могут быть только
-            # Такие значения code_1[i] и code_2[i]: 0 и 1, 1 и 0, 0 и 0
-            # 1 и 0, 0 и 1 - означает, что данный отрезок пересекает
-            # Данную сторону отсекателя (Т.е. одна его сторона находится
-            # По невидимую сторону, а вторая по видимую => есть
-            # Пересечение с данной стороной) - это то, что нам нужно.
-            # 0 и 0 - означает обратное => отрезок ее не пересекает.
-            if code_1[i] == code_2[i]:
-                continue
-
-            # Т.к. мы собираемся искать пересечение
-            # Прямой и стороны отсекателя мы должны будем после
-            # Того, как найдем данное пересечение
-            # Присвоить одной вершине отрезка найденное пересечение.
-            # Чтобы корректной вершине присвоить пересечение
-            # Мы должны проверить, что данная вершина находится по
-            # Невидимую сторону стороны отсекателя. Если это не так
-            # То поменять местами. Если данную проверку не произвести (И обмен),
-            # То получится, что после того, как мы найдем пересечение
-            # Мы можем присвоить вершине, которая и так является видимой, а та
-            # Вершина, которая находилась вне отсекателя так там и останется.
-            # Т.е. вместо того, чтобы отбросить невидимую часть отрезка
-            # Мы можем (Если не произведем данный обмен) отбросить видимую часть.
-            if not code_1[i]:
-                line[X1], line[Y1], line[X2], line[Y2] = line[X2], line[Y2], line[X1], line[Y1]
-
-            # Если не вертикальная линия.
-            if flag != VERTICAL_LINE:
-                # Т.к. rectangle представлен данном виде:
-                # (x_левое, x_правое, y_нижнее, y_верхнее)
-                # Это значит, что при i<2 мы ищем пересечение
-                # Либо с x_левой либо с x_правой.
-                if i < 2:
-                    # Находим пересечение.
-                    line[Y1] = m * (rectangle[i] - line[X1]) + line[Y1]
-                    # Мы точно знаем, что раз есть пересечение,
-                    # То координата x будет соответствовать x_левому или x_правому
-                    # В зависимости от того, с какой стороной
-                    # Мы на данный момент работаем.
-                    line[X1] = rectangle[i]
-                    continue
+                if abs(dy) >= abs(dx):
+                    self.cur_line.append((prev[0], y))
                 else:
-                    line[X1] = (1 / m) * (rectangle[i] - line[Y1]) + line[X1]
-            line[Y1] = rectangle[i]
+                    self.cur_line.append((x, prev[1]))
 
-        return line
-
-
-
-    def create_code(self, point, rectangle):
-        result_list = [0, 0, 0, 0]
-        # print("point, rectangle = ", point, rectangle)
-
-        result_list[0] = 1 if point[X] < rectangle[LEFT] else 0
-        result_list[1] = 1 if point[X] > rectangle[RIGHT] else 0
-        # Чуть иначе для Y (Не так, как в конспекте, потому что у нас ось Y направлена вниз).
-        result_list[2] = 1 if point[Y] > rectangle[DOWN] else 0
-        result_list[3] = 1 if point[Y] < rectangle[UP] else 0
-
-        # print("result_list = ", result_list, "sum_code = ", sum_code(result_list))
-        return result_list
+            if len(self.cur_line) == 2:
+                c1, c2 = self.cur_line
+                self.add_line(c1[0], c1[1], c2[0], c2[1], self.line_color)
+                self.cur_line.clear()
+                self.scene.removeItem(self.follow_line)
 
 
+    def cutter_on_screen(self, x, y):
+        if self.drawing_cutter:
+            if len(self.cur_cutter) < 2:
+                self.cur_cutter.append((x, y))
+
+            if len(self.cur_cutter) == 2:
+                c1, c2 = self.cur_cutter
+                self.add_cutter(c1[0], c1[1], c2[0], c2[1], self.cutter_color)
+                self.cur_cutter.clear()
+                self.scene.removeItem(self.follow_cutter)
+                self.drawing_cutter = False
+
+
+    def following_line(self, x, y):
+        if len(self.cur_line) == 1:
+            prev = self.cur_line[0]
+            self.pen.setColor(self.line_color)
+
+            if self.follow_line:
+                self.scene.removeItem(self.follow_line)
+
+            if self.ctrl_pressed:
+                dx = x - prev[0]
+                dy = y - prev[1]
+
+                if abs(dy) >= abs(dx):
+                    cur = (prev[0], y)
+                else:
+                    cur = (x, prev[1])
+
+                self.follow_line = self.scene.addLine(prev[0], prev[1], cur[0], cur[1], self.pen)
+            else:
+                self.follow_line = self.scene.addLine(prev[0], prev[1], x, y, self.pen)
+
+
+    def following_cutter(self, x, y):
+        if len(self.cur_cutter) == 1:
+            x_l, y_u = self.cur_cutter[0]
+            x_r, y_d = x, y
+            self.pen.setColor(self.cutter_color)
+
+            if self.follow_cutter:
+                self.scene.removeItem(self.follow_cutter)
+
+            if x_l > x_r:
+                x_l, x_r = x_r, x_l
+            if y_u > y_d:
+                y_u, y_d = y_d, y_u
+
+            self.follow_cutter = self.scene.addRect(x_l, y_u, x_r - x_l, y_d - y_u, self.pen)
+
+
+    def draw_line(self, dot1, dot2, color):
+        self.pen.setColor(color)
+        self.scene.addLine(dot1[0], dot1[1], dot2[0], dot2[1], self.pen)
 
 
 
-
-    def multiplication_code(self, code1, code2):  # scalar_product
+    def multiplication_code(self, code1, code2):  
         result = 0
         for i in range(len(code1)):
-            result += code1[i] * code2[i]
+            result += code1[i] & code2[i]
         return result
 
 
@@ -377,27 +365,16 @@ class GUI(QMainWindow, ui.Ui_GUI):
 
     def create_code(self, point, rectangle):
         result_list = [0, 0, 0, 0]
-        # print("point, rectangle = ", point, rectangle)
 
-        result_list[0] = 1 if point[X] < rectangle[LEFT] else 0
-        result_list[1] = 1 if point[X] > rectangle[RIGHT] else 0
-        # Чуть иначе для Y (Не так, как в конспекте, потому что у нас ось Y направлена вниз).
-        result_list[2] = 1 if point[Y] > rectangle[DOWN] else 0
-        result_list[3] = 1 if point[Y] < rectangle[UP] else 0
+        result_list[0] = 1 if point[X] < rectangle.x_left else 0
+        result_list[1] = 1 if point[X] > rectangle.x_right else 0
+        result_list[2] = 1 if point[Y] > rectangle.y_down else 0
+        result_list[3] = 1 if point[Y] < rectangle.y_up else 0
 
-        # print("result_list = ", result_list, "sum_code = ", sum_code(result_list))
         return result_list
 
 
-
     def is_visible(self, code_1, code_2, rectangle):
-        """Видимость:
-                1 = видимый
-                0 = частично видимый
-                -1 = невидимый"""
-        # code_1 = create_code([start[X], start[Y]], rectangle)
-        # code_2 = create_code([end[X], end[Y]], rectangle)
-
         if not self.sum_code(code_1) and not self.sum_code(code_2):
             return VISIBLE_LINE
 
@@ -405,6 +382,82 @@ class GUI(QMainWindow, ui.Ui_GUI):
             return INVISIBLE_LINE
 
         return PARTLY_VISIBLE_LINE
+
+
+    def cohen_sutherland(self, line, rectangle):
+        flag, m = NORMAL_LINE, 1
+
+        if line.x1 - line.x2 == 0:
+            flag = VERTICAL_LINE
+        else:
+            m = (line.y2 - line.y1) / (line.x2 - line.x1)
+
+            if m == 0:
+                flag = HORIZONTAL_LINE
+
+        for i in range(4):
+            code_1 = self.create_code([line.x1, line.y1], rectangle)
+            code_2 = self.create_code([line.x2, line.y2], rectangle)
+
+            vis = self.is_visible(code_1, code_2, rectangle)
+
+            if vis == VISIBLE_LINE:
+                return line
+            elif vis == INVISIBLE_LINE: 
+                return INVISIBLE_LINE
+
+            if code_1[i] == code_2[i]:
+                continue
+
+            if not code_1[i]:
+                line.x1, line.y1, line.x2, line.y2 = line.x2, line.y2, line.x1, line.y1
+
+            if flag != VERTICAL_LINE:
+                if i < 2:
+                    if i == 0:
+                        line.y1 = m * (rectangle.x_left - line.x1) + line.y1
+                        line.x1 = rectangle.x_left
+                    elif i == 1:
+                        line.y1 = m * (rectangle.x_right - line.x1) + line.y1
+                        line.x1 = rectangle.x_right
+                    continue
+                else:
+                    if i == 2:
+                        line.x1 = (1 / m) * (rectangle.y_down - line.y1) + line.x1
+                    elif i == 3:
+                        line.x1 = (1 / m) * (rectangle.y_up - line.y1) + line.x1
+                        
+            if i == 2:
+                line.y1 = rectangle.y_down
+            elif i == 3:    
+                line.y1 = rectangle.y_up
+
+        return line
+
+
+    def find_solution(self):
+        result_list = list()
+
+        for i in range(len(self.lines)):
+            res = self.cohen_sutherland(self.lines[i], self.cutter)
+            if res != INVISIBLE_LINE:
+                result_list.append(res)
+
+        return result_list
+
+
+    def solution_wrapper(self):
+        if not self.cutter:
+            QMessageBox.critical(self, "Ошибка", "Для начала выберите отсекатель!")
+            return
+
+        self.drawPoly()
+        result_list = self.find_solution()
+
+        for i in range(len(result_list)):
+            self.add_line(result_list[i].x1, result_list[i].y1, result_list[i].x2, result_list[i].y2, self.cut_line_color)
+
+        self.scene.addRect(self.cutter.x_left, self.cutter.y_down, self.cutter.x_right - self.cutter.x_left, self.cutter.y_up - self.cutter.y_down, self.cutter_color)
 
 
 
@@ -431,9 +484,6 @@ if __name__ == "__main__":
     win = GUI()
     win.show()
     app.exec_()
-
-
-
 
 
 
